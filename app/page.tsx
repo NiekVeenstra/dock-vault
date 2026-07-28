@@ -279,58 +279,58 @@ export default function HomePage() {
       </section>
 
 
-      <section className="vault-portal" id="vault">
-        <div className="vault-portal__atmosphere" aria-hidden="true" />
+      <section className="vault-preview" id="vault">
+        <div className="vault-preview__atmosphere" aria-hidden="true" />
 
-        <div className="vault-portal__inner">
-          <div className="section-heading vault-portal__heading">
+        <div className="vault-preview__inner">
+          <div className="section-heading vault-preview__heading">
             <p>The Vault</p>
             <HarborDivider compact />
           </div>
 
-          <div className="vault-portal__layout">
-            <div className="vault-door" aria-hidden="true">
-              <div className="vault-door__halo" />
-              <div className="vault-door__frame">
-                <div className="vault-door__bolts">
-                  {Array.from({ length: 12 }).map((_, index) => (
-                    <i key={index} style={{ "--bolt": index } as React.CSSProperties} />
-                  ))}
-                </div>
-                <div className="vault-door__center">
-                  <img src="/images/world-icons/vault.png" alt="" />
-                </div>
-              </div>
-            </div>
+          <div className="vault-preview__layout">
+            <figure className="vault-preview__visual">
+              <div className="vault-preview__glow" aria-hidden="true" />
+              <img
+                src="/images/vault-door.png"
+                alt="A monumental steel and brass vault door standing slightly open"
+              />
+            </figure>
 
-            <div className="vault-portal__content">
-              <p className="vault-portal__kicker">A quieter room lies beyond</p>
+            <div className="vault-preview__content">
+              <p className="vault-preview__kicker">A quieter room lies beyond</p>
               <h2>
                 Some collections deserve
                 <span>more than ownership.</span>
               </h2>
 
-              <p>
-                The Vault is not built to hide treasures. It exists to protect
-                the stories, milestones and patient work that deserve to remain.
-              </p>
+              <div className="vault-preview__copy">
+                <p>
+                  Not everything inside Dock Vault is meant to be displayed.
+                  Some stories deserve a room built around their preservation.
+                </p>
+                <p>
+                  Beyond this door lies the Founder&apos;s Collection, the Master Set
+                  journeys and the patient work of building an archive worth keeping.
+                </p>
+              </div>
 
-              <div className="vault-portal__glimpse" aria-label="A glimpse inside the Vault">
+              <div className="vault-preview__glimpse" aria-label="A glimpse inside the Vault">
                 <span>Founder&apos;s Collection</span>
                 <span>Master Set Journeys</span>
                 <span>Playset Archive</span>
               </div>
 
-              <a className="primary-cta vault-portal__cta" href="/vault">
+              <a className="primary-cta vault-preview__cta" href="/vault">
                 <span>Enter the Vault</span>
                 <b aria-hidden="true">→</b>
               </a>
             </div>
           </div>
 
-          <p className="vault-portal__whisper">
-            The door opens only for those who choose to look closer.
-          </p>
+          <blockquote className="vault-preview__quote">
+            “The door opens only for those who choose to look closer.”
+          </blockquote>
         </div>
       </section>
 

@@ -33,9 +33,7 @@ export default function VaultPage() {
         <div className="vault-entry__mist" aria-hidden="true" />
         <div className="vault-entry__door" aria-hidden="true">
           <div className="vault-entry__light" />
-          <div className="vault-entry__ring vault-entry__ring--outer" />
-          <div className="vault-entry__ring vault-entry__ring--inner" />
-          <img src="/images/world-icons/vault.png" alt="" />
+          <img src="/images/vault-door.png" alt="" />
         </div>
 
         <div className="vault-entry__content">
