@@ -4,7 +4,6 @@ import { HarborNav } from "@/components/HarborNav";
 import {
   AnchorIcon,
   DiamondIcon,
-  LighthouseIcon,
   LogbookIcon,
   MarketIcon,
 } from "@/components/Icons";
@@ -190,27 +189,92 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="world-section" id="lighthouse">
-        <div className="section-heading">
-          <p>The Lighthouse</p>
-          <HarborDivider compact />
-        </div>
+      <section className="lighthouse-section" id="lighthouse">
+        <div className="lighthouse-section__glow" aria-hidden="true" />
 
-        <div className="feature-grid">
-          <div>
-            <h2>Guidance before commerce.</h2>
-
-            <p>
-              Knowledge, preservation notes and collecting stories written to
-              help protect what matters.
-            </p>
-
-            <a className="quiet-link" href="#logbook">
-              Follow the light <span>→</span>
-            </a>
+        <div className="lighthouse-section__inner">
+          <div className="section-heading lighthouse-section__heading">
+            <p>The Lighthouse</p>
+            <HarborDivider compact />
           </div>
 
-          <LighthouseIcon className="feature-icon" />
+          <div className="lighthouse-section__layout">
+            <figure className="lighthouse-section__emblem">
+              <div className="lighthouse-section__beam lighthouse-section__beam--left" />
+              <div className="lighthouse-section__beam lighthouse-section__beam--right" />
+              <img
+                src="/images/world-icons/lighthouse.png"
+                alt="The Dock Vault Lighthouse emblem"
+              />
+              <figcaption>Every safe harbor needs a guiding light.</figcaption>
+            </figure>
+
+            <div className="lighthouse-section__content">
+              <p className="lighthouse-section__kicker">Before the next decision</p>
+              <h2>
+                Guidance before
+                <span>commerce.</span>
+              </h2>
+
+              <div className="lighthouse-section__copy">
+                <p>
+                  A collection should never be built in the dark. The Lighthouse
+                  exists to make knowledge visible before a purchase is made.
+                </p>
+                <p>
+                  Preservation notes, grading guidance and collecting stories are
+                  gathered here so every decision can be made with patience and
+                  confidence.
+                </p>
+              </div>
+
+              <div className="lighthouse-guides" aria-label="Lighthouse knowledge areas">
+                <a href="#preservation" className="lighthouse-guide">
+                  <span>01</span>
+                  <div>
+                    <strong>Preservation</strong>
+                    <p>Protect cards, sealed products and the stories they carry.</p>
+                  </div>
+                  <i aria-hidden="true">→</i>
+                </a>
+
+                <a href="#grading" className="lighthouse-guide">
+                  <span>02</span>
+                  <div>
+                    <strong>Grading</strong>
+                    <p>Understand condition, preparation and expectations.</p>
+                  </div>
+                  <i aria-hidden="true">→</i>
+                </a>
+
+                <a href="#collecting" className="lighthouse-guide">
+                  <span>03</span>
+                  <div>
+                    <strong>Collecting</strong>
+                    <p>Build with intention rather than noise or haste.</p>
+                  </div>
+                  <i aria-hidden="true">→</i>
+                </a>
+
+                <a href="#beginners" className="lighthouse-guide">
+                  <span>04</span>
+                  <div>
+                    <strong>Begin the journey</strong>
+                    <p>A calm first route through the world of One Piece TCG.</p>
+                  </div>
+                  <i aria-hidden="true">→</i>
+                </a>
+              </div>
+
+              <a className="primary-cta lighthouse-section__cta" href="#logbook">
+                <span>Discover the Lighthouse</span>
+              </a>
+            </div>
+          </div>
+
+          <blockquote className="lighthouse-section__quote">
+            “Knowledge is the light that lets a collection find its way home.”
+          </blockquote>
         </div>
       </section>
 
