@@ -1,1 +1,1 @@
-Replace app/page.tsx and app/globals.scss with these files. Ensure public/images/world-icons/lighthouse.png exists.
+Replace app/page.tsx and app/globals.scss. Add app/vault/page.tsx. Ensure public/images/world-icons/vault.png exists.

@@ -31,7 +31,7 @@ const worldLocations = [
     title: "Vault",
     description: "Protection for what deserves to remain.",
     linkLabel: "Enter the Vault",
-    href: "#collection",
+    href: "/vault",
   },
   {
     number: "04",
@@ -278,45 +278,59 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="world-section world-section--deep" id="collection">
-        <div className="section-heading">
-          <p>The Founder&apos;s Collection</p>
-          <HarborDivider compact />
-        </div>
 
-        <h2>The collection that builds the Harbor.</h2>
+      <section className="vault-portal" id="vault">
+        <div className="vault-portal__atmosphere" aria-hidden="true" />
 
-        <p className="section-intro">
-          A public record of the cards gathered, the gaps still open and the
-          patient work of completing something worth keeping.
-        </p>
+        <div className="vault-portal__inner">
+          <div className="section-heading vault-portal__heading">
+            <p>The Vault</p>
+            <HarborDivider compact />
+          </div>
 
-        <div className="progress-grid">
-          <article className="progress-card">
-            <div>
-              <span>Ongoing voyage</span>
-              <strong>Full Playset Project</strong>
+          <div className="vault-portal__layout">
+            <div className="vault-door" aria-hidden="true">
+              <div className="vault-door__halo" />
+              <div className="vault-door__frame">
+                <div className="vault-door__bolts">
+                  {Array.from({ length: 12 }).map((_, index) => (
+                    <i key={index} style={{ "--bolt": index } as React.CSSProperties} />
+                  ))}
+                </div>
+                <div className="vault-door__center">
+                  <img src="/images/world-icons/vault.png" alt="" />
+                </div>
+              </div>
             </div>
 
-            <b>18%</b>
+            <div className="vault-portal__content">
+              <p className="vault-portal__kicker">A quieter room lies beyond</p>
+              <h2>
+                Some collections deserve
+                <span>more than ownership.</span>
+              </h2>
 
-            <div className="progress-track">
-              <i style={{ width: "18%" }} />
+              <p>
+                The Vault is not built to hide treasures. It exists to protect
+                the stories, milestones and patient work that deserve to remain.
+              </p>
+
+              <div className="vault-portal__glimpse" aria-label="A glimpse inside the Vault">
+                <span>Founder&apos;s Collection</span>
+                <span>Master Set Journeys</span>
+                <span>Playset Archive</span>
+              </div>
+
+              <a className="primary-cta vault-portal__cta" href="/vault">
+                <span>Enter the Vault</span>
+                <b aria-hidden="true">→</b>
+              </a>
             </div>
-          </article>
+          </div>
 
-          <article className="progress-card">
-            <div>
-              <span>Current master set</span>
-              <strong>OP12 Master Set</strong>
-            </div>
-
-            <b>35%</b>
-
-            <div className="progress-track">
-              <i style={{ width: "35%" }} />
-            </div>
-          </article>
+          <p className="vault-portal__whisper">
+            The door opens only for those who choose to look closer.
+          </p>
         </div>
       </section>
 
