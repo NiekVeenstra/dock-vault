@@ -279,58 +279,52 @@ export default function HomePage() {
       </section>
 
 
-      <section className="vault-preview" id="vault">
-        <div className="vault-preview__atmosphere" aria-hidden="true" />
+      <section className="vault-portal" id="vault">
+        <div className="vault-portal__atmosphere" aria-hidden="true" />
 
-        <div className="vault-preview__inner">
-          <div className="section-heading vault-preview__heading">
+        <div className="vault-portal__inner">
+          <div className="section-heading vault-portal__heading">
             <p>The Vault</p>
             <HarborDivider compact />
           </div>
 
-          <div className="vault-preview__layout">
-            <figure className="vault-preview__visual">
-              <div className="vault-preview__glow" aria-hidden="true" />
+          <div className="vault-portal__layout">
+            <figure className="vault-portal__visual">
+              <div className="vault-portal__image-glow" aria-hidden="true" />
               <img
-                src="/images/vault-door.png"
-                alt="A monumental steel and brass vault door standing slightly open"
+                src="/images/vault-gate.png"
+                alt="A monumental Dock Vault door built into an ancient stone wall, with warm light shining through the opening"
               />
             </figure>
 
-            <div className="vault-preview__content">
-              <p className="vault-preview__kicker">A quieter room lies beyond</p>
+            <div className="vault-portal__content">
+              <p className="vault-portal__kicker">A quieter room lies beyond</p>
               <h2>
                 Some collections deserve
                 <span>more than ownership.</span>
               </h2>
 
-              <div className="vault-preview__copy">
-                <p>
-                  Not everything inside Dock Vault is meant to be displayed.
-                  Some stories deserve a room built around their preservation.
-                </p>
-                <p>
-                  Beyond this door lies the Founder&apos;s Collection, the Master Set
-                  journeys and the patient work of building an archive worth keeping.
-                </p>
-              </div>
+              <p>
+                The Vault is not built to hide treasures. It exists to protect
+                the stories, milestones and patient work that deserve to remain.
+              </p>
 
-              <div className="vault-preview__glimpse" aria-label="A glimpse inside the Vault">
+              <div className="vault-portal__glimpse" aria-label="A glimpse inside the Vault">
                 <span>Founder&apos;s Collection</span>
                 <span>Master Set Journeys</span>
                 <span>Playset Archive</span>
               </div>
 
-              <a className="primary-cta vault-preview__cta" href="/vault">
+              <a className="primary-cta vault-portal__cta" href="/vault">
                 <span>Enter the Vault</span>
                 <b aria-hidden="true">→</b>
               </a>
             </div>
           </div>
 
-          <blockquote className="vault-preview__quote">
-            “The door opens only for those who choose to look closer.”
-          </blockquote>
+          <p className="vault-portal__whisper">
+            The door opens only for those who choose to look closer.
+          </p>
         </div>
       </section>
 
