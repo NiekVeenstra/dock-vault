@@ -369,37 +369,83 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="world-section world-section--deep" id="logbook">
-        <div className="section-heading">
-          <p>The Logbook</p>
-          <HarborDivider compact />
-        </div>
+      <section className="logbook-section" id="logbook">
+        <div className="logbook-section__atmosphere" aria-hidden="true" />
 
-        <h2>Stories from the Harbor.</h2>
+        <figure className="logbook-section__visual" aria-hidden="true">
+          <img src="/images/logbook-interior.png" alt="" />
+        </figure>
 
-        <div className="logbook-list">
-          <article>
-            <LogbookIcon />
+        <div className="logbook-section__inner">
+          <div className="section-heading logbook-section__heading">
+            <p>The Logbook</p>
+            <HarborDivider compact />
+          </div>
 
-            <div>
-              <time>First entry</time>
-              <h3>The Lighthouse has been lit.</h3>
-              <p>
-                The beginning of a place made for collectors who value care over
-                noise.
-              </p>
+          <div className="logbook-section__layout">
+            <div className="logbook-section__content">
+              <p className="logbook-section__kicker">The build, in real time</p>
+
+              <h2>
+                Every chapter
+                <span>is written here.</span>
+              </h2>
+
+              <div className="logbook-section__copy">
+                <p>
+                  The Logbook records the process behind Dock Vault — the
+                  decisions, lessons, arrivals and small milestones that shape
+                  what the Harbor becomes.
+                </p>
+
+                <p>
+                  It is a quieter look behind the scenes. Not polished history,
+                  but the journey while it is still being written.
+                </p>
+              </div>
+
+              <div className="logbook-entries" id="logbook-entries">
+                <article>
+                  <LogbookIcon />
+                  <div>
+                    <time>First entry</time>
+                    <h3>The Lighthouse has been lit.</h3>
+                    <p>A place for collectors begins to find its direction.</p>
+                  </div>
+                </article>
+
+                <article>
+                  <DiamondIcon />
+                  <div>
+                    <time>Founding note</time>
+                    <h3>Dock Vault Alpha begins.</h3>
+                    <p>The Harbor takes form, one considered detail at a time.</p>
+                  </div>
+                </article>
+
+                <article>
+                  <AnchorIcon />
+                  <div>
+                    <time>Build note</time>
+                    <h3>The Market Hall takes shape.</h3>
+                    <p>Commerce is introduced slowly, with standards first.</p>
+                  </div>
+                </article>
+              </div>
+
+              <div className="logbook-section__actions">
+                <a className="primary-cta" href="#logbook-entries">
+                  <span>Read the Logbook</span>
+                </a>
+
+                <span className="status-seal">More entries on the way</span>
+              </div>
             </div>
-          </article>
+          </div>
 
-          <article>
-            <DiamondIcon />
-
-            <div>
-              <time>Founding note</time>
-              <h3>Dock Vault Alpha begins.</h3>
-              <p>The Harbor takes form, one considered detail at a time.</p>
-            </div>
-          </article>
+          <blockquote className="logbook-section__quote">
+            “A logbook does not chase attention. It records what matters.”
+          </blockquote>
         </div>
       </section>
 
