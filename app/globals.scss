@@ -863,141 +863,146 @@ h1 em {
 /* Lighthouse destination */
 .lighthouse-section {
   position: relative;
+  min-height: clamp(1040px, 80vw, 1260px);
   overflow: hidden;
-  padding: clamp(92px, 9vw, 150px) clamp(24px, 7vw, 96px);
-  background:
-    radial-gradient(
-      circle at 26% 42%,
-      rgba(193, 143, 74, 0.12),
-      transparent 28%
-    ),
-    linear-gradient(135deg, #030a10 0%, #071521 48%, #06101a 100%);
-  border-top: 1px solid rgba(169, 120, 56, 0.2);
+  padding: clamp(92px, 8vw, 132px) clamp(24px, 5.5vw, 88px)
+    clamp(86px, 7vw, 118px);
+  background: #06101a;
+  border-top: 1px solid rgba(169, 120, 56, 0.18);
   border-bottom: 1px solid rgba(169, 120, 56, 0.18);
-}
-
-.lighthouse-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.24;
-  background-image:
-    linear-gradient(rgba(169, 120, 56, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(169, 120, 56, 0.045) 1px, transparent 1px);
-  background-size: 86px 86px;
-  mask-image: linear-gradient(90deg, #000, transparent 68%);
 }
 
 .lighthouse-section__glow {
   position: absolute;
-  left: -10%;
-  top: 20%;
-  width: 58%;
-  height: 44%;
+  z-index: 1;
+  inset: 0;
   pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(193, 143, 74, 0.1),
-    transparent
-  );
-  filter: blur(55px);
-  transform: rotate(-8deg);
+  background:
+    radial-gradient(
+      circle at 57% 39%,
+      rgba(193, 143, 74, 0.065),
+      transparent 29%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(6, 16, 26, 0.08),
+      transparent 24%,
+      transparent 76%,
+      rgba(4, 12, 19, 0.48)
+    );
+}
+
+.lighthouse-section__visual {
+  position: absolute;
+  z-index: 0;
+  inset: 0 auto 0 0;
+  width: 60%;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.lighthouse-section__visual::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(6, 16, 26, 0.02) 0%,
+      rgba(6, 16, 26, 0.04) 48%,
+      rgba(6, 16, 26, 0.34) 68%,
+      rgba(6, 16, 26, 0.78) 86%,
+      #06101a 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(6, 16, 26, 0.14) 0%,
+      transparent 14%,
+      transparent 82%,
+      rgba(4, 12, 19, 0.34) 100%
+    );
+}
+
+.lighthouse-section__visual img {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 48% 48%;
+  filter: brightness(0.78) saturate(0.92) contrast(1.03);
 }
 
 .lighthouse-section__inner {
   position: relative;
-  z-index: 1;
-  width: min(100%, 1440px);
+  z-index: 3;
+  width: min(100%, 1660px);
+  min-height: clamp(870px, 67vw, 1080px);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .lighthouse-section__heading {
-  margin-bottom: clamp(56px, 7vw, 92px);
+  position: relative;
+  z-index: 4;
+  margin-bottom: clamp(34px, 4vw, 62px);
 }
 
 .lighthouse-section__layout {
+  position: relative;
+  flex: 1;
   display: grid;
-  grid-template-columns: minmax(360px, 0.85fr) minmax(0, 1.15fr);
-  gap: clamp(58px, 8vw, 126px);
+  grid-template-columns: minmax(0, 52%) minmax(460px, 48%);
   align-items: center;
 }
 
-.lighthouse-section__emblem {
+.lighthouse-section__content {
   position: relative;
-  min-width: 0;
-  margin: 0;
-  display: grid;
-  place-items: center;
+  z-index: 4;
+  grid-column: 2;
+  width: min(100%, 700px);
+  max-width: 700px;
+  margin-left: clamp(-118px, -6vw, -72px);
+  padding: clamp(26px, 2.6vw, 42px) 0;
 }
 
-.lighthouse-section__emblem::before {
+.lighthouse-section__content::before {
   content: "";
   position: absolute;
-  width: 78%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: rgba(193, 143, 74, 0.09);
-  filter: blur(34px);
-}
-
-.lighthouse-section__emblem img {
-  position: relative;
-  z-index: 2;
-  display: block;
-  width: min(100%, 610px);
-  height: auto;
-  filter: drop-shadow(0 28px 55px rgba(0, 0, 0, 0.58));
-}
-
-.lighthouse-section__emblem figcaption {
-  position: relative;
-  z-index: 2;
-  margin-top: 22px;
-  color: rgba(193, 143, 74, 0.7);
-  font-family: Cinzel, serif;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  text-align: center;
-}
-
-.lighthouse-section__beam {
-  position: absolute;
-  z-index: 1;
-  top: 29%;
-  width: 52%;
-  height: 9%;
-  opacity: 0.35;
-  filter: blur(9px);
-  background: linear-gradient(90deg, transparent, rgba(218, 175, 103, 0.5));
-  transform-origin: center right;
-}
-
-.lighthouse-section__beam--left {
-  right: 52%;
-  transform: rotate(8deg);
-}
-
-.lighthouse-section__beam--right {
-  left: 52%;
-  transform: rotate(172deg);
+  z-index: -1;
+  inset: -12% -8% -12% -18%;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 70% 48%,
+    rgba(6, 16, 26, 0.98) 0%,
+    rgba(6, 16, 26, 0.86) 40%,
+    rgba(6, 16, 26, 0.38) 60%,
+    transparent 78%
+  );
+  filter: blur(7px);
 }
 
 .lighthouse-section__kicker {
-  margin: 0 0 16px;
+  margin: 0 0 18px;
   color: var(--warm-brass);
-  font-family: Cinzel, serif;
-  font-size: 11px;
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
 }
 
 .lighthouse-section__content h2 {
   max-width: 700px;
-  margin-bottom: 30px;
-  font-size: clamp(54px, 6vw, 88px);
+  margin: 0 0 28px;
+  font-size: clamp(55px, 5.45vw, 88px);
+  line-height: 0.98;
 }
 
 .lighthouse-section__content h2 span {
@@ -1006,18 +1011,18 @@ h1 em {
 }
 
 .lighthouse-section__copy {
-  max-width: 650px;
+  max-width: 610px;
 }
 
 .lighthouse-section__copy p {
   margin: 0 0 18px;
   color: var(--muted);
-  font-size: clamp(19px, 1.5vw, 22px);
-  line-height: 1.62;
+  font-size: clamp(20px, 1.6vw, 24px);
+  line-height: 1.6;
 }
 
 .lighthouse-guides {
-  margin-top: 38px;
+  margin-top: 30px;
   border-top: 1px solid rgba(169, 120, 56, 0.32);
 }
 
@@ -1027,9 +1032,11 @@ h1 em {
   grid-template-columns: 34px minmax(0, 1fr) 24px;
   gap: 18px;
   align-items: center;
-  min-height: 112px;
-  padding: 20px 10px;
+  min-height: 96px;
+  padding: 15px 10px;
   border-bottom: 1px solid rgba(169, 120, 56, 0.24);
+  background: rgba(6, 16, 26, 0.22);
+  backdrop-filter: blur(2px);
   transition:
     background 0.35s ease,
     padding 0.35s ease;
@@ -1055,17 +1062,17 @@ h1 em {
   display: block;
   color: var(--parchment);
   font-family: Cinzel, serif;
-  font-size: clamp(18px, 1.5vw, 23px);
+  font-size: clamp(17px, 1.35vw, 21px);
   font-weight: 500;
   letter-spacing: 0.035em;
   text-transform: uppercase;
 }
 
 .lighthouse-guide p {
-  margin: 7px 0 0;
+  margin: 6px 0 0;
   color: var(--muted);
-  font-size: 17px;
-  line-height: 1.42;
+  font-size: 16px;
+  line-height: 1.4;
 }
 
 .lighthouse-guide i {
@@ -1080,68 +1087,118 @@ h1 em {
 }
 
 .lighthouse-section__cta {
-  margin-top: 34px;
+  margin-top: 30px;
 }
 
 .lighthouse-section__quote {
-  max-width: 1000px;
-  margin: clamp(82px, 9vw, 130px) auto 0;
-  padding-top: 44px;
-  border-top: 1px solid rgba(169, 120, 56, 0.26);
-  color: rgba(242, 234, 223, 0.9);
-  font-size: clamp(34px, 4vw, 58px);
-  line-height: 1.18;
+  position: relative;
+  z-index: 4;
+  max-width: 900px;
+  margin: clamp(36px, 4vw, 58px) auto 0;
+  color: rgba(242, 234, 223, 0.58);
+  font-size: clamp(24px, 2.3vw, 36px);
+  line-height: 1.35;
   text-align: center;
   font-style: italic;
 }
 
-@media (max-width: 1050px) {
-  .lighthouse-section__layout {
-    grid-template-columns: 1fr;
-    gap: 54px;
+@media (max-width: 1100px) {
+  .lighthouse-section {
+    min-height: 1260px;
+    padding-top: 72px;
   }
 
-  .lighthouse-section__emblem {
-    width: min(100%, 650px);
-    margin: 0 auto;
+  .lighthouse-section__visual {
+    inset: 0 0 auto 0;
+    width: 100%;
+    height: 58%;
+  }
+
+  .lighthouse-section__visual img {
+    object-position: center 44%;
+  }
+
+  .lighthouse-section__visual::after {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(6, 16, 26, 0.04) 0%,
+        rgba(6, 16, 26, 0.06) 46%,
+        rgba(6, 16, 26, 0.58) 70%,
+        #06101a 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(6, 16, 26, 0.18),
+        transparent 24%,
+        transparent 76%,
+        rgba(6, 16, 26, 0.18)
+      );
+  }
+
+  .lighthouse-section__inner {
+    min-height: 1110px;
+  }
+
+  .lighthouse-section__layout {
+    grid-template-columns: 1fr;
+    align-items: end;
+    padding-top: clamp(500px, 64vw, 650px);
   }
 
   .lighthouse-section__content {
+    grid-column: 1;
     width: min(100%, 760px);
-    margin: 0 auto;
+    max-width: 760px;
+    margin: -34px auto 0;
+    padding: 0;
+  }
+
+  .lighthouse-section__content::before {
+    inset: -14% -8%;
+    background: radial-gradient(
+      ellipse at 50% 42%,
+      rgba(6, 16, 26, 0.94),
+      rgba(6, 16, 26, 0.58) 52%,
+      transparent 76%
+    );
   }
 }
 
 @media (max-width: 700px) {
   .lighthouse-section {
-    padding: 76px 24px 88px;
+    min-height: 0;
+    padding: 66px 20px 88px;
+  }
+
+  .lighthouse-section__visual {
+    height: 540px;
+  }
+
+  .lighthouse-section__visual img {
+    object-position: 48% 35%;
   }
 
   .lighthouse-section__heading {
-    margin-bottom: 42px;
+    margin-bottom: 0;
   }
 
   .lighthouse-section__layout {
-    gap: 38px;
-  }
-
-  .lighthouse-section__emblem img {
-    width: min(112%, 520px);
-  }
-
-  .lighthouse-section__emblem figcaption {
-    max-width: 260px;
-    line-height: 1.5;
+    padding-top: 430px;
   }
 
   .lighthouse-section__content h2 {
-    font-size: clamp(48px, 13vw, 66px);
+    font-size: clamp(46px, 13vw, 62px);
+  }
+
+  .lighthouse-section__copy p {
+    font-size: 19px;
   }
 
   .lighthouse-guide {
     grid-template-columns: 28px minmax(0, 1fr) 18px;
     gap: 12px;
-    min-height: 104px;
+    min-height: 92px;
     padding-inline: 0;
   }
 
@@ -1151,7 +1208,7 @@ h1 em {
   }
 
   .lighthouse-guide p {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .lighthouse-section__cta {
@@ -1160,8 +1217,8 @@ h1 em {
   }
 
   .lighthouse-section__quote {
-    margin-top: 72px;
-    font-size: clamp(32px, 9vw, 46px);
+    margin-top: 56px;
+    font-size: 24px;
   }
 }
 /* End Lighthouse destination */

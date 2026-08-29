@@ -20,16 +20,9 @@ const worldLocations = [
     linkLabel: "You are here",
     href: "#harbor",
   },
+
   {
     number: "03",
-    image: "/images/world-icons/vault.png",
-    title: "Vault",
-    description: "Protection for what deserves to remain.",
-    linkLabel: "Enter the Vault",
-    href: "/vault",
-  },
-  {
-    number: "04",
     image: "/images/world-icons/market-hall.png",
     title: "Market Hall",
     description: "For collectors, by collectors.",
@@ -37,12 +30,20 @@ const worldLocations = [
     href: "#market",
   },
   {
-    number: "05",
+    number: "04",
     image: "/images/world-icons/logbook.png",
     title: "Logbook",
     description: "Stories, updates and the journey together.",
     linkLabel: "Read the Logbook",
     href: "#logbook",
+  },
+  {
+    number: "05",
+    image: "/images/world-icons/vault.png",
+    title: "Vault",
+    description: "Protection for what deserves to remain.",
+    linkLabel: "Enter the Vault",
+    href: "/vault",
   },
 ];
 
@@ -91,6 +92,13 @@ export default function HomePage() {
       <section className="lighthouse-section" id="lighthouse">
         <div className="lighthouse-section__glow" aria-hidden="true" />
 
+        <figure className="lighthouse-section__visual">
+          <img
+            src="/images/lighthouse-interior.png"
+            alt="The interior of the Dock Vault Lighthouse, with a spiral staircase, nautical instruments and warm lantern light"
+          />
+        </figure>
+
         <div className="lighthouse-section__inner">
           <div className="section-heading lighthouse-section__heading">
             <p>The Lighthouse</p>
@@ -98,15 +106,7 @@ export default function HomePage() {
           </div>
 
           <div className="lighthouse-section__layout">
-            <figure className="lighthouse-section__emblem">
-              <div className="lighthouse-section__beam lighthouse-section__beam--left" />
-              <div className="lighthouse-section__beam lighthouse-section__beam--right" />
-              <img
-                src="/images/world-icons/lighthouse.png"
-                alt="The Dock Vault Lighthouse emblem"
-              />
-              <figcaption>Every safe harbor needs a guiding light.</figcaption>
-            </figure>
+            <div aria-hidden="true" />
 
             <div className="lighthouse-section__content">
               <p className="lighthouse-section__kicker">
@@ -207,7 +207,8 @@ export default function HomePage() {
           <div className="world-nav-grid">
             {worldLocations.map((location, index) => (
               <a
-                className={`world-nav-card${index === 0 ? " is-active" : ""}`}
+                // className={`world-nav-card${index === 0 ? " is-active" : ""}`}
+                className="world-nav-card"
                 href={location.href}
                 key={location.title}
                 aria-label={`${location.title}: ${location.description}`}
@@ -282,58 +283,6 @@ export default function HomePage() {
               Care before commerce. Guidance before haste.
             </figcaption>
           </figure>
-        </div>
-      </section>
-
-      <section className="vault-portal" id="vault">
-        <div className="vault-portal__atmosphere" aria-hidden="true" />
-
-        <figure className="vault-portal__visual">
-          <div className="vault-portal__image-glow" aria-hidden="true" />
-          <img
-            src="/images/vault-gate.png"
-            alt="A monumental Dock Vault door built into an ancient stone wall, with warm light shining through the opening"
-          />
-        </figure>
-
-        <div className="vault-portal__inner">
-          <div className="section-heading vault-portal__heading">
-            <p>The Vault</p>
-            <HarborDivider compact />
-          </div>
-
-          <div className="vault-portal__layout">
-            <div className="vault-portal__content">
-              <p className="vault-portal__kicker">A quieter room lies beyond</p>
-              <h2>
-                Some collections deserve
-                <span>more than ownership.</span>
-              </h2>
-
-              <p>
-                The Vault is not built to hide treasures. It exists to protect
-                the stories, milestones and patient work that deserve to remain.
-              </p>
-
-              <div
-                className="vault-portal__glimpse"
-                aria-label="A glimpse inside the Vault"
-              >
-                <span>Founder&apos;s Collection</span>
-                <span>Master Set Journeys</span>
-                <span>Playset Archive</span>
-              </div>
-
-              <a className="primary-cta vault-portal__cta" href="/vault">
-                <span>Enter the Vault</span>
-                <b aria-hidden="true">→</b>
-              </a>
-            </div>
-          </div>
-
-          <p className="vault-portal__whisper">
-            The door opens only for those who choose to look closer.
-          </p>
         </div>
       </section>
 
@@ -451,6 +400,58 @@ export default function HomePage() {
               <p>The Harbor takes form, one considered detail at a time.</p>
             </div>
           </article>
+        </div>
+      </section>
+
+      <section className="vault-portal" id="vault">
+        <div className="vault-portal__atmosphere" aria-hidden="true" />
+
+        <figure className="vault-portal__visual">
+          <div className="vault-portal__image-glow" aria-hidden="true" />
+          <img
+            src="/images/vault-gate.png"
+            alt="A monumental Dock Vault door built into an ancient stone wall, with warm light shining through the opening"
+          />
+        </figure>
+
+        <div className="vault-portal__inner">
+          <div className="section-heading vault-portal__heading">
+            <p>The Vault</p>
+            <HarborDivider compact />
+          </div>
+
+          <div className="vault-portal__layout">
+            <div className="vault-portal__content">
+              <p className="vault-portal__kicker">A quieter room lies beyond</p>
+              <h2>
+                Some collections deserve
+                <span>more than ownership.</span>
+              </h2>
+
+              <p>
+                The Vault is not built to hide treasures. It exists to protect
+                the stories, milestones and patient work that deserve to remain.
+              </p>
+
+              <div
+                className="vault-portal__glimpse"
+                aria-label="A glimpse inside the Vault"
+              >
+                <span>Founder&apos;s Collection</span>
+                <span>Master Set Journeys</span>
+                <span>Playset Archive</span>
+              </div>
+
+              <a className="primary-cta vault-portal__cta" href="/vault">
+                <span>Enter the Vault</span>
+                <b aria-hidden="true">→</b>
+              </a>
+            </div>
+          </div>
+
+          <p className="vault-portal__whisper">
+            The door opens only for those who choose to look closer.
+          </p>
         </div>
       </section>
 
