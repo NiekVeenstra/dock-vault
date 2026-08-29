@@ -6,19 +6,22 @@ const archives = [
   {
     eyebrow: "Ongoing voyage",
     title: "Full Playset Project",
-    description: "Four copies of every playable card, gathered patiently over time.",
+    description:
+      "Four copies of every playable card, gathered patiently over time.",
     progress: 18,
   },
   {
     eyebrow: "Current master set",
     title: "OP12 Master Set",
-    description: "A complete record of the set, from the first card to the final gap.",
+    description:
+      "A complete record of the set, from the first card to the final gap.",
     progress: 35,
   },
   {
     eyebrow: "Private archive",
     title: "Founder&apos;s Archive",
-    description: "Milestones and pieces kept for their story rather than their price.",
+    description:
+      "Milestones and pieces kept for their story rather than their price.",
     status: "Growing",
   },
 ];
@@ -37,9 +40,13 @@ export default function VaultPage() {
         </div>
 
         <div className="vault-entry__content">
-          <a className="vault-back-link" href="/#vault">← Return to the Harbor</a>
+          <a className="vault-back-link" href="/#vault">
+            ← Return to the Harbor
+          </a>
           <p className="eyebrow">The door has opened</p>
-          <div className="small-rule" aria-hidden="true"><span /></div>
+          <div className="small-rule" aria-hidden="true">
+            <span />
+          </div>
           <h1>
             Enter
             <br />
@@ -80,10 +87,22 @@ export default function VaultPage() {
             <HarborDivider compact />
           </div>
           <div className="artifact-grid">
-            <article><span>Founding chapter</span><strong>In progress</strong></article>
-            <article><span>Current voyage</span><strong>OP12</strong></article>
-            <article><span>Archive status</span><strong>Growing</strong></article>
-            <article><span>Guiding principle</span><strong>Preserve first</strong></article>
+            <article>
+              <span>Founding chapter</span>
+              <strong>In progress</strong>
+            </article>
+            <article>
+              <span>Current voyage</span>
+              <strong>OP12</strong>
+            </article>
+            <article>
+              <span>Archive status</span>
+              <strong>Growing</strong>
+            </article>
+            <article>
+              <span>Guiding principle</span>
+              <strong>Preserve first</strong>
+            </article>
           </div>
         </div>
       </section>
@@ -103,11 +122,18 @@ export default function VaultPage() {
                     <span>{archive.eyebrow}</span>
                     <h2 dangerouslySetInnerHTML={{ __html: archive.title }} />
                   </div>
-                  <b>{archive.progress !== undefined ? `${archive.progress}%` : archive.status}</b>
+                  <b>
+                    {archive.progress !== undefined
+                      ? `${archive.progress}%`
+                      : archive.status}
+                  </b>
                 </div>
                 <p>{archive.description}</p>
                 {archive.progress !== undefined ? (
-                  <div className="archive-track" aria-label={`${archive.progress}% complete`}>
+                  <div
+                    className="archive-track"
+                    aria-label={`${archive.progress}% complete`}
+                  >
                     <i style={{ width: `${archive.progress}%` }} />
                   </div>
                 ) : null}
@@ -123,10 +149,15 @@ export default function VaultPage() {
           <br />
           but by what it chooses to preserve.”
         </blockquote>
-        <a className="quiet-link" href="/#market">Continue to the Market Hall <span>→</span></a>
+        <a className="quiet-link" href="/#market">
+          Continue to the Market Hall <span>→</span>
+        </a>
       </section>
 
-      <footer><p>Dock Vault</p><span>The Harbor is yours.</span></footer>
+      <footer>
+        <p>Dock Vault</p>
+        <span>The Harbor is yours.</span>
+      </footer>
       <HarborNav />
     </main>
   );

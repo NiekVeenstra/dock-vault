@@ -1,7 +1,12 @@
 import { HarborDivider } from "@/components/HarborDivider";
 import { HarborHeader } from "@/components/HarborHeader";
 import { HarborNav } from "@/components/HarborNav";
-import { AnchorIcon, DiamondIcon, LogbookIcon } from "@/components/Icons";
+import {
+  AnchorIcon,
+  DiamondIcon,
+  LighthouseIcon,
+  LogbookIcon,
+} from "@/components/Icons";
 
 const worldLocations = [
   {
@@ -17,7 +22,7 @@ const worldLocations = [
     image: "/images/world-icons/harbor.png",
     title: "Harbor",
     description: "The place where every journey begins.",
-    linkLabel: "You are here",
+    linkLabel: "Enter the Harbor",
     href: "#harbor",
   },
 
@@ -77,9 +82,9 @@ export default function HomePage() {
               and created to protect what deserves to remain.
             </p>
 
-            <a className="primary-cta" href="#harbor">
-              <AnchorIcon />
-              <span>Enter the Harbor</span>
+            <a className="primary-cta" href="#lighthouse">
+              <LighthouseIcon />
+              <span>Follow the Light</span>
             </a>
 
             <a className="text-link" href="#philosophy">
@@ -174,11 +179,8 @@ export default function HomePage() {
                 </a>
               </div>
 
-              <a
-                className="primary-cta lighthouse-section__cta"
-                href="#logbook"
-              >
-                <span>Discover the Lighthouse</span>
+              <a className="primary-cta lighthouse-section__cta" href="#world">
+                <span>Explore Dock Vault</span>
               </a>
             </div>
           </div>
@@ -266,8 +268,8 @@ export default function HomePage() {
               </p>
             </div>
 
-            <a className="primary-cta harbor-intro__cta" href="#world">
-              Enter the Harbor
+            <a className="primary-cta harbor-intro__cta" href="#market">
+              Visit the Market Hall
             </a>
           </div>
 
@@ -419,7 +421,9 @@ export default function HomePage() {
                   <div>
                     <time>Founding note</time>
                     <h3>Dock Vault Alpha begins.</h3>
-                    <p>The Harbor takes form, one considered detail at a time.</p>
+                    <p>
+                      The Harbor takes form, one considered detail at a time.
+                    </p>
                   </div>
                 </article>
 

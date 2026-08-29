@@ -25,7 +25,7 @@ export function HarborHeader() {
     <>
       <header className="harbor-header">
         <a
-          href="#harbor"
+          href="#home"
           className="harbor-header__brand"
           aria-label="Dock Vault home"
         >
