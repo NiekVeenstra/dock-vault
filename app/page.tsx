@@ -1,11 +1,7 @@
 import { HarborDivider } from "@/components/HarborDivider";
 import { HarborHeader } from "@/components/HarborHeader";
 import { HarborNav } from "@/components/HarborNav";
-import {
-  AnchorIcon,
-  DiamondIcon,
-  LogbookIcon,
-} from "@/components/Icons";
+import { AnchorIcon, DiamondIcon, LogbookIcon } from "@/components/Icons";
 
 const worldLocations = [
   {
@@ -209,7 +205,9 @@ export default function HomePage() {
             </figure>
 
             <div className="lighthouse-section__content">
-              <p className="lighthouse-section__kicker">Before the next decision</p>
+              <p className="lighthouse-section__kicker">
+                Before the next decision
+              </p>
               <h2>
                 Guidance before
                 <span>commerce.</span>
@@ -221,18 +219,23 @@ export default function HomePage() {
                   exists to make knowledge visible before a purchase is made.
                 </p>
                 <p>
-                  Preservation notes, grading guidance and collecting stories are
-                  gathered here so every decision can be made with patience and
-                  confidence.
+                  Preservation notes, grading guidance and collecting stories
+                  are gathered here so every decision can be made with patience
+                  and confidence.
                 </p>
               </div>
 
-              <div className="lighthouse-guides" aria-label="Lighthouse knowledge areas">
+              <div
+                className="lighthouse-guides"
+                aria-label="Lighthouse knowledge areas"
+              >
                 <a href="#preservation" className="lighthouse-guide">
                   <span>01</span>
                   <div>
                     <strong>Preservation</strong>
-                    <p>Protect cards, sealed products and the stories they carry.</p>
+                    <p>
+                      Protect cards, sealed products and the stories they carry.
+                    </p>
                   </div>
                   <i aria-hidden="true">→</i>
                 </a>
@@ -259,13 +262,18 @@ export default function HomePage() {
                   <span>04</span>
                   <div>
                     <strong>Begin the journey</strong>
-                    <p>A calm first route through the world of One Piece TCG.</p>
+                    <p>
+                      A calm first route through the world of One Piece TCG.
+                    </p>
                   </div>
                   <i aria-hidden="true">→</i>
                 </a>
               </div>
 
-              <a className="primary-cta lighthouse-section__cta" href="#logbook">
+              <a
+                className="primary-cta lighthouse-section__cta"
+                href="#logbook"
+              >
                 <span>Discover the Lighthouse</span>
               </a>
             </div>
@@ -276,7 +284,6 @@ export default function HomePage() {
           </blockquote>
         </div>
       </section>
-
 
       <section className="vault-portal" id="vault">
         <div className="vault-portal__atmosphere" aria-hidden="true" />
@@ -308,7 +315,10 @@ export default function HomePage() {
                 the stories, milestones and patient work that deserve to remain.
               </p>
 
-              <div className="vault-portal__glimpse" aria-label="A glimpse inside the Vault">
+              <div
+                className="vault-portal__glimpse"
+                aria-label="A glimpse inside the Vault"
+              >
                 <span>Founder&apos;s Collection</span>
                 <span>Master Set Journeys</span>
                 <span>Playset Archive</span>
@@ -328,6 +338,11 @@ export default function HomePage() {
       </section>
 
       <section className="market-hall-section" id="market">
+        <div className="market-hall-section__media" aria-hidden="true">
+          <img src="/images/market-hall-scene.png" alt="" />
+        </div>
+
+        <div className="market-hall-section__fade" aria-hidden="true" />
         <div className="market-hall-section__ambient" aria-hidden="true" />
 
         <div className="market-hall-section__inner">
@@ -337,18 +352,7 @@ export default function HomePage() {
           </div>
 
           <div className="market-hall-section__layout">
-            <figure className="market-hall-section__visual">
-              <div className="market-hall-section__image-frame">
-                <img
-                  src="/images/market-hall-scene.png"
-                  alt="A lantern-lit market hall interior with shelves, curiosities and a calm collector atmosphere"
-                />
-              </div>
-
-              <figcaption>
-                A slower market, built for collectors who value care.
-              </figcaption>
-            </figure>
+            <div aria-hidden="true" />
 
             <div className="market-hall-section__content">
               <p className="market-hall-section__kicker">
@@ -409,6 +413,10 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+
+          <p className="market-hall-section__whisper">
+            The hall is still taking shape. The standards are already in place.
+          </p>
         </div>
       </section>
 
