@@ -860,14 +860,17 @@ h1 em {
 }
 /* End World navigation */
 
-
 /* Lighthouse destination */
 .lighthouse-section {
   position: relative;
   overflow: hidden;
   padding: clamp(92px, 9vw, 150px) clamp(24px, 7vw, 96px);
   background:
-    radial-gradient(circle at 26% 42%, rgba(193, 143, 74, 0.12), transparent 28%),
+    radial-gradient(
+      circle at 26% 42%,
+      rgba(193, 143, 74, 0.12),
+      transparent 28%
+    ),
     linear-gradient(135deg, #030a10 0%, #071521 48%, #06101a 100%);
   border-top: 1px solid rgba(169, 120, 56, 0.2);
   border-bottom: 1px solid rgba(169, 120, 56, 0.18);
@@ -893,7 +896,12 @@ h1 em {
   width: 58%;
   height: 44%;
   pointer-events: none;
-  background: linear-gradient(90deg, transparent, rgba(193, 143, 74, 0.1), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(193, 143, 74, 0.1),
+    transparent
+  );
   filter: blur(55px);
   transform: rotate(-8deg);
 }
@@ -1022,7 +1030,9 @@ h1 em {
   min-height: 112px;
   padding: 20px 10px;
   border-bottom: 1px solid rgba(169, 120, 56, 0.24);
-  transition: background 0.35s ease, padding 0.35s ease;
+  transition:
+    background 0.35s ease,
+    padding 0.35s ease;
 }
 
 .lighthouse-guide:hover,
@@ -1506,57 +1516,46 @@ footer span {
   }
 }
 
-
 /* Vault portal — homepage */
 .vault-portal {
   position: relative;
+  min-height: clamp(900px, 72vw, 1120px);
   overflow: hidden;
-  padding: clamp(105px, 10vw, 165px) clamp(24px, 5.5vw, 88px)
-    clamp(100px, 10vw, 155px);
-  background:
-    radial-gradient(circle at 23% 48%, rgba(193, 143, 74, 0.075), transparent 32%),
-    linear-gradient(180deg, #04101a 0%, #06121c 48%, #040c13 100%);
+  padding: clamp(92px, 8vw, 132px) clamp(24px, 5.5vw, 88px)
+    clamp(86px, 7vw, 118px);
+  background: #04101a;
   border-top: 1px solid rgba(169, 120, 56, 0.18);
   border-bottom: 1px solid rgba(169, 120, 56, 0.18);
 }
 
 .vault-portal__atmosphere {
   position: absolute;
+  z-index: 1;
   inset: 0;
   pointer-events: none;
-  opacity: 0.45;
   background:
-    radial-gradient(circle at 18% 56%, rgba(193, 143, 74, 0.08), transparent 27%),
-    linear-gradient(rgba(169, 120, 56, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(169, 120, 56, 0.018) 1px, transparent 1px);
-  background-size: auto, 90px 90px, 90px 90px;
-}
-
-.vault-portal__inner {
-  position: relative;
-  z-index: 1;
-  width: min(100%, 1660px);
-  margin: 0 auto;
-}
-
-.vault-portal__heading {
-  margin-bottom: clamp(48px, 5vw, 76px);
-}
-
-.vault-portal__layout {
-  display: grid;
-  grid-template-columns: minmax(560px, 1.22fr) minmax(460px, 0.78fr);
-  gap: clamp(34px, 4vw, 76px);
-  align-items: center;
+    radial-gradient(
+      circle at 58% 45%,
+      rgba(193, 143, 74, 0.06),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(4, 16, 26, 0.08),
+      transparent 26%,
+      transparent 74%,
+      rgba(4, 12, 19, 0.52)
+    );
 }
 
 .vault-portal__visual {
-  position: relative;
-  min-height: clamp(620px, 52vw, 830px);
+  position: absolute;
+  z-index: 0;
+  inset: 0 auto 0 0;
+  width: 60%;
+  min-height: 0;
   margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  overflow: hidden;
   isolation: isolate;
 }
 
@@ -1564,48 +1563,107 @@ footer span {
   content: "";
   position: absolute;
   z-index: 2;
-  inset: 0 -3% 0 63%;
+  inset: 0;
   pointer-events: none;
-  background: linear-gradient(90deg, transparent, rgba(4, 16, 26, 0.72) 58%, #04101a);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 16, 26, 0.02) 0%,
+      rgba(4, 16, 26, 0.04) 48%,
+      rgba(4, 16, 26, 0.34) 68%,
+      rgba(4, 16, 26, 0.78) 86%,
+      #04101a 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(4, 16, 26, 0.14) 0%,
+      transparent 14%,
+      transparent 82%,
+      rgba(4, 12, 19, 0.34) 100%
+    );
 }
 
 .vault-portal__image-glow {
   position: absolute;
-  z-index: -1;
-  left: 12%;
+  z-index: 1;
+  left: 42%;
   top: 50%;
-  width: 62%;
+  width: 72%;
   aspect-ratio: 1;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(193, 143, 74, 0.18),
-    rgba(193, 143, 74, 0.045) 42%,
+    rgba(193, 143, 74, 0.16),
+    rgba(193, 143, 74, 0.035) 46%,
     transparent 72%
   );
-  filter: blur(32px);
+  filter: blur(40px);
   animation: vault-breathe 7s ease-in-out infinite;
 }
 
 .vault-portal__visual img {
-  position: relative;
-  z-index: 1;
+  position: absolute;
+  z-index: 0;
+  inset: 0;
   display: block;
-  width: min(66vw, 1040px);
-  max-width: none;
-  height: auto;
-  margin-left: clamp(-170px, -7vw, -72px);
-  object-fit: contain;
-  filter:
-    drop-shadow(0 0 72px rgba(193, 143, 74, 0.11))
-    drop-shadow(0 42px 82px rgba(0, 0, 0, 0.7));
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  transform: none;
+  object-fit: cover;
+  object-position: center 47%;
+  filter: saturate(0.92) contrast(1.03);
+}
+
+.vault-portal__inner {
+  position: relative;
+  z-index: 3;
+  width: min(100%, 1660px);
+  min-height: clamp(720px, 58vw, 900px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.vault-portal__heading {
+  position: relative;
+  z-index: 4;
+  margin-bottom: clamp(34px, 4vw, 62px);
+}
+
+.vault-portal__layout {
+  position: relative;
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 52%) minmax(460px, 48%);
+  align-items: center;
 }
 
 .vault-portal__content {
   position: relative;
-  z-index: 3;
-  max-width: 660px;
+  z-index: 4;
+  grid-column: 2;
+  width: min(100%, 680px);
+  max-width: 680px;
+  margin-left: clamp(-118px, -6vw, -72px);
+  padding: clamp(30px, 3vw, 48px) 0;
+}
+
+.vault-portal__content::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -18% -12% -18% -34%;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 66% 50%,
+    rgba(4, 16, 26, 0.98) 0%,
+    rgba(4, 16, 26, 0.88) 42%,
+    rgba(4, 16, 26, 0.48) 68%,
+    transparent 88%
+  );
+  filter: blur(10px);
 }
 
 .vault-portal__kicker {
@@ -1655,8 +1713,10 @@ footer span {
 }
 
 .vault-portal__whisper {
+  position: relative;
+  z-index: 4;
   max-width: 850px;
-  margin: clamp(42px, 5vw, 72px) auto 0;
+  margin: clamp(36px, 4vw, 58px) auto 0;
   color: rgba(242, 234, 223, 0.58);
   text-align: center;
   font-style: italic;
@@ -1665,30 +1725,68 @@ footer span {
 }
 
 @media (max-width: 1100px) {
-  .vault-portal__layout {
-    grid-template-columns: 1fr;
-    gap: 22px;
+  .vault-portal {
+    min-height: 1080px;
+    padding-top: 72px;
   }
 
   .vault-portal__visual {
-    min-height: clamp(500px, 76vw, 720px);
-    justify-content: center;
+    inset: 0 0 auto 0;
+    width: 100%;
+    height: 64%;
   }
 
   .vault-portal__visual::after {
-    inset: 62% 0 -2% 0;
-    background: linear-gradient(180deg, transparent, #04101a 84%);
+    background:
+      linear-gradient(
+        180deg,
+        rgba(4, 16, 26, 0.04) 0%,
+        rgba(4, 16, 26, 0.06) 48%,
+        rgba(4, 16, 26, 0.58) 72%,
+        #04101a 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(4, 16, 26, 0.18),
+        transparent 24%,
+        transparent 76%,
+        rgba(4, 16, 26, 0.18)
+      );
   }
 
   .vault-portal__visual img {
-    width: min(112vw, 980px);
-    margin-left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 43%;
+  }
+
+  .vault-portal__inner {
+    min-height: 940px;
+  }
+
+  .vault-portal__layout {
+    grid-template-columns: 1fr;
+    align-items: end;
+    padding-top: clamp(470px, 58vw, 610px);
   }
 
   .vault-portal__content {
+    grid-column: 1;
     width: min(100%, 760px);
     max-width: 760px;
-    margin: -24px auto 0;
+    margin: -34px auto 0;
+    padding: 0;
+  }
+
+  .vault-portal__content::before {
+    inset: -20% -12%;
+    background: radial-gradient(
+      ellipse at 50% 42%,
+      rgba(4, 16, 26, 0.96),
+      rgba(4, 16, 26, 0.7) 56%,
+      transparent 84%
+    );
   }
 
   .vault-entry {
@@ -1733,26 +1831,32 @@ footer span {
   }
 
   .vault-portal {
-    padding: 76px 20px 92px;
+    min-height: 1040px;
+    padding: 68px 20px 82px;
   }
 
   .vault-portal__heading {
-    margin-bottom: 24px;
+    margin-bottom: 18px;
   }
 
   .vault-portal__visual {
-    min-height: 390px;
-    width: calc(100% + 40px);
-    margin-left: -20px;
+    height: 57%;
   }
 
   .vault-portal__visual img {
-    width: min(145vw, 720px);
-    transform: translateX(-2%);
+    object-position: 50% 39%;
+  }
+
+  .vault-portal__inner {
+    min-height: 890px;
+  }
+
+  .vault-portal__layout {
+    padding-top: clamp(430px, 118vw, 520px);
   }
 
   .vault-portal__content {
-    margin-top: -10px;
+    margin: -20px auto 0;
   }
 
   .vault-portal__content h2 {

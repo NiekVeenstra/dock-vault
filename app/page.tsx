@@ -210,7 +210,9 @@ export default function HomePage() {
             </figure>
 
             <div className="lighthouse-section__content">
-              <p className="lighthouse-section__kicker">Before the next decision</p>
+              <p className="lighthouse-section__kicker">
+                Before the next decision
+              </p>
               <h2>
                 Guidance before
                 <span>commerce.</span>
@@ -222,18 +224,23 @@ export default function HomePage() {
                   exists to make knowledge visible before a purchase is made.
                 </p>
                 <p>
-                  Preservation notes, grading guidance and collecting stories are
-                  gathered here so every decision can be made with patience and
-                  confidence.
+                  Preservation notes, grading guidance and collecting stories
+                  are gathered here so every decision can be made with patience
+                  and confidence.
                 </p>
               </div>
 
-              <div className="lighthouse-guides" aria-label="Lighthouse knowledge areas">
+              <div
+                className="lighthouse-guides"
+                aria-label="Lighthouse knowledge areas"
+              >
                 <a href="#preservation" className="lighthouse-guide">
                   <span>01</span>
                   <div>
                     <strong>Preservation</strong>
-                    <p>Protect cards, sealed products and the stories they carry.</p>
+                    <p>
+                      Protect cards, sealed products and the stories they carry.
+                    </p>
                   </div>
                   <i aria-hidden="true">→</i>
                 </a>
@@ -260,13 +267,18 @@ export default function HomePage() {
                   <span>04</span>
                   <div>
                     <strong>Begin the journey</strong>
-                    <p>A calm first route through the world of One Piece TCG.</p>
+                    <p>
+                      A calm first route through the world of One Piece TCG.
+                    </p>
                   </div>
                   <i aria-hidden="true">→</i>
                 </a>
               </div>
 
-              <a className="primary-cta lighthouse-section__cta" href="#logbook">
+              <a
+                className="primary-cta lighthouse-section__cta"
+                href="#logbook"
+              >
                 <span>Discover the Lighthouse</span>
               </a>
             </div>
@@ -278,9 +290,16 @@ export default function HomePage() {
         </div>
       </section>
 
-
       <section className="vault-portal" id="vault">
         <div className="vault-portal__atmosphere" aria-hidden="true" />
+
+        <figure className="vault-portal__visual">
+          <div className="vault-portal__image-glow" aria-hidden="true" />
+          <img
+            src="/images/vault-gate.png"
+            alt="A monumental Dock Vault door built into an ancient stone wall, with warm light shining through the opening"
+          />
+        </figure>
 
         <div className="vault-portal__inner">
           <div className="section-heading vault-portal__heading">
@@ -289,14 +308,6 @@ export default function HomePage() {
           </div>
 
           <div className="vault-portal__layout">
-            <figure className="vault-portal__visual">
-              <div className="vault-portal__image-glow" aria-hidden="true" />
-              <img
-                src="/images/vault-gate.png"
-                alt="A monumental Dock Vault door built into an ancient stone wall, with warm light shining through the opening"
-              />
-            </figure>
-
             <div className="vault-portal__content">
               <p className="vault-portal__kicker">A quieter room lies beyond</p>
               <h2>
@@ -309,7 +320,10 @@ export default function HomePage() {
                 the stories, milestones and patient work that deserve to remain.
               </p>
 
-              <div className="vault-portal__glimpse" aria-label="A glimpse inside the Vault">
+              <div
+                className="vault-portal__glimpse"
+                aria-label="A glimpse inside the Vault"
+              >
                 <span>Founder&apos;s Collection</span>
                 <span>Master Set Journeys</span>
                 <span>Playset Archive</span>
