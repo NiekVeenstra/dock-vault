@@ -281,6 +281,14 @@ export default function HomePage() {
       <section className="vault-portal" id="vault">
         <div className="vault-portal__atmosphere" aria-hidden="true" />
 
+        <figure className="vault-portal__visual">
+          <div className="vault-portal__image-glow" aria-hidden="true" />
+          <img
+            src="/images/vault-gate.png"
+            alt="A monumental Dock Vault door built into an ancient stone wall, with warm light shining through the opening"
+          />
+        </figure>
+
         <div className="vault-portal__inner">
           <div className="section-heading vault-portal__heading">
             <p>The Vault</p>
@@ -288,14 +296,6 @@ export default function HomePage() {
           </div>
 
           <div className="vault-portal__layout">
-            <figure className="vault-portal__visual">
-              <div className="vault-portal__image-glow" aria-hidden="true" />
-              <img
-                src="/images/vault-gate.png"
-                alt="A monumental Dock Vault door built into an ancient stone wall, with warm light shining through the opening"
-              />
-            </figure>
-
             <div className="vault-portal__content">
               <p className="vault-portal__kicker">A quieter room lies beyond</p>
               <h2>
