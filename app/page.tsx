@@ -6,19 +6,19 @@ import { AnchorIcon, DiamondIcon, LogbookIcon } from "@/components/Icons";
 const worldLocations = [
   {
     number: "01",
-    image: "/images/world-icons/harbor.png",
-    title: "Harbor",
-    description: "The place where every journey begins.",
-    linkLabel: "You are here",
-    href: "#harbor",
-  },
-  {
-    number: "02",
     image: "/images/world-icons/lighthouse.png",
     title: "Lighthouse",
     description: "Guidance before commerce.",
     linkLabel: "Follow the light",
     href: "#lighthouse",
+  },
+  {
+    number: "02",
+    image: "/images/world-icons/harbor.png",
+    title: "Harbor",
+    description: "The place where every journey begins.",
+    linkLabel: "You are here",
+    href: "#harbor",
   },
   {
     number: "03",
@@ -84,102 +84,6 @@ export default function HomePage() {
             <a className="text-link" href="#philosophy">
               Learn our philosophy <span>→</span>
             </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="harbor-intro" id="harbor">
-        <div className="harbor-intro__inner">
-          <div className="harbor-intro__content">
-            <p className="eyebrow">The Harbor</p>
-
-            <div className="small-rule" aria-hidden="true">
-              <span />
-            </div>
-
-            <h2 className="harbor-intro__title">
-              Not every collection needs a marketplace.
-              <span>Some collections need a harbor.</span>
-            </h2>
-
-            <div className="harbor-intro__copy">
-              <p>Dock Vault was not created to sell products.</p>
-
-              <p>
-                It was created because collecting deserves a place where care
-                comes before commerce — a place to slow down, preserve what
-                matters and continue the journey with confidence.
-              </p>
-
-              <p>
-                A harbor where knowledge is shared before decisions are made,
-                and where every collection is treated with dignity.
-              </p>
-            </div>
-
-            <a className="primary-cta harbor-intro__cta" href="#world">
-              Enter the Harbor
-            </a>
-          </div>
-
-          <figure className="harbor-intro__visual">
-            <div className="harbor-intro__image-frame">
-              <img
-                src="/images/harbor-introduction.png"
-                alt="Een oud maritiem logboek, kompas en lantaarn op een zeekaart"
-              />
-            </div>
-
-            <figcaption>
-              Care before commerce. Guidance before haste.
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section className="world-nav-section" id="world">
-        <div className="world-nav-section__inner">
-          <div className="section-heading world-nav-section__heading">
-            <p>Explore Dock Vault</p>
-
-            <div
-              className="harbor-divider harbor-divider--compact"
-              aria-hidden="true"
-            >
-              <span />
-              <i />
-              <span />
-            </div>
-          </div>
-
-          <div className="world-nav-grid">
-            {worldLocations.map((location, index) => (
-              <a
-                className={`world-nav-card${index === 0 ? " is-active" : ""}`}
-                href={location.href}
-                key={location.title}
-                aria-label={`${location.title}: ${location.description}`}
-              >
-                <span className="world-nav-card__number">
-                  {location.number}
-                </span>
-
-                <img
-                  className="world-nav-card__image"
-                  src={location.image}
-                  alt=""
-                  aria-hidden="true"
-                />
-
-                <h3 className="world-nav-card__title">{location.title}</h3>
-
-                <p>{location.description}</p>
-
-                <span className="world-nav-card__link">
-                  {location.linkLabel}
-                </span>
-              </a>
-            ))}
           </div>
         </div>
       </section>
@@ -282,6 +186,102 @@ export default function HomePage() {
           <blockquote className="lighthouse-section__quote">
             “Knowledge is the light that lets a collection find its way home.”
           </blockquote>
+        </div>
+      </section>
+
+      <section className="world-nav-section" id="world">
+        <div className="world-nav-section__inner">
+          <div className="section-heading world-nav-section__heading">
+            <p>Explore Dock Vault</p>
+
+            <div
+              className="harbor-divider harbor-divider--compact"
+              aria-hidden="true"
+            >
+              <span />
+              <i />
+              <span />
+            </div>
+          </div>
+
+          <div className="world-nav-grid">
+            {worldLocations.map((location, index) => (
+              <a
+                className={`world-nav-card${index === 0 ? " is-active" : ""}`}
+                href={location.href}
+                key={location.title}
+                aria-label={`${location.title}: ${location.description}`}
+              >
+                <span className="world-nav-card__number">
+                  {location.number}
+                </span>
+
+                <img
+                  className="world-nav-card__image"
+                  src={location.image}
+                  alt=""
+                  aria-hidden="true"
+                />
+
+                <h3 className="world-nav-card__title">{location.title}</h3>
+
+                <p>{location.description}</p>
+
+                <span className="world-nav-card__link">
+                  {location.linkLabel}
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="harbor-intro" id="harbor">
+        <div className="harbor-intro__inner">
+          <div className="harbor-intro__content">
+            <p className="eyebrow">The Harbor</p>
+
+            <div className="small-rule" aria-hidden="true">
+              <span />
+            </div>
+
+            <h2 className="harbor-intro__title">
+              Not every collection needs a marketplace.
+              <span>Some collections need a harbor.</span>
+            </h2>
+
+            <div className="harbor-intro__copy">
+              <p>Dock Vault was not created to sell products.</p>
+
+              <p>
+                It was created because collecting deserves a place where care
+                comes before commerce — a place to slow down, preserve what
+                matters and continue the journey with confidence.
+              </p>
+
+              <p>
+                A harbor where knowledge is shared before decisions are made,
+                and where every collection is treated with dignity.
+              </p>
+            </div>
+
+            <a className="primary-cta harbor-intro__cta" href="#world">
+              Enter the Harbor
+            </a>
+          </div>
+
+          <figure className="harbor-intro__visual">
+            <div className="harbor-intro__image-frame">
+              <img
+                src="/images/harbor-introduction.png"
+                alt="Een oud maritiem logboek, kompas en lantaarn op een zeekaart"
+              />
+            </div>
+
+            <figcaption>
+              Care before commerce. Guidance before haste.
+            </figcaption>
+          </figure>
         </div>
       </section>
 
