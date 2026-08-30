@@ -6,20 +6,22 @@ import { useLanguage } from "@/components/LanguageProvider";
 
 const translations = {
   en: {
-    back: "← Return to the Harbor",
-    eyebrow: "The door has opened",
-    enter: "Enter",
-    vault: "The Vault.",
-    copy: "Not everything inside Dock Vault is meant to be sold. Some things exist because they deserve to be preserved.",
+    back: "← Return to Dock Vault",
+    eyebrow: "A quieter room lies beyond",
+    line1: "Some collections deserve",
+    line2: "more than ownership.",
+    copy: "The Vault is where Dock Vault preserves the projects, milestones and pieces that are worth remembering — not because they are expensive, but because they carry a story.",
+    cta: "Explore the archive",
   },
   nl: {
-    back: "← Terug naar de Haven",
-    eyebrow: "De deur is geopend",
-    enter: "Betreed",
-    vault: "De Kluis.",
-    copy: "Niet alles binnen Dock Vault is bedoeld om verkocht te worden. Sommige dingen bestaan omdat ze het verdienen om bewaard te blijven.",
+    back: "← Terug naar Dock Vault",
+    eyebrow: "Daarachter ligt een stillere ruimte",
+    line1: "Sommige collecties verdienen",
+    line2: "meer dan bezit.",
+    copy: "The Vault is de plek waar Dock Vault projecten, mijlpalen en stukken bewaart die het herinneren waard zijn — niet omdat ze duur zijn, maar omdat ze een verhaal dragen.",
+    cta: "Ontdek het archief",
   },
-};
+} as const;
 
 export function VaultEntrySection() {
   const { language } = useLanguage();
@@ -41,11 +43,15 @@ export function VaultEntrySection() {
         <p className="eyebrow">{copy.eyebrow}</p>
         <div className="small-rule" aria-hidden="true"><span /></div>
         <h1>
-          {copy.enter}
+          {copy.line1}
           <br />
-          <em>{copy.vault}</em>
+          <em>{copy.line2}</em>
         </h1>
         <p>{copy.copy}</p>
+        <a className="primary-cta" href="#vault-archive">
+          <span>{copy.cta}</span>
+          <b aria-hidden="true">↓</b>
+        </a>
       </div>
     </section>
   );

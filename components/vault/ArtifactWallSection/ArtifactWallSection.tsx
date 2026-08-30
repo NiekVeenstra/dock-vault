@@ -5,24 +5,26 @@ import { useLanguage } from "@/components/LanguageProvider";
 
 const translations = {
   en: {
-    title: "Archive markers",
+    title: "Vault records",
+    intro: "A small set of markers showing where the archive stands today. These records can grow with the collection over time.",
     items: [
-      ["Founding chapter", "In progress"],
-      ["Current voyage", "OP12"],
-      ["Archive status", "Growing"],
-      ["Guiding principle", "Preserve first"],
+      ["Active master set", "OP12"],
+      ["Master set progress", "35%"],
+      ["Playset archive", "18%"],
+      ["Founder's archive", "Growing"],
     ],
   },
   nl: {
-    title: "Archiefmarkeringen",
+    title: "Vault records",
+    intro: "Een kleine set markeringen die laat zien waar het archief vandaag staat. Deze gegevens kunnen later met de collectie meegroeien.",
     items: [
-      ["Oprichtingshoofdstuk", "In opbouw"],
-      ["Huidige reis", "OP12"],
-      ["Archiefstatus", "Groeit"],
-      ["Leidend principe", "Eerst bewaren"],
+      ["Actieve master set", "OP12"],
+      ["Master set voortgang", "35%"],
+      ["Playset archive", "18%"],
+      ["Founder's archive", "Groeit"],
     ],
   },
-};
+} as const;
 
 export function ArtifactWallSection() {
   const { language } = useLanguage();
@@ -32,6 +34,7 @@ export function ArtifactWallSection() {
     <section className="artifact-wall">
       <div className="artifact-wall__inner">
         <SectionHeading title={copy.title} />
+        <p className="artifact-wall__intro">{copy.intro}</p>
         <div className="artifact-grid">
           {copy.items.map(([label, value]) => (
             <article key={label}>

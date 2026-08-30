@@ -1,17 +1,64 @@
-/* Vault archive markers */
-  .artifact-wall { padding:90px clamp(24px,7vw,96px); background:#050b10; border-block:1px solid rgba(169,120,56,.17); }
-  .artifact-wall__inner { width:min(100%,1400px); margin:auto; }
-  .artifact-grid { display:grid; grid-template-columns:repeat(4,1fr); border:1px solid rgba(169,120,56,.28); }
-  .artifact-grid article { min-height:190px; padding:32px; display:flex; flex-direction:column; justify-content:space-between; border-right:1px solid rgba(169,120,56,.22); background:rgba(255,255,255,.008); }
-  .artifact-grid article:last-child { border:0; }
-  .artifact-grid span { color:var(--warm-brass); font-family:Inter,sans-serif; font-size:9px; letter-spacing:.16em; text-transform:uppercase; }
-  .artifact-grid strong { font-size:clamp(26px,2.4vw,39px); font-weight:500; }
-  @media (max-width:1000px) {
-    .artifact-grid { grid-template-columns:repeat(2,1fr); }
-    .artifact-grid article:nth-child(2) { border-right:0; }
-    .artifact-grid article:nth-child(-n + 2) { border-bottom:1px solid rgba(169,120,56,.22); }
-  }
-  @media (max-width:700px) {
-    .artifact-grid { grid-template-columns:1fr; }
-    .artifact-grid article { border-right:0; border-bottom:1px solid rgba(169,120,56,.22); }
-  }
+/* Vault records */
+.artifact-wall {
+  padding: clamp(90px, 9vw, 130px) clamp(24px,7vw,96px);
+  background: #050b10;
+  border-block: 1px solid rgba(169,120,56,.17);
+}
+
+.artifact-wall__inner {
+  width: min(100%,1400px);
+  margin: auto;
+}
+
+.artifact-wall__intro {
+  max-width: 720px;
+  margin: -8px 0 48px;
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.artifact-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  border: 1px solid rgba(169,120,56,.28);
+}
+
+.artifact-grid article {
+  min-height: 190px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid rgba(169,120,56,.22);
+  background: rgba(255,255,255,.008);
+}
+
+.artifact-grid article:last-child {
+  border: 0;
+}
+
+.artifact-grid span {
+  color: var(--warm-brass);
+  font-family: Inter,sans-serif;
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.artifact-grid strong {
+  font-size: clamp(26px,2.4vw,39px);
+  font-weight: 500;
+}
+
+@media (max-width:1000px) {
+  .artifact-grid { grid-template-columns: repeat(2,1fr); }
+  .artifact-grid article:nth-child(2) { border-right: 0; }
+  .artifact-grid article:nth-child(-n + 2) { border-bottom: 1px solid rgba(169,120,56,.22); }
+}
+
+@media (max-width:700px) {
+  .artifact-grid { grid-template-columns: 1fr; }
+  .artifact-grid article { border-right: 0; border-bottom: 1px solid rgba(169,120,56,.22); }
+  .artifact-grid article:last-child { border-bottom: 0; }
+}

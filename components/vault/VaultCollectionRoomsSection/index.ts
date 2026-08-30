@@ -1,0 +1,1 @@
+export { VaultCollectionRoomsSection } from "./VaultCollectionRoomsSection";

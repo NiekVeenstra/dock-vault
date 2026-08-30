@@ -3,6 +3,7 @@ import { SiteFooter } from "@/components/sections";
 import {
   ArchiveProgressSection,
   ArtifactWallSection,
+  VaultCollectionRoomsSection,
   VaultEntrySection,
   VaultManifestoSection,
   VaultQuoteSection,
@@ -13,8 +14,9 @@ export default function VaultPage() {
     <main className="vault-page">
       <VaultEntrySection />
       <VaultManifestoSection />
-      <ArtifactWallSection />
+      <VaultCollectionRoomsSection />
       <ArchiveProgressSection />
+      <ArtifactWallSection />
       <VaultQuoteSection />
       <SiteFooter />
       <HarborNav />

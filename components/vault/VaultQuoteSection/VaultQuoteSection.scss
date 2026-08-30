@@ -3,3 +3,11 @@
   .vault-quote blockquote { margin:0 auto 55px; max-width:1100px; font-size:clamp(46px,6.5vw,92px); line-height:1.03; }
   .vault-quote .quiet-link { margin:auto; }
   @media (max-width:700px) { .vault-quote blockquote br { display:none; } }
+
+.vault-quote > .eyebrow {
+  margin-bottom: 28px;
+}
+
+.vault-quote .primary-cta {
+  margin-top: 0;
+}
