@@ -91,7 +91,7 @@ const translations = {
     previousStatus: "Open guide",
     nextLabel: "Next Lighthouse guide",
     nextTitle: "Begin the journey",
-    nextStatus: "In preparation",
+    nextStatus: "Open guide",
   },
   nl: {
     back: "← Terug naar de Vuurtoren",
@@ -179,7 +179,7 @@ const translations = {
     previousStatus: "Bekijk gids",
     nextLabel: "Volgende Lighthouse-gids",
     nextTitle: "Begin de reis",
-    nextStatus: "In voorbereiding",
+    nextStatus: "Bekijk gids",
   },
 } as const;
 
@@ -290,11 +290,11 @@ export function CollectingGuide() {
               <strong>{copy.previousTitle}</strong>
               <small>{copy.previousStatus} →</small>
             </a>
-            <div className="collecting-guide__nav-card is-disabled">
+            <a className="collecting-guide__nav-card" href="/lighthouse/begin-the-journey">
               <span>{copy.nextLabel}</span>
               <strong>{copy.nextTitle}</strong>
-              <small>{copy.nextStatus}</small>
-            </div>
+              <small>{copy.nextStatus} →</small>
+            </a>
           </div>
         </section>
       </article>
