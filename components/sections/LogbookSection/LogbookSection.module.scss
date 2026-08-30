@@ -1,0 +1,362 @@
+/* Logbook section */
+:global {
+  /* Logbook destination */
+  .logbook-section {
+    position: relative;
+    min-height: clamp(940px, 74vw, 1160px);
+    overflow: hidden;
+    padding: clamp(92px, 8vw, 132px) clamp(24px, 5.5vw, 88px)
+      clamp(86px, 7vw, 118px);
+    background: #06101a;
+    border-top: 1px solid rgba(169, 120, 56, 0.18);
+    border-bottom: 1px solid rgba(169, 120, 56, 0.18);
+  }
+
+  .logbook-section__atmosphere {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        circle at 44% 42%,
+        rgba(193, 143, 74, 0.055),
+        transparent 30%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(6, 16, 26, 0.08),
+        transparent 26%,
+        transparent 74%,
+        rgba(4, 12, 19, 0.5)
+      );
+  }
+
+  .logbook-section__visual {
+    position: absolute;
+    z-index: 0;
+    inset: 0 0 0 auto;
+    width: 60%;
+    min-height: 0;
+    margin: 0;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .logbook-section__visual::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        90deg,
+        #06101a 0%,
+        rgba(6, 16, 26, 0.78) 14%,
+        rgba(6, 16, 26, 0.34) 32%,
+        rgba(6, 16, 26, 0.04) 52%,
+        rgba(6, 16, 26, 0.02) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(6, 16, 26, 0.14) 0%,
+        transparent 14%,
+        transparent 82%,
+        rgba(4, 12, 19, 0.34) 100%
+      );
+  }
+
+  .logbook-section__visual img {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 56% 48%;
+    filter: brightness(0.78) saturate(0.92) contrast(1.03);
+  }
+
+  .logbook-section__inner {
+    position: relative;
+    z-index: 3;
+    width: min(100%, 1660px);
+    min-height: clamp(760px, 60vw, 930px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logbook-section__heading {
+    position: relative;
+    z-index: 4;
+    margin-bottom: clamp(34px, 4vw, 62px);
+  }
+
+  .logbook-section__layout {
+    position: relative;
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(460px, 48%) minmax(0, 52%);
+    align-items: center;
+  }
+
+  .logbook-section__content {
+    position: relative;
+    z-index: 4;
+    grid-column: 1;
+    width: min(100%, 700px);
+    max-width: 700px;
+    justify-self: end;
+    margin-right: clamp(-118px, -6vw, -72px);
+    padding: clamp(26px, 2.8vw, 44px) 0;
+  }
+
+  .logbook-section__content::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -14% -18% -14% -8%;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at 30% 50%,
+      rgba(6, 16, 26, 0.98) 0%,
+      rgba(6, 16, 26, 0.86) 40%,
+      rgba(6, 16, 26, 0.38) 60%,
+      transparent 78%
+    );
+    filter: blur(7px);
+  }
+
+  .logbook-section__kicker {
+    margin: 0 0 18px;
+    color: var(--warm-brass);
+    font-family: Inter, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .logbook-section__content h2 {
+    max-width: 700px;
+    margin: 0 0 28px;
+    font-size: clamp(55px, 5.45vw, 88px);
+    line-height: 0.98;
+  }
+
+  .logbook-section__content h2 span {
+    display: block;
+    color: var(--warm-brass);
+  }
+
+  .logbook-section__copy {
+    max-width: 610px;
+  }
+
+  .logbook-section__copy p {
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-size: clamp(20px, 1.55vw, 24px);
+    line-height: 1.6;
+  }
+
+  .logbook-entries {
+    max-width: 650px;
+    margin-top: 30px;
+    border-top: 1px solid rgba(169, 120, 56, 0.32);
+  }
+
+  .logbook-entries article {
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+    min-height: 102px;
+    padding: 16px 10px;
+    border-bottom: 1px solid rgba(169, 120, 56, 0.24);
+    background: rgba(6, 16, 26, 0.2);
+    backdrop-filter: blur(2px);
+  }
+
+  .logbook-entries svg {
+    width: 27px;
+    margin-top: 3px;
+    color: var(--warm-brass);
+  }
+
+  .logbook-entries time {
+    display: block;
+    margin-bottom: 5px;
+    color: rgba(193, 143, 74, 0.72);
+    font-family: Inter, sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .logbook-entries h3 {
+    margin: 0;
+    color: var(--parchment);
+    font-family: Cinzel, serif;
+    font-size: clamp(17px, 1.3vw, 21px);
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+  }
+
+  .logbook-entries p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .logbook-section__actions {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 22px;
+  }
+
+  .logbook-section__actions .primary-cta,
+  .logbook-section__actions .status-seal {
+    margin-top: 0;
+  }
+
+  .logbook-section__quote {
+    position: relative;
+    z-index: 4;
+    max-width: 940px;
+    margin: clamp(36px, 4vw, 58px) auto 0;
+    color: rgba(242, 234, 223, 0.58);
+    font-size: clamp(24px, 2.3vw, 36px);
+    line-height: 1.35;
+    text-align: center;
+    font-style: italic;
+  }
+
+  @media (max-width: 1100px) {
+    .logbook-section {
+      min-height: 1160px;
+      padding-top: 72px;
+    }
+
+    .logbook-section__visual {
+      inset: 0 0 auto 0;
+      width: 100%;
+      height: 60%;
+    }
+
+    .logbook-section__visual img {
+      object-position: center 45%;
+    }
+
+    .logbook-section__visual::after {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(6, 16, 26, 0.04) 0%,
+          rgba(6, 16, 26, 0.06) 48%,
+          rgba(6, 16, 26, 0.58) 72%,
+          #06101a 100%
+        ),
+        linear-gradient(
+          90deg,
+          rgba(6, 16, 26, 0.18),
+          transparent 24%,
+          transparent 76%,
+          rgba(6, 16, 26, 0.18)
+        );
+    }
+
+    .logbook-section__inner {
+      min-height: 1010px;
+    }
+
+    .logbook-section__layout {
+      grid-template-columns: 1fr;
+      align-items: end;
+      padding-top: clamp(500px, 62vw, 640px);
+    }
+
+    .logbook-section__content {
+      grid-column: 1;
+      width: min(100%, 760px);
+      max-width: 760px;
+      justify-self: center;
+      margin: -34px auto 0;
+      padding: 0;
+    }
+
+    .logbook-section__content::before {
+      inset: -14% -8%;
+      background: radial-gradient(
+        ellipse at 50% 42%,
+        rgba(6, 16, 26, 0.94),
+        rgba(6, 16, 26, 0.58) 52%,
+        transparent 76%
+      );
+    }
+  }
+
+  @media (max-width: 700px) {
+    .logbook-section {
+      min-height: 0;
+      padding: 66px 20px 88px;
+    }
+
+    .logbook-section__visual {
+      height: 540px;
+    }
+
+    .logbook-section__visual img {
+      object-position: 58% 40%;
+    }
+
+    .logbook-section__heading {
+      margin-bottom: 0;
+    }
+
+    .logbook-section__layout {
+      padding-top: 430px;
+    }
+
+    .logbook-section__content h2 {
+      font-size: clamp(46px, 13vw, 62px);
+    }
+
+    .logbook-section__copy p {
+      font-size: 19px;
+    }
+
+    .logbook-entries article {
+      grid-template-columns: 32px minmax(0, 1fr);
+      gap: 12px;
+      min-height: 94px;
+      padding-inline: 0;
+    }
+
+    .logbook-entries svg {
+      width: 24px;
+    }
+
+    .logbook-section__actions {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .logbook-section__actions .primary-cta {
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .logbook-section__quote {
+      margin-top: 56px;
+      font-size: 24px;
+    }
+  }
+  /* End Logbook destination */
+}

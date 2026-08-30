@@ -1,0 +1,42 @@
+/* Decorative divider */
+  .harbor-divider {
+    height: 18px;
+    display: grid;
+    grid-template-columns: 1fr 14px 1fr;
+    align-items: center;
+    position: relative;
+    z-index: 21;
+  }
+
+  .hero-shell > .harbor-divider {
+    position: absolute;
+    top: 101px;
+    left: 0;
+    right: 0;
+  }
+
+  .harbor-divider span {
+    height: 1px;
+    background: var(--fine-line);
+  }
+
+  .harbor-divider i {
+    width: 11px;
+    height: 11px;
+    border: 1px solid var(--aged-brass);
+    transform: rotate(45deg);
+    justify-self: center;
+    background: var(--harbor-navy);
+  }
+
+  .harbor-divider--compact {
+    width: min(220px, 48vw);
+    margin: 12px auto 0;
+    height: 14px;
+    grid-template-columns: 1fr 10px 1fr;
+  }
+
+  .harbor-divider--compact i {
+    width: 8px;
+    height: 8px;
+  }

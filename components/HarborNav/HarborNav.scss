@@ -1,0 +1,50 @@
+/* Mobile bottom navigation */
+  .harbor-nav {
+    position: fixed;
+    z-index: 60;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(13px + env(safe-area-inset-bottom));
+    width: min(calc(100% - 24px), 720px);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border: 1px solid rgba(169, 120, 56, 0.66);
+    background: rgba(4, 11, 17, 0.95);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
+  }
+  .harbor-nav::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background: #06101a;
+    border-left: 1px solid rgba(169, 120, 56, 0.66);
+    border-top: 1px solid rgba(169, 120, 56, 0.66);
+    transform: translateX(-50%) rotate(45deg);
+  }
+  .harbor-nav a {
+    min-height: 76px;
+    padding: 10px 2px 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: rgba(242, 234, 223, 0.66);
+    font-size: 12px;
+  }
+  .harbor-nav a.is-active {
+    color: var(--warm-brass);
+  }
+  .harbor-nav__icon {
+    width: 24px;
+  }
+
+  @media (min-width: 800px) { .harbor-nav { display: none; } }
+  @media (max-width: 420px) {
+    .harbor-nav a { font-size: 10px; }
+    .harbor-nav__icon { width: 21px; }
+  }
