@@ -311,8 +311,17 @@
 }
 
 .preservation-guide__next {
+  display: block;
   padding: 26px 0 26px 30px;
   border-left: 1px solid rgba(169, 120, 56, 0.38);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+a.preservation-guide__next:hover,
+a.preservation-guide__next:focus-visible {
+  border-left-color: var(--warm-brass);
+  transform: translateX(4px);
+  outline: none;
 }
 
 .preservation-guide__next span,

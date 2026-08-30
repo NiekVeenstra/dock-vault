@@ -42,7 +42,7 @@ const translations = {
   },
 };
 
-const guideHrefs = ["/lighthouse/preservation", "#grading", "#collecting", "#beginners"];
+const guideHrefs = ["/lighthouse/preservation", "/lighthouse/grading", "#collecting", "#beginners"];
 
 export function LighthouseSection() {
   const { language } = useLanguage();

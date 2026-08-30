@@ -82,7 +82,7 @@ const translations = {
       "A collection is built one decision at a time. Preservation simply makes sure those decisions can still be seen years later.",
     nextLabel: "Next Lighthouse guide",
     nextTitle: "Grading",
-    nextStatus: "In preparation",
+    nextStatus: "Open guide",
   },
   nl: {
     back: "← Terug naar de Vuurtoren",
@@ -161,7 +161,7 @@ const translations = {
       "Een verzameling wordt keuze voor keuze opgebouwd. Goed behoud zorgt ervoor dat je die keuzes jaren later nog steeds kunt zien.",
     nextLabel: "Volgende Lighthouse-gids",
     nextTitle: "Grading",
-    nextStatus: "In voorbereiding",
+    nextStatus: "Bekijk gids",
   },
 } as const;
 
@@ -266,11 +266,11 @@ export function PreservationGuide() {
 
         <section className="preservation-guide__closing">
           <blockquote>{copy.closing}</blockquote>
-          <div className="preservation-guide__next">
+          <a className="preservation-guide__next" href="/lighthouse/grading">
             <span>{copy.nextLabel}</span>
             <strong>{copy.nextTitle}</strong>
-            <small>{copy.nextStatus}</small>
-          </div>
+            <small>{copy.nextStatus} →</small>
+          </a>
         </section>
       </article>
     </>
