@@ -1,7 +1,7 @@
 "use client";
 
-
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/components/LanguageProvider";
 import {
   AnchorIcon,
   DiamondIcon,
@@ -11,15 +11,36 @@ import {
 } from "@/components/Icons";
 
 const items = [
-  { label: "Lighthouse", href: "#lighthouse", Icon: LighthouseIcon },
-  { label: "Harbor", href: "#harbor", Icon: AnchorIcon },
-  { label: "Market Hall", href: "#market", Icon: MarketIcon },
-  { label: "Logbook", href: "#logbook", Icon: LogbookIcon },
-  { label: "Vault", href: "#vault", Icon: DiamondIcon },
+  {
+    labels: { en: "Lighthouse", nl: "Vuurtoren" },
+    href: "#lighthouse",
+    Icon: LighthouseIcon,
+  },
+  {
+    labels: { en: "Harbor", nl: "Haven" },
+    href: "#harbor",
+    Icon: AnchorIcon,
+  },
+  {
+    labels: { en: "Market Hall", nl: "Markthal" },
+    href: "#market",
+    Icon: MarketIcon,
+  },
+  {
+    labels: { en: "Logbook", nl: "Logboek" },
+    href: "#logbook",
+    Icon: LogbookIcon,
+  },
+  {
+    labels: { en: "Vault", nl: "Kluis" },
+    href: "#vault",
+    Icon: DiamondIcon,
+  },
 ];
 
 export function HarborNav() {
   const [activeSection, setActiveSection] = useState("lighthouse");
+  const { language } = useLanguage();
 
   useEffect(() => {
     let frameId = 0;
@@ -61,8 +82,11 @@ export function HarborNav() {
   }, []);
 
   return (
-    <nav className="harbor-nav" aria-label="Dock Vault sections">
-      {items.map(({ label, href, Icon }) => {
+    <nav
+      className="harbor-nav"
+      aria-label={language === "en" ? "Dock Vault sections" : "Dock Vault secties"}
+    >
+      {items.map(({ labels, href, Icon }) => {
         const id = href.slice(1);
         const isActive = activeSection === id;
 
@@ -75,7 +99,7 @@ export function HarborNav() {
             onClick={() => setActiveSection(id)}
           >
             <Icon className="harbor-nav__icon" />
-            <span>{label}</span>
+            <span>{labels[language]}</span>
           </a>
         );
       })}

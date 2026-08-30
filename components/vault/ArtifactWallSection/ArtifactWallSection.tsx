@@ -1,27 +1,44 @@
+"use client";
+
 import { SectionHeading } from "@/components/SectionHeading";
+import { useLanguage } from "@/components/LanguageProvider";
+
+const translations = {
+  en: {
+    title: "Archive markers",
+    items: [
+      ["Founding chapter", "In progress"],
+      ["Current voyage", "OP12"],
+      ["Archive status", "Growing"],
+      ["Guiding principle", "Preserve first"],
+    ],
+  },
+  nl: {
+    title: "Archiefmarkeringen",
+    items: [
+      ["Oprichtingshoofdstuk", "In opbouw"],
+      ["Huidige reis", "OP12"],
+      ["Archiefstatus", "Groeit"],
+      ["Leidend principe", "Eerst bewaren"],
+    ],
+  },
+};
 
 export function ArtifactWallSection() {
+  const { language } = useLanguage();
+  const copy = translations[language];
+
   return (
     <section className="artifact-wall">
       <div className="artifact-wall__inner">
-        <SectionHeading title="Archive markers" />
+        <SectionHeading title={copy.title} />
         <div className="artifact-grid">
-          <article>
-            <span>Founding chapter</span>
-            <strong>In progress</strong>
-          </article>
-          <article>
-            <span>Current voyage</span>
-            <strong>OP12</strong>
-          </article>
-          <article>
-            <span>Archive status</span>
-            <strong>Growing</strong>
-          </article>
-          <article>
-            <span>Guiding principle</span>
-            <strong>Preserve first</strong>
-          </article>
+          {copy.items.map(([label, value]) => (
+            <article key={label}>
+              <span>{label}</span>
+              <strong>{value}</strong>
+            </article>
+          ))}
         </div>
       </div>
     </section>

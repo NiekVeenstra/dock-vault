@@ -1,48 +1,63 @@
+"use client";
+
+import { useLanguage } from "@/components/LanguageProvider";
+
+const translations = {
+  en: {
+    eyebrow: "The Harbor",
+    title1: "Not every collection needs a marketplace.",
+    title2: "Some collections need a harbor.",
+    copy1: "Dock Vault was not created to sell products.",
+    copy2: "It was created because collecting deserves a place where care comes before commerce — a place to slow down, preserve what matters and continue the journey with confidence.",
+    copy3: "A harbor where knowledge is shared before decisions are made, and where every collection is treated with dignity.",
+    cta: "Visit the Market Hall",
+    alt: "An old maritime logbook, compass and lantern on a nautical chart",
+    caption: "Care before commerce. Guidance before haste.",
+  },
+  nl: {
+    eyebrow: "De Haven",
+    title1: "Niet elke verzameling heeft een marktplaats nodig.",
+    title2: "Sommige verzamelingen hebben een haven nodig.",
+    copy1: "Dock Vault is niet ontstaan om producten te verkopen.",
+    copy2: "Het is ontstaan omdat verzamelen een plek verdient waar zorg vóór handel komt — een plek om te vertragen, te bewaren wat ertoe doet en de reis met vertrouwen voort te zetten.",
+    copy3: "Een haven waar kennis wordt gedeeld vóór beslissingen worden genomen en waar iedere verzameling met waardigheid wordt behandeld.",
+    cta: "Bezoek de Markthal",
+    alt: "Een oud maritiem logboek, kompas en lantaarn op een zeekaart",
+    caption: "Zorg vóór handel. Begeleiding vóór haast.",
+  },
+};
+
 export function HarborSection() {
+  const { language } = useLanguage();
+  const copy = translations[language];
+
   return (
     <section className="harbor-intro" id="harbor">
       <div className="harbor-intro__inner">
         <div className="harbor-intro__content">
-          <p className="eyebrow">The Harbor</p>
+          <p className="eyebrow">{copy.eyebrow}</p>
 
-          <div className="small-rule" aria-hidden="true">
-            <span />
-          </div>
+          <div className="small-rule" aria-hidden="true"><span /></div>
 
           <h2 className="harbor-intro__title">
-            Not every collection needs a marketplace.
-            <span>Some collections need a harbor.</span>
+            {copy.title1}
+            <span>{copy.title2}</span>
           </h2>
 
           <div className="harbor-intro__copy">
-            <p>Dock Vault was not created to sell products.</p>
-
-            <p>
-              It was created because collecting deserves a place where care
-              comes before commerce — a place to slow down, preserve what matters
-              and continue the journey with confidence.
-            </p>
-
-            <p>
-              A harbor where knowledge is shared before decisions are made, and
-              where every collection is treated with dignity.
-            </p>
+            <p>{copy.copy1}</p>
+            <p>{copy.copy2}</p>
+            <p>{copy.copy3}</p>
           </div>
 
-          <a className="primary-cta harbor-intro__cta" href="#market">
-            Visit the Market Hall
-          </a>
+          <a className="primary-cta harbor-intro__cta" href="#market">{copy.cta}</a>
         </div>
 
         <figure className="harbor-intro__visual">
           <div className="harbor-intro__image-frame">
-            <img
-              src="/images/harbor-introduction.png"
-              alt="Een oud maritiem logboek, kompas en lantaarn op een zeekaart"
-            />
+            <img src="/images/harbor-introduction.png" alt={copy.alt} />
           </div>
-
-          <figcaption>Care before commerce. Guidance before haste.</figcaption>
+          <figcaption>{copy.caption}</figcaption>
         </figure>
       </div>
     </section>

@@ -1,13 +1,23 @@
+"use client";
+
+import { useLanguage } from "@/components/LanguageProvider";
+
 export function VaultQuoteSection() {
+  const { language } = useLanguage();
+
   return (
     <section className="vault-quote">
       <blockquote>
-        “A vault is not defined by what it hides,
+        {language === "en"
+          ? "“A vault is not defined by what it hides,"
+          : "“Een kluis wordt niet bepaald door wat ze verbergt,"}
         <br />
-        but by what it chooses to preserve.”
+        {language === "en"
+          ? "but by what it chooses to preserve.”"
+          : "maar door wat ze kiest te bewaren.”"}
       </blockquote>
       <a className="quiet-link" href="/#market">
-        Continue to the Market Hall <span>→</span>
+        {language === "en" ? "Continue to the Market Hall" : "Ga verder naar de Markthal"} <span>→</span>
       </a>
     </section>
   );
