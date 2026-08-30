@@ -1,0 +1,280 @@
+/* Logbook entry — The Lighthouse has been lit */
+.logbook-entry-page {
+  background: #050d14;
+}
+
+.logbook-entry-hero {
+  position: relative;
+  min-height: 760px;
+  overflow: hidden;
+  padding: 190px clamp(24px, 7vw, 120px) 96px;
+  display: flex;
+  align-items: flex-end;
+  background: #06101a;
+  border-bottom: 1px solid rgba(169, 120, 56, 0.24);
+}
+
+.logbook-entry-hero__image,
+.logbook-entry-hero__veil {
+  position: absolute;
+  inset: 0;
+}
+
+.logbook-entry-hero__image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 60% 48%;
+  filter: brightness(0.62) saturate(0.88) contrast(1.06);
+}
+
+.logbook-entry-hero__veil {
+  background:
+    linear-gradient(90deg, rgba(6, 16, 26, 0.98) 0%, rgba(6, 16, 26, 0.88) 36%, rgba(6, 16, 26, 0.44) 67%, rgba(6, 16, 26, 0.18) 100%),
+    linear-gradient(180deg, rgba(3, 8, 13, 0.32), transparent 35%, rgba(3, 8, 13, 0.72));
+}
+
+.logbook-entry-hero__content {
+  position: relative;
+  z-index: 3;
+  width: min(100%, 900px);
+  margin: 0 auto 0 max(0px, calc((100vw - 1560px) / 2));
+}
+
+.logbook-entry-back {
+  display: inline-block;
+  margin-bottom: 42px;
+  color: rgba(242, 234, 223, 0.64);
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.logbook-entry-back:hover {
+  color: var(--warm-brass);
+}
+
+.logbook-entry-hero h1 {
+  max-width: 820px;
+  font-size: clamp(58px, 7vw, 104px);
+  line-height: 0.92;
+}
+
+.logbook-entry-hero h1 em {
+  display: block;
+  color: var(--warm-brass);
+}
+
+.logbook-entry-hero__lead {
+  max-width: 710px;
+  margin: 34px 0 0;
+  color: rgba(242, 234, 223, 0.82);
+  font-size: clamp(21px, 1.8vw, 28px);
+  line-height: 1.55;
+}
+
+.logbook-entry-article {
+  width: min(calc(100% - 48px), 1240px);
+  margin: 0 auto;
+  padding: clamp(78px, 8vw, 126px) 0 clamp(96px, 9vw, 150px);
+}
+
+.logbook-entry-intro {
+  width: min(100%, 930px);
+  margin: 0 auto clamp(90px, 9vw, 140px);
+  padding-left: clamp(22px, 4vw, 58px);
+  border-left: 1px solid rgba(193, 143, 74, 0.55);
+}
+
+.logbook-entry-intro p {
+  margin: 0;
+  color: rgba(242, 234, 223, 0.86);
+  font-size: clamp(26px, 2.4vw, 38px);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.logbook-entry-section {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(48px, 8vw, 120px);
+  padding: clamp(70px, 7vw, 104px) 0;
+  border-top: 1px solid rgba(169, 120, 56, 0.22);
+}
+
+.logbook-entry-section__heading h2 {
+  max-width: 490px;
+  margin-top: 16px;
+  font-size: clamp(42px, 4.4vw, 66px);
+}
+
+.logbook-entry-section__copy {
+  max-width: 650px;
+}
+
+.logbook-entry-section__copy p {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: clamp(19px, 1.55vw, 23px);
+  line-height: 1.72;
+}
+
+.logbook-entry-section--guides {
+  display: block;
+}
+
+.logbook-entry-section--guides .logbook-entry-section__heading {
+  max-width: 700px;
+  margin-bottom: 48px;
+}
+
+.logbook-entry-guides {
+  border-top: 1px solid rgba(169, 120, 56, 0.32);
+}
+
+.logbook-entry-guide {
+  min-height: 132px;
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) 28px;
+  gap: 22px;
+  align-items: center;
+  padding: 24px 18px;
+  border-bottom: 1px solid rgba(169, 120, 56, 0.25);
+  transition: background 0.25s ease, padding 0.25s ease;
+}
+
+.logbook-entry-guide:hover {
+  padding-left: 26px;
+  background: rgba(193, 143, 74, 0.055);
+}
+
+.logbook-entry-guide > span {
+  color: rgba(193, 143, 74, 0.72);
+  font-family: Cinzel, serif;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+}
+
+.logbook-entry-guide h3 {
+  margin: 0 0 7px;
+  color: var(--parchment);
+  font-family: Cinzel, serif;
+  font-size: clamp(19px, 1.6vw, 25px);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.logbook-entry-guide p {
+  max-width: 850px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.logbook-entry-guide b {
+  color: var(--warm-brass);
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.logbook-entry-note {
+  margin: clamp(20px, 3vw, 44px) 0 clamp(86px, 8vw, 126px);
+  padding: clamp(34px, 4vw, 58px) clamp(28px, 5vw, 70px);
+  border: 1px solid rgba(169, 120, 56, 0.34);
+  background: linear-gradient(135deg, rgba(193, 143, 74, 0.045), rgba(6, 16, 26, 0.18));
+}
+
+.logbook-entry-note > p {
+  margin: 0 0 16px;
+  color: var(--warm-brass);
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+}
+
+.logbook-entry-note blockquote {
+  max-width: 930px;
+  margin: 0;
+  color: rgba(242, 234, 223, 0.9);
+  font-size: clamp(28px, 3vw, 43px);
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.logbook-entry-section--closing {
+  border-bottom: 1px solid rgba(169, 120, 56, 0.22);
+}
+
+.logbook-entry-closing {
+  color: rgba(242, 234, 223, 0.9) !important;
+  font-style: italic;
+}
+
+.logbook-entry-section__copy .primary-cta {
+  margin-top: 16px;
+}
+
+@media (max-width: 820px) {
+  .logbook-entry-hero {
+    min-height: 700px;
+    padding: 160px 24px 72px;
+  }
+
+  .logbook-entry-hero__image img {
+    object-position: 67% 46%;
+  }
+
+  .logbook-entry-hero__veil {
+    background:
+      linear-gradient(180deg, rgba(6, 16, 26, 0.72) 0%, rgba(6, 16, 26, 0.52) 38%, rgba(6, 16, 26, 0.92) 76%, #06101a 100%),
+      linear-gradient(90deg, rgba(6, 16, 26, 0.72), rgba(6, 16, 26, 0.08));
+  }
+
+  .logbook-entry-article {
+    width: min(calc(100% - 40px), 1240px);
+  }
+
+  .logbook-entry-section {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .logbook-entry-guide {
+    grid-template-columns: 38px minmax(0, 1fr) 20px;
+    gap: 14px;
+    padding-inline: 4px;
+  }
+
+  .logbook-entry-guide:hover {
+    padding-left: 8px;
+  }
+}
+
+@media (max-width: 520px) {
+  .logbook-entry-hero {
+    min-height: 650px;
+  }
+
+  .logbook-entry-hero__lead {
+    font-size: 20px;
+  }
+
+  .logbook-entry-intro {
+    padding-left: 20px;
+  }
+
+  .logbook-entry-intro p {
+    font-size: 25px;
+  }
+
+  .logbook-entry-guide p {
+    font-size: 16px;
+  }
+}
+/* End Logbook entry */

@@ -358,3 +358,37 @@
   }
 }
 /* End Logbook destination */
+
+/* Clickable Logbook entries */
+.logbook-entry-link,
+.logbook-entry-static {
+  display: block;
+}
+
+.logbook-entry-link article,
+.logbook-entry-static article {
+  position: relative;
+  grid-template-columns: 38px minmax(0, 1fr) 24px;
+}
+
+.logbook-entry-link article {
+  transition: background 0.25s ease, padding 0.25s ease;
+}
+
+.logbook-entry-link:hover article {
+  padding-left: 16px;
+  background: rgba(193, 143, 74, 0.06);
+}
+
+.logbook-entry-arrow {
+  align-self: center;
+  color: var(--warm-brass);
+  font-size: 19px;
+}
+
+@media (max-width: 700px) {
+  .logbook-entry-link article,
+  .logbook-entry-static article {
+    grid-template-columns: 32px minmax(0, 1fr) 20px;
+  }
+}

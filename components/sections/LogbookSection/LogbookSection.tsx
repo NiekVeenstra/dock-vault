@@ -13,9 +13,9 @@ const translations = {
     copy1: "The Logbook records the process behind Dock Vault — the decisions, lessons, arrivals and small milestones that shape what the Harbor becomes.",
     copy2: "It is a quieter look behind the scenes. Not polished history, but the journey while it is still being written.",
     entries: [
-      ["First entry", "The Lighthouse has been lit.", "A place for collectors begins to find its direction."],
-      ["Founding note", "Dock Vault Alpha begins.", "The Harbor takes form, one considered detail at a time."],
-      ["Build note", "The Market Hall takes shape.", "Commerce is introduced slowly, with standards first."],
+      ["First entry", "The Lighthouse has been lit.", "A place for collectors begins to find its direction.", "/logbook/the-lighthouse-has-been-lit"],
+      ["Founding note", "Dock Vault Alpha begins.", "The Harbor takes form, one considered detail at a time.", ""],
+      ["Build note", "The Market Hall takes shape.", "Commerce is introduced slowly, with standards first.", ""],
     ],
     status: "More entries on the way",
     cta: "Read the Logbook",
@@ -29,9 +29,9 @@ const translations = {
     copy1: "Het Logboek legt het proces achter Dock Vault vast — de beslissingen, lessen, aankomsten en kleine mijlpalen die bepalen wat de Haven wordt.",
     copy2: "Het is een rustigere blik achter de schermen. Geen gepolijste geschiedenis, maar de reis terwijl die nog wordt geschreven.",
     entries: [
-      ["Eerste bericht", "De Vuurtoren is ontstoken.", "Een plek voor verzamelaars begint richting te vinden."],
-      ["Oprichtingsnotitie", "Dock Vault Alpha begint.", "De Haven krijgt vorm, één doordacht detail tegelijk."],
-      ["Bouwnotitie", "De Markthal krijgt vorm.", "Handel wordt langzaam geïntroduceerd, met de standaarden voorop."],
+      ["Eerste bericht", "De Vuurtoren is ontstoken.", "Een plek voor verzamelaars begint richting te vinden.", "/logbook/the-lighthouse-has-been-lit"],
+      ["Oprichtingsnotitie", "Dock Vault Alpha begint.", "De Haven krijgt vorm, één doordacht detail tegelijk.", ""],
+      ["Bouwnotitie", "De Markthal krijgt vorm.", "Handel wordt langzaam geïntroduceerd, met de standaarden voorop.", ""],
     ],
     status: "Meer berichten onderweg",
     cta: "Lees het Logboek",
@@ -71,24 +71,35 @@ export function LogbookSection() {
             </div>
 
             <div className="logbook-entries" id="logbook-entries">
-              {copy.entries.map(([time, title, description], index) => {
+              {copy.entries.map(([time, title, description, href], index) => {
                 const Icon = entryIcons[index];
-                return (
-                  <article key={title}>
+                const entry = (
+                  <article>
                     <Icon />
                     <div>
                       <time>{time}</time>
                       <h3>{title}</h3>
                       <p>{description}</p>
                     </div>
+                    {href ? <span className="logbook-entry-arrow" aria-hidden="true">→</span> : null}
                   </article>
+                );
+
+                return href ? (
+                  <a className="logbook-entry-link" href={href} key={title}>
+                    {entry}
+                  </a>
+                ) : (
+                  <div className="logbook-entry-static" key={title}>
+                    {entry}
+                  </div>
                 );
               })}
             </div>
 
             <div className="logbook-section__actions">
               <span className="status-seal">{copy.status}</span>
-              <a className="primary-cta" href="#logbook-entries">
+              <a className="primary-cta" href="/logbook/the-lighthouse-has-been-lit">
                 <span>{copy.cta}</span>
               </a>
             </div>
