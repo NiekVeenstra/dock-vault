@@ -14,7 +14,7 @@ const translations = {
     copy2: "It is a quieter look behind the scenes. Not polished history, but the journey while it is still being written.",
     entries: [
       ["First entry", "The Lighthouse has been lit.", "A place for collectors begins to find its direction.", "/logbook/the-lighthouse-has-been-lit"],
-      ["Founding note", "Dock Vault Alpha begins.", "The Harbor takes form, one considered detail at a time.", ""],
+      ["Founding note", "Dock Vault Alpha begins.", "The Harbor takes form, one considered detail at a time.", "/logbook/dock-vault-alpha-begins"],
       ["Build note", "The Market Hall takes shape.", "Commerce is introduced slowly, with standards first.", ""],
     ],
     status: "More entries on the way",
@@ -30,7 +30,7 @@ const translations = {
     copy2: "Het is een rustigere blik achter de schermen. Geen gepolijste geschiedenis, maar de reis terwijl die nog wordt geschreven.",
     entries: [
       ["Eerste bericht", "De Vuurtoren is ontstoken.", "Een plek voor verzamelaars begint richting te vinden.", "/logbook/the-lighthouse-has-been-lit"],
-      ["Oprichtingsnotitie", "Dock Vault Alpha begint.", "De Haven krijgt vorm, één doordacht detail tegelijk.", ""],
+      ["Oprichtingsnotitie", "Dock Vault Alpha begint.", "De Haven krijgt vorm, één doordacht detail tegelijk.", "/logbook/dock-vault-alpha-begins"],
       ["Bouwnotitie", "De Markthal krijgt vorm.", "Handel wordt langzaam geïntroduceerd, met de standaarden voorop.", ""],
     ],
     status: "Meer berichten onderweg",

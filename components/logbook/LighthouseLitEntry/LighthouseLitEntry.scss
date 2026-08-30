@@ -278,3 +278,14 @@
   }
 }
 /* End Logbook entry */
+
+/* Dock Vault Alpha entry uses the wider Harbor artwork. */
+.logbook-entry-hero--alpha .logbook-entry-hero__image img {
+  object-position: 62% 50%;
+}
+
+@media (max-width: 820px) {
+  .logbook-entry-hero--alpha .logbook-entry-hero__image img {
+    object-position: 68% 50%;
+  }
+}
