@@ -39,7 +39,7 @@ const worldLocations = [
     title: "Vault",
     description: "Protection for what deserves to remain.",
     linkLabel: "Enter the Vault",
-    href: "/vault",
+    href: "#vault",
   },
 ];
 

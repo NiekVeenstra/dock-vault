@@ -28,8 +28,8 @@ export function LogbookSection() {
             <div className="logbook-section__copy">
               <p>
                 The Logbook records the process behind Dock Vault — the
-                decisions, lessons, arrivals and small milestones that shape what
-                the Harbor becomes.
+                decisions, lessons, arrivals and small milestones that shape
+                what the Harbor becomes.
               </p>
 
               <p>
@@ -68,11 +68,10 @@ export function LogbookSection() {
             </div>
 
             <div className="logbook-section__actions">
+              <span className="status-seal">More entries on the way</span>
               <a className="primary-cta" href="#logbook-entries">
                 <span>Read the Logbook</span>
               </a>
-
-              <span className="status-seal">More entries on the way</span>
             </div>
           </div>
         </div>

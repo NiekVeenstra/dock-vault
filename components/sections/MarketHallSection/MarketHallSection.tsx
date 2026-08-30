@@ -32,8 +32,8 @@ export function MarketHallSection() {
             <div className="market-hall-section__copy">
               <p>
                 The Market Hall is where Dock Vault will eventually offer
-                selected singles, playsets, sealed products and protection pieces
-                that feel worthy of the collections they support.
+                selected singles, playsets, sealed products and protection
+                pieces that feel worthy of the collections they support.
               </p>
 
               <p>
@@ -71,8 +71,9 @@ export function MarketHallSection() {
             <div className="market-hall-section__actions">
               <span className="status-seal">Opening in a later tide</span>
 
-              <a className="quiet-link" href="#logbook">
-                Follow the build in the Logbook <span>→</span>
+              <a className="primary-cta" href="#logbook">
+                <span>Follow the build in the Logbook</span>
+                {/* <b aria-hidden="true">→</b> */}
               </a>
             </div>
           </div>
