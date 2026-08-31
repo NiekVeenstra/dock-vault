@@ -18,11 +18,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/images/world-icons/lighthouse.png",
+        url: "/favicon-32.png",
         type: "image/png",
+        sizes: "32x32",
       },
     ],
-    apple: "/images/world-icons/lighthouse.png",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     type: "website",

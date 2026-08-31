@@ -50,7 +50,7 @@ export function LogbookSection() {
       <div className="logbook-section__atmosphere" aria-hidden="true" />
 
       <figure className="logbook-section__visual" aria-hidden="true">
-        <img src="/images/logbook-interior.png" alt="" />
+        <img src="/images/logbook-interior.webp" alt="" loading="lazy" decoding="async" />
       </figure>
 
       <div className="logbook-section__inner">

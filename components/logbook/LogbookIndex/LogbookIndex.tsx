@@ -24,7 +24,7 @@ const translations = {
         description:
           "Why Dock Vault begins with guidance, and how the first four Lighthouse guides give collectors a clearer place to start.",
         href: "/logbook/the-lighthouse-has-been-lit",
-        image: "/images/lighthouse-interior.png",
+        image: "/images/lighthouse-interior.webp",
         action: "Read entry",
         status: "Published",
       },
@@ -34,7 +34,7 @@ const translations = {
         description:
           "The first working version of the Harbor is open. A note on building the place before filling the shelves.",
         href: "/logbook/dock-vault-alpha-begins",
-        image: "/images/harbor-introduction.png",
+        image: "/images/harbor-introduction.webp",
         action: "Read entry",
         status: "Published",
       },
@@ -44,7 +44,7 @@ const translations = {
         description:
           "Commerce will enter Dock Vault slowly. This entry will document the standards being set before the Market Hall opens.",
         href: "",
-        image: "/images/market-hall-scene.png",
+        image: "/images/market-hall-scene.webp",
         action: "In preparation",
         status: "Upcoming",
       },
@@ -73,7 +73,7 @@ const translations = {
         description:
           "Waarom Dock Vault begint met begeleiding en hoe de eerste vier Vuurtoren-gidsen verzamelaars een duidelijker startpunt geven.",
         href: "/logbook/the-lighthouse-has-been-lit",
-        image: "/images/lighthouse-interior.png",
+        image: "/images/lighthouse-interior.webp",
         action: "Lees bericht",
         status: "Gepubliceerd",
       },
@@ -83,7 +83,7 @@ const translations = {
         description:
           "De eerste werkende versie van de Haven is open. Een notitie over eerst de plek bouwen en daarna pas de planken vullen.",
         href: "/logbook/dock-vault-alpha-begins",
-        image: "/images/harbor-introduction.png",
+        image: "/images/harbor-introduction.webp",
         action: "Lees bericht",
         status: "Gepubliceerd",
       },
@@ -93,7 +93,7 @@ const translations = {
         description:
           "Handel komt langzaam Dock Vault binnen. Dit bericht gaat de standaarden vastleggen die worden opgebouwd voordat de Markthal opent.",
         href: "",
-        image: "/images/market-hall-scene.png",
+        image: "/images/market-hall-scene.webp",
         action: "In voorbereiding",
         status: "Binnenkort",
       },
@@ -116,7 +116,7 @@ export function LogbookIndex() {
         <HarborDivider />
 
         <div className="logbook-index-hero__image" aria-hidden="true">
-          <img src="/images/logbook-interior.png" alt="" />
+          <img src="/images/logbook-interior.webp" alt="" decoding="async" />
         </div>
         <div className="logbook-index-hero__veil" aria-hidden="true" />
 
@@ -155,7 +155,7 @@ export function LogbookIndex() {
               const content = (
                 <article className={`logbook-index-card${entry.href ? "" : " is-upcoming"}`}>
                   <div className="logbook-index-card__image" aria-hidden="true">
-                    <img src={entry.image} alt="" />
+                    <img src={entry.image} alt="" loading="lazy" decoding="async" />
                   </div>
                   <div className="logbook-index-card__veil" aria-hidden="true" />
 

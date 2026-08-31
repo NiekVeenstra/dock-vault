@@ -88,7 +88,7 @@ export function VaultCollectionRoomsSection() {
     <section className="vault-rooms" id="vault-archive">
       <div className="vault-rooms__image" aria-hidden="true">
         <Image
-          src="/images/vault-gate.png"
+          src="/images/vault-gate.webp"
           alt=""
           fill
           sizes="(max-width: 900px) 100vw, 46vw"

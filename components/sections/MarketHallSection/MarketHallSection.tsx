@@ -49,7 +49,7 @@ export function MarketHallSection() {
   return (
     <section className="market-hall-section" id="market">
       <div className="market-hall-section__media" aria-hidden="true">
-        <img src="/images/market-hall-scene.png" alt="" />
+        <img src="/images/market-hall-scene.webp" alt="" loading="lazy" decoding="async" />
       </div>
 
       <div className="market-hall-section__fade" aria-hidden="true" />

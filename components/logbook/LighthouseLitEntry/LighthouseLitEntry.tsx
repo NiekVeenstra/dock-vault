@@ -138,7 +138,7 @@ export function LighthouseLitEntry() {
         <HarborDivider />
 
         <div className="logbook-entry-hero__image" aria-hidden="true">
-          <img src="/images/lighthouse-interior.png" alt="" />
+          <img src="/images/lighthouse-interior.webp" alt="" loading="lazy" decoding="async" />
         </div>
         <div className="logbook-entry-hero__veil" aria-hidden="true" />
 

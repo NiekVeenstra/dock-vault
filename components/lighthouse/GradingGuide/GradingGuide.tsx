@@ -192,7 +192,7 @@ export function GradingGuide() {
         <HarborDivider />
 
         <div className="grading-hero__image" aria-hidden="true">
-          <img src="/images/lighthouse-interior.png" alt="" />
+          <img src="/images/lighthouse-interior.webp" alt="" loading="lazy" decoding="async" />
         </div>
         <div className="grading-hero__veil" aria-hidden="true" />
 

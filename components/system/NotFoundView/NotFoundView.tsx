@@ -37,7 +37,7 @@ export function NotFoundView() {
 
       <section className="not-found-hero">
         <div className="not-found-hero__image" aria-hidden="true">
-          <img src="/images/lighthouse-hero-desktop.png" alt="" />
+          <img src="/images/lighthouse-hero-desktop.webp" alt="" />
         </div>
         <div className="not-found-hero__veil" aria-hidden="true" />
         <div className="not-found-hero__line" aria-hidden="true" />

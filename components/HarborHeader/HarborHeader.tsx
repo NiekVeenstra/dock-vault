@@ -58,10 +58,10 @@ export function HarborHeader() {
           aria-label={copy.home}
         >
           <Image
-            src="/images/dock-vault-logo.png"
+            src="/images/dock-vault-logo-header.webp"
             alt="Dock Vault — The Harbor Is Yours"
-            width={1024}
-            height={1024}
+            width={720}
+            height={336}
             priority
           />
         </a>

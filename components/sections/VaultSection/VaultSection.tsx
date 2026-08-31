@@ -40,7 +40,7 @@ export function VaultSection() {
 
       <figure className="vault-portal__visual">
         <div className="vault-portal__image-glow" aria-hidden="true" />
-        <img src="/images/vault-gate.png" alt={copy.alt} />
+        <img src="/images/vault-gate.webp" alt={copy.alt} loading="lazy" decoding="async" />
       </figure>
 
       <div className="vault-portal__inner">

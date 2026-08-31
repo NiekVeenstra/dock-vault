@@ -154,7 +154,7 @@ export function AlphaBeginsEntry() {
         <HarborDivider />
 
         <div className="logbook-entry-hero__image" aria-hidden="true">
-          <img src="/images/harbor-introduction.png" alt="" />
+          <img src="/images/harbor-introduction.webp" alt="" loading="lazy" decoding="async" />
         </div>
         <div className="logbook-entry-hero__veil" aria-hidden="true" />
 

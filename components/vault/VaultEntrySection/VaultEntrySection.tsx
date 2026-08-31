@@ -33,7 +33,7 @@ export function VaultEntrySection() {
       <HarborDivider />
 
       <div className="vault-entry__scene" aria-hidden="true">
-        <img src="/images/vault-interior.png" alt="" />
+        <img src="/images/vault-interior.webp" alt="" />
       </div>
       <div className="vault-entry__mist" aria-hidden="true" />
 

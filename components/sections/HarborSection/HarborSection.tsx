@@ -68,7 +68,7 @@ export function HarborSection() {
 
         <figure className="harbor-intro__visual">
           <div className="harbor-intro__image-frame">
-            <img src="/images/harbor-introduction.png" alt={copy.alt} />
+            <img src="/images/harbor-introduction.webp" alt={copy.alt} loading="lazy" decoding="async" />
           </div>
           <figcaption>{copy.caption}</figcaption>
         </figure>

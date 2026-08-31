@@ -53,7 +53,7 @@ export function LighthouseSection() {
       <div className="lighthouse-section__glow" aria-hidden="true" />
 
       <figure className="lighthouse-section__visual">
-        <img src="/images/lighthouse-interior.png" alt={copy.alt} />
+        <img src="/images/lighthouse-interior.webp" alt={copy.alt} loading="lazy" decoding="async" />
       </figure>
 
       <div className="lighthouse-section__inner">
