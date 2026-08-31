@@ -143,7 +143,7 @@ export function LighthouseLitEntry() {
         <div className="logbook-entry-hero__veil" aria-hidden="true" />
 
         <div className="logbook-entry-hero__content">
-          <a className="logbook-entry-back" href="/#logbook">
+          <a className="logbook-entry-back" href="/logbook">
             {copy.back}
           </a>
           <p className="eyebrow">{copy.eyebrow}</p>

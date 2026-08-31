@@ -99,7 +99,7 @@ export function LogbookSection() {
 
             <div className="logbook-section__actions">
               <span className="status-seal">{copy.status}</span>
-              <a className="primary-cta" href="/logbook/the-lighthouse-has-been-lit">
+              <a className="primary-cta" href="/logbook">
                 <span>{copy.cta}</span>
               </a>
             </div>
