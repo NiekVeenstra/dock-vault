@@ -32,11 +32,10 @@ export function VaultEntrySection() {
       <HarborHeader />
       <HarborDivider />
 
-      <div className="vault-entry__mist" aria-hidden="true" />
-      <div className="vault-entry__door" aria-hidden="true">
-        <div className="vault-entry__light" />
-        <img src="/images/vault-door.png" alt="" />
+      <div className="vault-entry__scene" aria-hidden="true">
+        <img src="/images/vault-interior.png" alt="" />
       </div>
+      <div className="vault-entry__mist" aria-hidden="true" />
 
       <div className="vault-entry__content">
         <a className="vault-back-link" href="/#vault">{copy.back}</a>
