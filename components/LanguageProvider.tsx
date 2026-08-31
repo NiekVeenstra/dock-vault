@@ -21,7 +21,7 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 const STORAGE_KEY = "dock-vault-language";
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("en");
+  const [language, setLanguageState] = useState<Language>("nl");
 
   useEffect(() => {
     const savedLanguage = window.localStorage.getItem(STORAGE_KEY);
