@@ -3,9 +3,10 @@ import { LogbookIndex } from "@/components/logbook/LogbookIndex";
 import { SiteFooter } from "@/components/sections";
 
 export const metadata: Metadata = {
-  title: "The Logbook — Dock Vault",
+  title: "The Logbook",
   description:
-    "Follow the Dock Vault build through notes, milestones and decisions recorded as the Harbor takes shape.",
+    "Volg de opbouw van Dock Vault via notities, mijlpalen en keuzes die in het Logbook worden vastgelegd.",
+  alternates: { canonical: "/logbook" },
 };
 
 export default function LogbookPage() {

@@ -1,4 +1,4 @@
-import { HarborNav } from "@/components/HarborNav";
+import type { Metadata } from "next";
 import { SiteFooter } from "@/components/sections";
 import {
   ArchiveProgressSection,
@@ -8,6 +8,13 @@ import {
   VaultManifestoSection,
   VaultQuoteSection,
 } from "@/components/vault";
+
+export const metadata: Metadata = {
+  title: "The Vault",
+  description:
+    "Ontdek The Vault van Dock Vault: het gecureerde archief voor collecties, master set journeys, playsets en stukken met een verhaal.",
+  alternates: { canonical: "/vault" },
+};
 
 export default function VaultPage() {
   return (
@@ -19,7 +26,6 @@ export default function VaultPage() {
       <ArtifactWallSection />
       <VaultQuoteSection />
       <SiteFooter />
-      <HarborNav />
     </main>
   );
 }

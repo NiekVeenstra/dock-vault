@@ -3,9 +3,10 @@ import { CollectingGuide } from "@/components/lighthouse/CollectingGuide";
 import { SiteFooter } from "@/components/sections";
 
 export const metadata: Metadata = {
-  title: "Collecting — Dock Vault Lighthouse",
+  title: "Collecting — The Lighthouse",
   description:
-    "A calm introduction to collecting One Piece TCG with intention: goals, budgets, master sets, playsets, sealed products and tracking progress.",
+    "Een rustige introductie tot bewust One Piece TCG verzamelen: doelen, budget, master sets, playsets, sealed en voortgang.",
+  alternates: { canonical: "/lighthouse/collecting" },
 };
 
 export default function CollectingPage() {

@@ -3,9 +3,10 @@ import { LighthouseLitEntry } from "@/components/logbook/LighthouseLitEntry";
 import { SiteFooter } from "@/components/sections";
 
 export const metadata: Metadata = {
-  title: "The Lighthouse Has Been Lit — Dock Vault Logbook",
+  title: "The Lighthouse Has Been Lit",
   description:
-    "The first Dock Vault logbook entry: why the Lighthouse exists and what it means for collectors entering the Harbor.",
+    "De eerste Dock Vault Logbook-entry: waarom The Lighthouse bestaat en wat dit betekent voor verzamelaars die de Harbor binnenkomen.",
+  alternates: { canonical: "/logbook/the-lighthouse-has-been-lit" },
 };
 
 export default function LighthouseLitPage() {

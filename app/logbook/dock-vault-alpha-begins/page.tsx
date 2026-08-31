@@ -3,9 +3,10 @@ import { AlphaBeginsEntry } from "@/components/logbook/AlphaBeginsEntry";
 import { SiteFooter } from "@/components/sections";
 
 export const metadata: Metadata = {
-  title: "Dock Vault Alpha Begins — Dock Vault Logbook",
+  title: "Dock Vault Alpha Begins",
   description:
-    "A Dock Vault founding note about the start of alpha, the first working Harbor and the standards guiding what comes next.",
+    "Een Logbook-entry over de start van Dock Vault Alpha, de eerste werkende Harbor en de standaarden voor wat hierna komt.",
+  alternates: { canonical: "/logbook/dock-vault-alpha-begins" },
 };
 
 export default function AlphaBeginsPage() {

@@ -3,9 +3,10 @@ import { PreservationGuide } from "@/components/lighthouse/PreservationGuide";
 import { SiteFooter } from "@/components/sections";
 
 export const metadata: Metadata = {
-  title: "Preservation — Dock Vault Lighthouse",
+  title: "Preservation — The Lighthouse",
   description:
-    "A calm introduction to protecting and preserving One Piece TCG cards, sealed products and collections.",
+    "Een rustige introductie tot het beschermen en bewaren van One Piece TCG-kaarten, sealed producten en collecties.",
+  alternates: { canonical: "/lighthouse/preservation" },
 };
 
 export default function PreservationPage() {

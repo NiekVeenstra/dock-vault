@@ -85,7 +85,7 @@ export function MarketHallSection() {
 
             <div className="market-hall-section__actions">
               <span className="status-seal">{copy.status}</span>
-              <a className="primary-cta" href="#logbook">
+              <a className="primary-cta" href="/logbook">
                 <span>{copy.cta}</span>
               </a>
             </div>

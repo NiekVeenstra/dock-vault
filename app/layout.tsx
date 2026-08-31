@@ -15,9 +15,6 @@ export const metadata: Metadata = {
   },
   description: siteDescription,
   applicationName: "Dock Vault",
-  alternates: {
-    canonical: "/",
-  },
   icons: {
     icon: [
       {
@@ -29,7 +26,6 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "/",
     siteName: "Dock Vault",
     title: "Dock Vault — The Harbor Is Yours",
     description: siteDescription,

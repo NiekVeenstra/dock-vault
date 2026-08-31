@@ -3,9 +3,10 @@ import { GradingGuide } from "@/components/lighthouse/GradingGuide";
 import { SiteFooter } from "@/components/sections";
 
 export const metadata: Metadata = {
-  title: "Grading — Dock Vault Lighthouse",
+  title: "Grading — The Lighthouse",
   description:
-    "A calm introduction to grading One Piece TCG cards: condition, expectations, preparation and choosing when grading makes sense.",
+    "Een rustige introductie tot One Piece TCG-grading: conditie, verwachtingen, voorbereiding en wanneer graden zinvol is.",
+  alternates: { canonical: "/lighthouse/grading" },
 };
 
 export default function GradingPage() {
