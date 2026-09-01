@@ -19,7 +19,7 @@ const translations = {
       {
         eyebrow: "Long-term archive",
         title: "Full Playset Project",
-        description: "Four copies of every playable card gathered patiently over time — an archive designed around both collecting and the game itself.",
+        description: "Four copies of every playable card gathered patiently over time. The archive is designed around both collecting and the game itself.",
         progress: 18,
         note: "Playset Archive",
       },
@@ -47,7 +47,7 @@ const translations = {
       {
         eyebrow: "Langlopend archief",
         title: "Full Playset Project",
-        description: "Vier exemplaren van iedere speelbare kaart, geduldig door de tijd heen verzameld — een archief rond zowel verzamelen als het spel zelf.",
+        description: "Vier exemplaren van iedere speelbare kaart, geduldig door de tijd heen verzameld. Het archief draait zowel om verzamelen als om het spel zelf.",
         progress: 18,
         note: "Playset Archive",
       },

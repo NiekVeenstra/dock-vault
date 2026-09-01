@@ -11,13 +11,13 @@ const translations = {
     title1: "Dock Vault Alpha",
     title2: "begins.",
     lead:
-      "Dock Vault now has a shape you can step into. Alpha is not a finished destination — it is the first working version of the Harbor, built to be used, tested and refined with care.",
+      "Dock Vault now has a shape you can step into. Alpha is not a finished destination. It is the first working version of the Harbor, built to be used, tested and refined with care.",
     intro:
       "The idea behind Dock Vault was never to launch a conventional card shop and decorate it afterwards. The place comes first. Its language, standards and rooms need to make sense before shelves are filled and commerce begins.",
     section1Eyebrow: "What alpha means",
     section1Title: "Build the place before filling the shelves.",
     section1Copy1:
-      "Alpha is the stage where the foundations become visible. The structure is here, the first routes work and the character of Dock Vault is beginning to feel consistent — but many details are still deliberately open to change.",
+      "Alpha is the stage where the foundations become visible. The structure is here, the first routes work and the character of Dock Vault is beginning to feel consistent, but many details are still deliberately open to change.",
     section1Copy2:
       "That is a feature, not a flaw. It gives the Harbor room to improve slowly instead of pretending that every decision was correct on day one.",
     section2Eyebrow: "The first rooms",
@@ -44,7 +44,7 @@ const translations = {
       [
         "04",
         "The Logbook",
-        "The record of the build itself — decisions, milestones, lessons and changes while Dock Vault is still becoming what it is meant to be.",
+        "The record of the build itself: decisions, milestones, lessons and changes while Dock Vault is still becoming what it is meant to be.",
         "/#logbook",
       ],
       [
@@ -79,13 +79,13 @@ const translations = {
     title1: "Dock Vault Alpha",
     title2: "begint.",
     lead:
-      "Dock Vault heeft nu een vorm waar je echt doorheen kunt bewegen. Alpha is geen eindbestemming — het is de eerste werkende versie van de Haven, gemaakt om gebruikt, getest en zorgvuldig verfijnd te worden.",
+      "Dock Vault heeft nu een vorm waar je echt doorheen kunt bewegen. Alpha is geen eindbestemming. Het is de eerste werkende versie van de Haven, gemaakt om gebruikt, getest en zorgvuldig verfijnd te worden.",
     intro:
       "Het idee achter Dock Vault was nooit om eerst een gewone kaartwinkel te lanceren en die daarna aan te kleden. De plek komt eerst. De taal, standaarden en ruimtes moeten kloppen voordat de planken worden gevuld en de handel begint.",
     section1Eyebrow: "Wat alpha betekent",
     section1Title: "Bouw eerst de plek, vul daarna pas de planken.",
     section1Copy1:
-      "Alpha is de fase waarin de fundering zichtbaar wordt. De structuur staat, de eerste routes werken en het karakter van Dock Vault begint consistent te voelen — maar veel details mogen bewust nog veranderen.",
+      "Alpha is de fase waarin de fundering zichtbaar wordt. De structuur staat, de eerste routes werken en het karakter van Dock Vault begint consistent te voelen, maar veel details mogen bewust nog veranderen.",
     section1Copy2:
       "Dat is geen tekortkoming maar juist het doel. Het geeft de Haven ruimte om rustig beter te worden, zonder te doen alsof iedere keuze op dag één meteen de juiste was.",
     section2Eyebrow: "De eerste ruimtes",
@@ -112,7 +112,7 @@ const translations = {
       [
         "04",
         "Het Logboek",
-        "Het verslag van de bouw zelf — beslissingen, mijlpalen, lessen en veranderingen terwijl Dock Vault nog wordt wat het uiteindelijk moet zijn.",
+        "Het verslag van de bouw zelf: beslissingen, mijlpalen, lessen en veranderingen terwijl Dock Vault nog wordt wat het uiteindelijk moet zijn.",
         "/#logbook",
       ],
       [

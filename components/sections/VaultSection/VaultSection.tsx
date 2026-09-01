@@ -22,7 +22,7 @@ const translations = {
     kicker: "Daarachter wacht een stillere ruimte",
     heading1: "Sommige verzamelingen verdienen",
     heading2: "meer dan alleen bezit.",
-    copy: "De Kluis is niet gebouwd om schatten te verbergen. Ze bestaat om de verhalen, mijlpalen en het geduldige werk te beschermen die bewaard mogen blijven.",
+    copy: "De Kluis is niet gebouwd om schatten te verbergen. Ze bestaat om de mijlpalen het geduldige werk en de verhalen te beschermen die bewaard mogen blijven.",
     aria: "Een blik in de Kluis",
     tags: ["Oprichterscollectie", "Master Set-reizen", "Playset-archief"],
     cta: "Betreed de Kluis",
@@ -40,7 +40,12 @@ export function VaultSection() {
 
       <figure className="vault-portal__visual">
         <div className="vault-portal__image-glow" aria-hidden="true" />
-        <img src="/images/vault-gate.webp" alt={copy.alt} loading="lazy" decoding="async" />
+        <img
+          src="/images/vault-gate.webp"
+          alt={copy.alt}
+          loading="lazy"
+          decoding="async"
+        />
       </figure>
 
       <div className="vault-portal__inner">
@@ -57,7 +62,9 @@ export function VaultSection() {
             <p>{copy.copy}</p>
 
             <div className="vault-portal__glimpse" aria-label={copy.aria}>
-              {copy.tags.map((tag) => <span key={tag}>{tag}</span>)}
+              {copy.tags.map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
             </div>
 
             <a className="primary-cta vault-portal__cta" href="/vault">

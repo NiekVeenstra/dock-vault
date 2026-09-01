@@ -3,7 +3,7 @@ import { LanguageProvider } from "@/components/LanguageProvider";
 import "./globals.scss";
 
 const siteUrl = "https://dockvault.nl";
-const siteTitle = "Dock Vault — One Piece TCG voor verzamelaars";
+const siteTitle = "Dock Vault | One Piece TCG voor verzamelaars";
 const siteDescription =
   "Dock Vault is een plek voor One Piece TCG-verzamelaars: ontdek gidsen over bewaren, grading en verzamelen, volg het Logbook en verken The Vault.";
 
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Dock Vault",
-    title: "Dock Vault — The Harbor Is Yours",
+    title: "Dock Vault | The Harbor Is Yours",
     description: siteDescription,
     locale: "nl_NL",
     alternateLocale: ["en_US"],
@@ -37,13 +37,13 @@ export const metadata: Metadata = {
         url: "/images/dock-vault-logo.png",
         width: 1836,
         height: 856,
-        alt: "Dock Vault — The Harbor Is Yours",
+        alt: "Dock Vault | The Harbor Is Yours",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dock Vault — The Harbor Is Yours",
+    title: "Dock Vault | The Harbor Is Yours",
     description: siteDescription,
     images: ["/images/dock-vault-logo.png"],
   },

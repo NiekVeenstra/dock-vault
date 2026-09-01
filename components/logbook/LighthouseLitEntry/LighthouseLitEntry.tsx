@@ -11,7 +11,7 @@ const translations = {
     title1: "The Lighthouse",
     title2: "has been lit.",
     lead:
-      "Dock Vault has taken its first real step beyond an idea. The Lighthouse is now open — a place built to help collectors understand before they decide.",
+      "Dock Vault has taken its first real step beyond an idea. The Lighthouse is now open. It is a place built to help collectors understand before they decide.",
     intro:
       "A collection can begin with excitement, nostalgia, a favourite character or a single card. But as it grows, the questions grow with it. How should a card be protected? When is grading worthwhile? What makes a collection feel intentional instead of endless? And where should a new collector even begin?",
     section1Eyebrow: "Why a Lighthouse?",
@@ -38,7 +38,7 @@ const translations = {
       [
         "03",
         "Collecting",
-        "Different ways to build a collection with purpose — from characters and master sets to playsets and sealed products.",
+        "Different ways to build a collection with purpose, from characters and master sets to playsets and sealed products.",
         "/lighthouse/collecting",
       ],
       [
@@ -71,7 +71,7 @@ const translations = {
     title1: "De Vuurtoren",
     title2: "is ontstoken.",
     lead:
-      "Dock Vault heeft de eerste echte stap voorbij het idee gezet. De Vuurtoren is nu open — een plek die verzamelaars helpt eerst te begrijpen en daarna pas te beslissen.",
+      "Dock Vault heeft de eerste echte stap voorbij het idee gezet. De Vuurtoren is nu open. Het is een plek die verzamelaars helpt eerst te begrijpen en daarna pas te beslissen.",
     intro:
       "Een verzameling kan beginnen met enthousiasme, nostalgie, een favoriet personage of één bijzondere kaart. Maar wanneer de collectie groeit, groeien de vragen mee. Hoe bescherm je een kaart goed? Wanneer heeft grading zin? Wat maakt een verzameling bewust in plaats van eindeloos? En waar begint een nieuwe verzamelaar eigenlijk?",
     section1Eyebrow: "Waarom een Vuurtoren?",
@@ -98,7 +98,7 @@ const translations = {
       [
         "03",
         "Verzamelen",
-        "Verschillende manieren om doelgericht een collectie op te bouwen — van personages en master sets tot playsets en sealed producten.",
+        "Verschillende manieren om doelgericht een collectie op te bouwen, van personages en master sets tot playsets en sealed producten.",
         "/lighthouse/collecting",
       ],
       [

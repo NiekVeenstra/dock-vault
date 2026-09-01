@@ -10,7 +10,7 @@ const translations = {
     title1: "The Harbor",
     title2: "as it is written.",
     lead:
-      "The Logbook records Dock Vault while it is still taking shape — the decisions, milestones and lessons that turn an idea into a place.",
+      "The Logbook records Dock Vault while it is still taking shape. It captures the decisions, milestones and lessons that turn an idea into a place.",
     introEyebrow: "Recorded, not polished",
     introTitle: "A living record of the build.",
     introCopy:
@@ -59,7 +59,7 @@ const translations = {
     title1: "De Haven",
     title2: "terwijl hij wordt geschreven.",
     lead:
-      "Het Logboek legt Dock Vault vast terwijl het nog vorm krijgt — de beslissingen, mijlpalen en lessen die een idee langzaam veranderen in een plek.",
+      "Het Logboek legt Dock Vault vast terwijl het nog vorm krijgt. Het verzamelt de beslissingen, mijlpalen en lessen die een idee langzaam veranderen in een plek.",
     introEyebrow: "Vastgelegd, niet opgepoetst",
     introTitle: "Een levend verslag van de bouw.",
     introCopy:

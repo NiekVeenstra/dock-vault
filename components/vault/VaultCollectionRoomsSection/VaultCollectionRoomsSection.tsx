@@ -15,7 +15,7 @@ const translations = {
         number: "01",
         title: "Founder's Collection",
         description:
-          "The personal core of Dock Vault — milestones and pieces kept because of the story attached to them, not simply their market value.",
+          "The personal core of Dock Vault. It holds milestones and pieces kept because of the story attached to them, not simply their market value.",
         status: "Growing with time",
       },
       {
@@ -29,7 +29,7 @@ const translations = {
         number: "03",
         title: "Playset Archive",
         description:
-          "A practical archive built around four copies of playable cards — part collecting project, part record of the game itself.",
+          "A practical archive built around four copies of playable cards. It is part collecting project and part record of the game itself.",
         status: "18% underway",
       },
       {
@@ -52,7 +52,7 @@ const translations = {
         number: "01",
         title: "Founder's Collection",
         description:
-          "De persoonlijke kern van Dock Vault — mijlpalen en stukken die worden bewaard vanwege het verhaal erachter, niet alleen vanwege hun marktwaarde.",
+          "De persoonlijke kern van Dock Vault. Hier worden mijlpalen en stukken bewaard vanwege het verhaal erachter, niet alleen vanwege hun marktwaarde.",
         status: "Groeit met de tijd",
       },
       {
@@ -66,7 +66,7 @@ const translations = {
         number: "03",
         title: "Playset Archive",
         description:
-          "Een praktisch archief rond vier exemplaren van speelbare kaarten — deels verzamelproject, deels verslag van het spel zelf.",
+          "Een praktisch archief rond vier exemplaren van speelbare kaarten. Het is deels verzamelproject en deels verslag van het spel zelf.",
         status: "18% onderweg",
       },
       {

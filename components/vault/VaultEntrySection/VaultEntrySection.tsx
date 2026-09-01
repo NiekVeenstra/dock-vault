@@ -10,7 +10,7 @@ const translations = {
     eyebrow: "A quieter room lies beyond",
     line1: "Some collections deserve",
     line2: "more than ownership.",
-    copy: "The Vault is where Dock Vault preserves the projects, milestones and pieces that are worth remembering — not because they are expensive, but because they carry a story.",
+    copy: "The Vault is where Dock Vault preserves the projects, milestones and pieces that are worth remembering. Their value here comes from the story they carry, not simply from their price.",
     cta: "Explore the archive",
   },
   nl: {
@@ -18,7 +18,7 @@ const translations = {
     eyebrow: "Daarachter ligt een stillere ruimte",
     line1: "Sommige collecties verdienen",
     line2: "meer dan bezit.",
-    copy: "The Vault is de plek waar Dock Vault projecten, mijlpalen en stukken bewaart die het herinneren waard zijn — niet omdat ze duur zijn, maar omdat ze een verhaal dragen.",
+    copy: "The Vault is de plek waar Dock Vault projecten, mijlpalen en stukken bewaart die het herinneren waard zijn. Hun waarde zit hier in het verhaal dat ze dragen, niet alleen in hun prijs.",
     cta: "Ontdek het archief",
   },
 } as const;

@@ -10,7 +10,7 @@ const translations = {
     kicker: "The build, in real time",
     heading1: "Every chapter",
     heading2: "is written here.",
-    copy1: "The Logbook records the process behind Dock Vault — the decisions, lessons, arrivals and small milestones that shape what the Harbor becomes.",
+    copy1: "The Logbook records the process behind Dock Vault. It captures the decisions, lessons, arrivals and small milestones that shape what the Harbor becomes.",
     copy2: "It is a quieter look behind the scenes. Not polished history, but the journey while it is still being written.",
     entries: [
       ["First entry", "The Lighthouse has been lit.", "A place for collectors begins to find its direction.", "/logbook/the-lighthouse-has-been-lit"],
@@ -26,7 +26,7 @@ const translations = {
     kicker: "De bouw, in realtime",
     heading1: "Ieder hoofdstuk",
     heading2: "wordt hier geschreven.",
-    copy1: "Het Logboek legt het proces achter Dock Vault vast — de beslissingen, lessen, aankomsten en kleine mijlpalen die bepalen wat de Haven wordt.",
+    copy1: "Het Logboek legt het proces achter Dock Vault vast. Het verzamelt de beslissingen, lessen, aankomsten en kleine mijlpalen die bepalen wat de Haven wordt.",
     copy2: "Het is een rustigere blik achter de schermen. Geen gepolijste geschiedenis, maar de reis terwijl die nog wordt geschreven.",
     entries: [
       ["Eerste bericht", "De Vuurtoren is ontstoken.", "Een plek voor verzamelaars begint richting te vinden.", "/logbook/the-lighthouse-has-been-lit"],

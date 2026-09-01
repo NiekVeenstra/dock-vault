@@ -13,7 +13,7 @@ const translations = {
     intro:
       "Grading can protect a card, document an independent opinion of its condition and make certain cards easier to compare or trade. But a slab and a number do not automatically make every card better.",
     intro2:
-      "The first step is learning what graders look for, what a grade can — and cannot — tell you, and when submitting a card actually fits your collection.",
+      "The first step is learning what graders look for, what a grade can and cannot tell you, and when submitting a card actually fits your collection.",
     startEyebrow: "Start here",
     startTitle: "Four ideas to understand before submitting.",
     startCopy:
@@ -68,7 +68,7 @@ const translations = {
     ],
     noteTitle: "A Dock Vault principle",
     noteText:
-      "Grade the card because the slab adds something to your collection — not because every valuable card is expected to live inside one.",
+      "Grade the card because the slab adds something to your collection, not because every valuable card is expected to live inside one.",
     roadmapEyebrow: "The guide will grow",
     roadmapTitle: "The chapters ahead.",
     roadmapCopy:
@@ -79,7 +79,7 @@ const translations = {
       ["Pre-grading at home", "A repeatable inspection routine before deciding whether a card is worth submitting."],
       ["Submission preparation", "Sleeving, semi-rigid holders, packing and following the grader's current instructions."],
       ["Costs & turnaround", "How fees, shipping, insurance and waiting time affect the decision."],
-      ["Value after grading", "Why a higher grade can change liquidity or value — and why it sometimes does not."],
+      ["Value after grading", "Why a higher grade can change liquidity or value and why it sometimes does not."],
       ["Buying graded cards", "Checking the certification, holder, price premium and the card itself before buying."],
     ],
     coming: "Coming chapter",
@@ -155,7 +155,7 @@ const translations = {
     ],
     noteTitle: "Een Dock Vault-principe",
     noteText:
-      "Grade een kaart omdat de slab iets toevoegt aan jouw verzameling — niet omdat iedere waardevolle kaart automatisch in plastic zou moeten verdwijnen.",
+      "Grade een kaart omdat de slab iets toevoegt aan jouw verzameling, niet omdat iedere waardevolle kaart automatisch in plastic zou moeten verdwijnen.",
     roadmapEyebrow: "De gids groeit verder",
     roadmapTitle: "De hoofdstukken die volgen.",
     roadmapCopy:
@@ -166,7 +166,7 @@ const translations = {
       ["Zelf pre-graden", "Een vaste inspectieroutine voordat je beslist of een kaart het insturen waard is."],
       ["Voorbereiden op verzending", "Sleeves, semi-rigide houders, verpakken en de actuele instructies van de grader volgen."],
       ["Kosten & doorlooptijd", "Hoe gradingkosten, verzending, verzekering en wachttijd de keuze beïnvloeden."],
-      ["Waarde na grading", "Waarom een hogere grade waarde of verkoopbaarheid kan veranderen — en waarom dat soms niet gebeurt."],
+      ["Waarde na grading", "Waarom een hogere grade waarde of verkoopbaarheid kan veranderen en waarom dat soms niet gebeurt."],
       ["Graded kaarten kopen", "Certificering, slab, prijspremie en de kaart zelf controleren voordat je koopt."],
     ],
     coming: "Volgt later",

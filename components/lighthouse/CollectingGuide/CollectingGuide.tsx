@@ -43,7 +43,7 @@ const translations = {
     pathsEyebrow: "Choose your route",
     pathsTitle: "Different collections can have completely different goals.",
     pathsCopy:
-      "These are common ways to give a collection structure. You can follow one route or combine several — as long as the result still feels like your collection rather than somebody else's checklist.",
+      "These are common ways to give a collection structure. You can follow one route or combine several, as long as the result still feels like your collection rather than somebody else's checklist.",
     paths: [
       {
         label: "Character & crew",
@@ -81,7 +81,7 @@ const translations = {
       ["Tracking your collection", "Simple systems for checklists, condition notes, duplicates, values and missing cards."],
       ["Buying with patience", "Comparing condition and price, avoiding urgency and recognising when waiting is the better choice."],
       ["Displaying & rotating a collection", "How to enjoy the cards you own without exposing everything to unnecessary handling or light."],
-      ["Knowing when a collection is complete", "Why completion can mean a finished checklist — or simply reaching the point where nothing needs to be added."],
+      ["Knowing when a collection is complete", "Why completion can mean a finished checklist or simply reaching the point where nothing needs to be added."],
     ],
     coming: "Coming chapter",
     closing:
@@ -131,7 +131,7 @@ const translations = {
     pathsEyebrow: "Kies je route",
     pathsTitle: "Verschillende collecties kunnen totaal verschillende doelen hebben.",
     pathsCopy:
-      "Dit zijn een paar logische manieren om structuur aan je verzameling te geven. Je kunt één route volgen of meerdere combineren — zolang het resultaat jouw collectie blijft en niet de checklist van iemand anders.",
+      "Dit zijn een paar logische manieren om structuur aan je verzameling te geven. Je kunt één route volgen of meerdere combineren, zolang het resultaat jouw collectie blijft en niet de checklist van iemand anders.",
     paths: [
       {
         label: "Personage & crew",

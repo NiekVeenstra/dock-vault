@@ -59,7 +59,7 @@ export function HarborHeader() {
         >
           <Image
             src="/images/dock-vault-logo-header.webp"
-            alt="Dock Vault — The Harbor Is Yours"
+            alt="Dock Vault logo"
             width={720}
             height={336}
             priority
