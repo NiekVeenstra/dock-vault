@@ -5,6 +5,12 @@ node_modules/
 .next/
 out/
 
+# TypeScript incremental cache
+*.tsbuildinfo
+
+# Vercel local project data
+.vercel/
+
 # local environment files
 .env
 .env.local
@@ -22,3 +28,4 @@ pnpm-debug.log*
 .DS_Store
 Thumbs.db
 .vscode/
+.idea/
