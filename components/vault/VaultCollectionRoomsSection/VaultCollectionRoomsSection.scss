@@ -68,11 +68,23 @@
   border-right: 1px solid rgba(169, 120, 56, .22);
   border-bottom: 1px solid rgba(169, 120, 56, .22);
   background: linear-gradient(145deg, rgba(255,255,255,.018), rgba(255,255,255,.004));
-  transition: background .3s ease, transform .3s ease;
+  color: inherit;
+  text-decoration: none;
+  transition: background .3s ease, transform .3s ease, border-color .3s ease;
 }
 
-.vault-room:hover {
-  background: linear-gradient(145deg, rgba(193,143,74,.065), rgba(255,255,255,.008));
+.vault-room--available:hover {
+  background: linear-gradient(145deg, rgba(193,143,74,.075), rgba(255,255,255,.008));
+}
+
+.vault-room--available:focus-visible {
+  outline: 2px solid var(--warm-brass);
+  outline-offset: -5px;
+  background: linear-gradient(145deg, rgba(193,143,74,.075), rgba(255,255,255,.008));
+}
+
+.vault-room--pending {
+  background: linear-gradient(145deg, rgba(255,255,255,.01), rgba(255,255,255,.002));
 }
 
 .vault-room__topline {
@@ -106,14 +118,42 @@
   line-height: 1.62;
 }
 
-.vault-room small {
+.vault-room__footer {
   margin-top: auto;
   padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.vault-room small {
   color: var(--warm-brass);
   font-family: Inter, sans-serif;
   font-size: 9px;
   letter-spacing: .15em;
   text-transform: uppercase;
+}
+
+.vault-room--pending small {
+  color: rgba(242,234,223,.42);
+}
+
+.vault-room__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--parchment);
+  font-family: Inter, sans-serif;
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.vault-room__action b {
+  color: var(--warm-brass);
+  font-size: 14px;
+  font-weight: 400;
 }
 
 @media (max-width: 900px) {

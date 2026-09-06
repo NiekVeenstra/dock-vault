@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/sections";
 import {
-  ArchiveProgressSection,
-  ArtifactWallSection,
   VaultCollectionRoomsSection,
   VaultEntrySection,
   VaultManifestoSection,
@@ -12,7 +10,7 @@ import {
 export const metadata: Metadata = {
   title: "The Vault",
   description:
-    "Ontdek The Vault van Dock Vault: het gecureerde archief voor collecties, master set journeys, playsets en stukken met een verhaal.",
+    "Ontdek De Kluis van Dock Vault: een persoonlijk archief voor verzamelstukken, verhalen en de zorg waarmee ze worden bewaard.",
   alternates: { canonical: "/vault" },
 };
 
@@ -22,8 +20,6 @@ export default function VaultPage() {
       <VaultEntrySection />
       <VaultManifestoSection />
       <VaultCollectionRoomsSection />
-      <ArchiveProgressSection />
-      <ArtifactWallSection />
       <VaultQuoteSection />
       <SiteFooter />
     </main>
