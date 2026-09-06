@@ -82,7 +82,7 @@ export const foundersCollectionRecords: FounderCollectionRecord[] = [
     },
     preservation: {
       en: "The card is still ungraded. I keep it double-sleeved in a sturdy plastic card holder with a magnetic closure. That is how I protect the copy that marked the beginning of collecting for me.",
-      nl: "De kaart is nog steeds niet gegrade. Ik bewaar hem double-sleeved in een stevige kunststof kaarthouder met een magnetische sluiting. Zo bescherm ik het exemplaar dat voor mij het begin van verzamelen markeerde.",
+      nl: "De kaart is nog steeds ungraded. Ik bewaar hem dubbel gesleeved in een stevige kunststof kaarthouder met magneetsluiting. Zo bescherm ik het exemplaar waarmee voor mij het verzamelen begon.",
     },
   },
 ];
