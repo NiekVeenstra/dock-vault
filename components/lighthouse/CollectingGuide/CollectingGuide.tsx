@@ -9,20 +9,20 @@ const translations = {
     back: "← Return to the Lighthouse",
     eyebrow: "The Lighthouse · Guide 03",
     title: "Collecting",
-    subtitle: "Build a collection with a reason behind every addition.",
+    subtitle: "Build a collection that can grow with you.",
     intro:
-      "Collecting becomes more rewarding when the collection has a direction. That direction can be a favourite character, a complete set, a playable archive, sealed history or simply cards that mean something to you.",
+      "Collecting can have a clear direction, or it can grow from cards that simply mean something to you. A favourite character, a complete set, an artwork, a memory or an unexpected find can all be equally valid starting points.",
     intro2:
       "There is no single correct way to collect One Piece TCG. The goal of this guide is to help you choose your own route, spend with intention and enjoy the process without letting noise or urgency decide for you.",
-    startEyebrow: "Start with intention",
-    startTitle: "Four habits that make a collection easier to build.",
+    startEyebrow: "Collect with care",
+    startTitle: "Four habits that can make collecting easier.",
     startCopy:
-      "A collection does not need to be large to feel complete. Clear goals, a sensible budget and a simple way to track progress are often more useful than chasing every new release.",
+      "Structure can help, but it is not a requirement. A budget, simple notes or a small goal are tools you can use when they add calm. You can also collect by intuition, memory and changing interests.",
     principles: [
       {
         number: "01",
-        title: "Choose what the collection is about",
-        text: "Start with a theme you genuinely care about: a character, crew, set, rarity, artist, playset or era. A clear focus makes it easier to decide what belongs in the collection and what does not.",
+        title: "Notice what draws you in",
+        text: "A theme can help, but a card may also matter because of its artwork, a pull, a gift, a person or a moment. Not every part of your collection has to fit one system.",
       },
       {
         number: "02",
@@ -36,22 +36,22 @@ const translations = {
       },
       {
         number: "04",
-        title: "Record what you already own",
-        text: "A checklist, spreadsheet or collection app prevents duplicate purchases and makes progress visible. It also gives you a better overview of condition, variants and the gaps that still matter.",
+        title: "Track only what helps you",
+        text: "A checklist, spreadsheet or collection app can help prevent duplicate purchases and keep an overview of condition or variants. Use as much structure as is useful to you; the hobby does not need a perfect database.",
       },
     ],
-    firstGoalEyebrow: "Your first collecting goal",
-    firstGoalTitle: "Write one sentence before you buy.",
-    firstGoalCopy: "Use a simple boundary: I collect ___ until ___. A finish line can be small and still give the collection real direction.",
+    firstGoalEyebrow: "A possible first collecting goal",
+    firstGoalTitle: "A small goal can help you begin. You may change it along the way.",
+    firstGoalCopy: "If structure gives you calm, try one sentence: 'For now, I collect ___.' Leave the end open unless a fixed finish line genuinely adds to the enjoyment.",
     firstGoalExamples: [
-      ["Character", "I collect one favourite version of each Straw Hat."],
-      ["Set", "I collect the numbered main set and stop before alternate arts."],
-      ["Small display", "I fill one 9-pocket binder page with cards of one character."],
+      ["Character", "For now, I follow cards of a favourite Straw Hat. Which versions matter to me may change."],
+      ["Set", "I would like to work through the numbered main set. Alternate arts can stay optional."],
+      ["Memory", "I keep cards that remind me of pulls, gifts, events or people I shared the hobby with."],
     ],
-    pathsEyebrow: "Choose your route",
-    pathsTitle: "Different collections can have completely different goals.",
+    pathsEyebrow: "Ways to collect",
+    pathsTitle: "There are many ways to give a collection shape, and none are required.",
     pathsCopy:
-      "These are common ways to give a collection structure. You can follow one route or combine several, as long as the result still feels like your collection rather than somebody else's checklist.",
+      "These are tools you can use when structure feels helpful. Follow one route, mix several, change them later or ignore them entirely. The collection should remain yours, not somebody else's checklist.",
     paths: [
       {
         label: "Character & crew",
@@ -61,7 +61,7 @@ const translations = {
       {
         label: "Master set",
         title: "Complete a defined release",
-        text: "Build toward a clear finish line by collecting the cards that belong to one set. Decide at the start whether your definition includes alternate arts, parallels, promos or only the numbered main set.",
+        text: "If completing a set appeals to you, decide for now what you want to count: perhaps the numbered main set, or also alternate arts, parallels and promos. You can broaden or simplify that definition later.",
       },
       {
         label: "Playset archive",
@@ -71,29 +71,29 @@ const translations = {
       {
         label: "Sealed collection",
         title: "Preserve a release as an unopened object",
-        text: "Boxes, decks and special products can represent a moment in the game's history. Sealed collecting needs patience, storage discipline and a clear reason for what deserves shelf space.",
+        text: "Boxes, decks and special products can represent a moment in the game's history. Keep them sealed when the unopened object itself matters to you, and when you have a safe place to store it.",
       },
     ],
     noteTitle: "A Dock Vault principle",
     noteText:
-      "A good collection is not defined by how much it contains. It is defined by how clearly the pieces belong together.",
+      "A collection can grow with your interests and memories. What the cards mean to you is what gives it character.",
     roadmapEyebrow: "The guide will grow",
     roadmapTitle: "The chapters ahead.",
     roadmapCopy:
       "This page is the foundation. The next chapters will turn each part of the collecting process into a practical route you can actually use.",
     roadmap: [
-      ["Defining a collecting goal", "How to turn a broad interest into a collection with clear boundaries and a finish line."],
+      ["Using a collecting goal when it helps", "How a small boundary can provide structure without locking your collection into a fixed finish line."],
       ["Master sets & variants", "Choosing what counts: base cards, alternate arts, parallels, promos, reprints and later versions."],
       ["Singles vs sealed product", "When opening is part of the experience and when buying the exact card may make more sense."],
       ["Budgeting without killing the fun", "Setting limits, planning larger purchases and leaving room for spontaneous finds."],
       ["Tracking your collection", "Simple systems for checklists, condition notes, duplicates, values and missing cards."],
       ["Buying with patience", "Comparing condition and price, avoiding urgency and recognising when waiting is the better choice."],
       ["Displaying & rotating a collection", "How to enjoy the cards you own without exposing everything to unnecessary handling or light."],
-      ["Knowing when a collection is complete", "Why completion can mean a finished checklist or simply reaching the point where nothing needs to be added."],
+      ["Knowing when a collection feels enough", "Why enough can mean a finished checklist, a pause, or simply being content with what is already there."],
     ],
     coming: "Coming chapter",
     closing:
-      "Collect slowly enough that every addition still feels chosen. The strongest collection is the one you can explain without mentioning its price.",
+      "Collect slowly enough to notice why a card matters to you. A collection does not have to be perfect or easy to explain. It only has to remain yours.",
     previousLabel: "Previous Lighthouse guide",
     previousTitle: "Grading",
     previousStatus: "Open guide",
@@ -105,20 +105,20 @@ const translations = {
     back: "← Terug naar de Vuurtoren",
     eyebrow: "De Vuurtoren · Gids 03",
     title: "Verzamelen",
-    subtitle: "Bouw een verzameling met een reden achter iedere toevoeging.",
+    subtitle: "Bouw een verzameling die met je mee mag groeien.",
     intro:
-      "Verzamelen wordt leuker wanneer je collectie een richting heeft. Dat kan een favoriet personage zijn, een complete set, een speelbaar archief, sealed geschiedenis of simpelweg kaarten die voor jou iets betekenen.",
+      "Verzamelen kan een duidelijke richting hebben, maar mag ook groeien vanuit kaarten die gewoon iets voor jou betekenen. Een favoriet personage, complete set, artwork, herinnering of onverwachte vondst kan allemaal een goed beginpunt zijn.",
     intro2:
       "Er bestaat niet één juiste manier om One Piece TCG te verzamelen. Deze gids helpt je jouw eigen route te kiezen, bewust geld uit te geven en van het proces te genieten zonder dat hype of haast voor jou beslist.",
-    startEyebrow: "Begin doelbewust",
-    startTitle: "Vier gewoontes die een collectie makkelijker maken om op te bouwen.",
+    startEyebrow: "Verzamel met aandacht",
+    startTitle: "Vier gewoontes die verzamelen makkelijker kunnen maken.",
     startCopy:
-      "Een verzameling hoeft niet groot te zijn om compleet te voelen. Duidelijke doelen, een verstandig budget en een simpele manier om je voortgang bij te houden zijn vaak waardevoller dan iedere nieuwe release najagen.",
+      "Structuur kan helpen, maar is geen vereiste. Een budget, simpele notities of een klein doel zijn hulpmiddelen als ze rust geven. Je mag ook verzamelen op gevoel, herinnering en veranderende interesses.",
     principles: [
       {
         number: "01",
-        title: "Bepaal waar je verzameling over gaat",
-        text: "Begin met een thema waar je echt om geeft: een personage, crew, set, rarity, artiest, playset of periode. Met een duidelijke focus wordt het makkelijker om te bepalen wat wel en niet in jouw collectie hoort.",
+        title: "Merk op waar je naar wordt getrokken",
+        text: "Een thema kan helpen, maar een kaart kan ook belangrijk zijn door het artwork, een pull, een cadeau, een persoon of een herinnering. Niet ieder onderdeel van je collectie hoeft in één systeem te passen.",
       },
       {
         number: "02",
@@ -132,22 +132,22 @@ const translations = {
       },
       {
         number: "04",
-        title: "Houd bij wat je al bezit",
-        text: "Een checklist, spreadsheet of collectie-app voorkomt dubbele aankopen en maakt je voortgang zichtbaar. Je ziet bovendien beter welke condities, varianten en ontbrekende kaarten nog echt belangrijk zijn.",
+        title: "Houd alleen bij wat jou helpt",
+        text: "Een checklist, spreadsheet of collectie-app kan dubbele aankopen helpen voorkomen en overzicht geven over conditie of varianten. Gebruik alleen zoveel structuur als nuttig voelt; de hobby heeft geen perfecte database nodig.",
       },
     ],
-    firstGoalEyebrow: "Je eerste verzameldoel",
-    firstGoalTitle: "Schrijf één zin op voordat je koopt.",
-    firstGoalCopy: "Gebruik een eenvoudige grens: ik verzamel ___ totdat ___. Een eindpunt mag klein zijn en toch echte richting aan je collectie geven.",
+    firstGoalEyebrow: "Een mogelijk eerste verzameldoel",
+    firstGoalTitle: "Een klein verzameldoel kan je helpen beginnen. Je mag het onderweg aanpassen.",
+    firstGoalCopy: "Geeft structuur je rust, probeer dan één zin: 'Voor nu verzamel ik ___.' Laat het eindpunt open als een vaste grens niets aan het plezier toevoegt.",
     firstGoalExamples: [
-      ["Personage", "Ik verzamel één favoriete versie van iedere Straw Hat."],
-      ["Set", "Ik verzamel de genummerde hoofdset en stop vóór alternate arts."],
-      ["Kleine display", "Ik vul één 9-pocket binderpagina met kaarten van één personage."],
+      ["Personage", "Voor nu volg ik kaarten van een favoriete Straw Hat. Welke versies belangrijk zijn mag onderweg veranderen."],
+      ["Set", "Ik wil rustig door de genummerde hoofdset werken. Alternate arts mogen optioneel blijven."],
+      ["Herinnering", "Ik bewaar kaarten die me herinneren aan pulls, cadeaus, events of mensen met wie ik de hobby deel."],
     ],
-    pathsEyebrow: "Kies je route",
-    pathsTitle: "Verschillende collecties kunnen totaal verschillende doelen hebben.",
+    pathsEyebrow: "Manieren om te verzamelen",
+    pathsTitle: "Er zijn veel manieren om een collectie vorm te geven, en geen daarvan is verplicht.",
     pathsCopy:
-      "Dit zijn een paar logische manieren om structuur aan je verzameling te geven. Je kunt één route volgen of meerdere combineren, zolang het resultaat jouw collectie blijft en niet de checklist van iemand anders.",
+      "Dit zijn hulpmiddelen voor momenten waarop structuur prettig voelt. Volg één route, combineer er meerdere, verander ze later of gebruik ze helemaal niet. De collectie moet van jou blijven, niet van de checklist van iemand anders.",
     paths: [
       {
         label: "Personage & crew",
@@ -157,7 +157,7 @@ const translations = {
       {
         label: "Master set",
         title: "Maak één duidelijke release compleet",
-        text: "Werk naar een heldere eindstreep door de kaarten van één set te verzamelen. Bepaal vooraf of jouw definitie alternate arts, parallels, promo's bevat of alleen de genummerde hoofdset.",
+        text: "Spreekt het compleet maken van een set je aan, bepaal dan voorlopig wat je wilt meetellen: bijvoorbeeld alleen de genummerde hoofdset, of ook alternate arts, parallels en promo's. Je mag die definitie later verbreden of eenvoudiger maken.",
       },
       {
         label: "Playset-archief",
@@ -167,29 +167,29 @@ const translations = {
       {
         label: "Sealed collectie",
         title: "Bewaar een release als ongeopend object",
-        text: "Boxen, decks en speciale producten kunnen een moment uit de geschiedenis van het spel vertegenwoordigen. Sealed verzamelen vraagt geduld, goede opslag en een duidelijke reden voor wat ruimte verdient.",
+        text: "Boxen, decks en speciale producten kunnen een moment uit de geschiedenis van het spel vertegenwoordigen. Bewaar ze sealed wanneer het ongeopende product zelf iets voor je betekent en je er een veilige plek voor hebt.",
       },
     ],
     noteTitle: "Een Dock Vault-principe",
     noteText:
-      "Een goede verzameling wordt niet bepaald door hoeveel erin zit. Ze wordt bepaald door hoe duidelijk de onderdelen bij elkaar horen.",
+      "Een verzameling mag meegroeien met jouw interesses en herinneringen. Wat de kaarten voor jou betekenen, geeft haar karakter.",
     roadmapEyebrow: "De gids groeit verder",
     roadmapTitle: "De hoofdstukken die volgen.",
     roadmapCopy:
       "Deze pagina is de basis. De volgende hoofdstukken maken van ieder onderdeel van het verzamelproces een praktische route die je echt kunt gebruiken.",
     roadmap: [
-      ["Een verzameldoel bepalen", "Van een brede interesse naar een collectie met duidelijke grenzen en een eindpunt."],
+      ["Een verzameldoel gebruiken wanneer het helpt", "Hoe een kleine grens structuur kan geven zonder je collectie aan een vast eindpunt te binden."],
       ["Master sets & varianten", "Bepalen wat meetelt: base cards, alternate arts, parallels, promo's, reprints en latere versies."],
       ["Singles versus sealed", "Wanneer openen onderdeel is van de ervaring en wanneer de exacte kaart kopen logischer kan zijn."],
       ["Budgetteren zonder de lol weg te halen", "Grenzen stellen, grotere aankopen plannen en ruimte houden voor spontane vondsten."],
       ["Je collectie bijhouden", "Simpele systemen voor checklists, conditie, dubbelen, waardes en ontbrekende kaarten."],
       ["Geduldig kopen", "Conditie en prijs vergelijken, haast vermijden en herkennen wanneer wachten de betere keuze is."],
       ["Je collectie tonen en roteren", "Genieten van je kaarten zonder alles onnodig vaak vast te pakken of aan licht bloot te stellen."],
-      ["Weten wanneer een collectie compleet is", "Waarom compleet zowel een afgevinkte checklist kan zijn als het moment waarop niets meer toegevoegd hoeft te worden."],
+      ["Weten wanneer een collectie genoeg voelt", "Waarom genoeg een afgevinkte checklist, een pauze of simpelweg tevredenheid met wat er al is kan betekenen."],
     ],
     coming: "Volgt later",
     closing:
-      "Verzamel langzaam genoeg om iedere toevoeging nog als een bewuste keuze te laten voelen. De sterkste collectie is degene die je kunt uitleggen zonder de prijs te noemen.",
+      "Verzamel langzaam genoeg om te merken waarom een kaart voor jou iets betekent. Een collectie hoeft niet perfect of makkelijk uit te leggen te zijn. Ze hoeft alleen van jou te blijven.",
     previousLabel: "Vorige Lighthouse-gids",
     previousTitle: "Grading",
     previousStatus: "Bekijk gids",

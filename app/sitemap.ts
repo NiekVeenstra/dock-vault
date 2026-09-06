@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/logbook/the-lighthouse-has-been-lit",
     "/logbook/dock-vault-alpha-begins",
     "/vault",
+    "/vault/founders-collection",
     "/privacy",
     "/terms",
   ];

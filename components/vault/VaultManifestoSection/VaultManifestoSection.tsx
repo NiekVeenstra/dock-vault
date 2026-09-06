@@ -4,18 +4,22 @@ import { useLanguage } from "@/components/LanguageProvider";
 
 const translations = {
   en: {
-    eyebrow: "The purpose of the room",
-    heading1: "Preserve the journey.",
-    heading2: "Not just the result.",
-    copy1: "A finished collection can be impressive, but the gaps, searches, choices and small milestones are what give it meaning. The Vault keeps that history visible.",
-    copy2: "This is not a showcase built around status. It is a living archive: personal, selective and allowed to remain unfinished while the collection continues to grow.",
+    eyebrow: "How the archive works",
+    heading1: "Keep the context.",
+    heading2: "Not a scorecard.",
+    copy1:
+      "A place in The Vault is not earned by price, rarity or completion. What matters is the context around a piece: why it matters, how it arrived, what was learned and how it is cared for.",
+    copy2:
+      "Records can remain unfinished. New details may be added as the collection and the person behind it continue to grow.",
   },
   nl: {
-    eyebrow: "Het doel van deze ruimte",
-    heading1: "Bewaar de reis.",
-    heading2: "Niet alleen het resultaat.",
-    copy1: "Een voltooide collectie kan indrukwekkend zijn, maar de ontbrekende stukken, zoektochten, keuzes en kleine mijlpalen geven haar betekenis. The Vault houdt die geschiedenis zichtbaar.",
-    copy2: "Dit is geen etalage die om status draait. Het is een levend archief: persoonlijk, selectief en bewust onaf zolang de collectie verder groeit.",
+    eyebrow: "Hoe het archief werkt",
+    heading1: "Bewaar de context.",
+    heading2: "Geen scorekaart.",
+    copy1:
+      "Een plek in De Kluis wordt niet verdiend door prijs, zeldzaamheid of compleetheid. De context rond een stuk telt: waarom het betekenis heeft, hoe het erbij kwam, wat ervan is geleerd en hoe ervoor wordt gezorgd.",
+    copy2:
+      "Een record mag onaf blijven. Nieuwe details kunnen worden toegevoegd terwijl de collectie en de persoon erachter verder groeien.",
   },
 } as const;
 

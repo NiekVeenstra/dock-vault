@@ -212,6 +212,11 @@
     white-space: nowrap;
   }
 
+  .lighthouse-start > a:focus-visible {
+    outline: 2px solid var(--warm-brass);
+    outline-offset: 4px;
+  }
+
   .lighthouse-start i { font-style: normal; }
 
   .lighthouse-guides {

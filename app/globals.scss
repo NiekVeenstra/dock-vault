@@ -12,12 +12,11 @@
 @use "../components/sections/SiteFooter/SiteFooter";
 @use "../components/sections/VaultSection/VaultSection";
 @use "../components/sections/WorldNavigationSection/WorldNavigationSection";
-@use "../components/vault/ArchiveProgressSection/ArchiveProgressSection";
-@use "../components/vault/ArtifactWallSection/ArtifactWallSection";
 @use "../components/vault/VaultEntrySection/VaultEntrySection";
 @use "../components/vault/VaultManifestoSection/VaultManifestoSection";
 @use "../components/vault/VaultCollectionRoomsSection/VaultCollectionRoomsSection";
 @use "../components/vault/VaultQuoteSection/VaultQuoteSection";
+@use "../components/vault/FoundersCollection/FoundersCollection";
 @use "../components/lighthouse/PreservationGuide/PreservationGuide";
 @use "../components/lighthouse/GradingGuide/GradingGuide";
 @use "../components/lighthouse/CollectingGuide/CollectingGuide";
@@ -133,6 +132,13 @@ h2 {
   transition: background 0.3s ease, transform 0.3s ease;
 }
 .primary-cta:hover { background: rgba(193, 143, 74, 0.1); transform: translateY(-2px); }
+.primary-cta:focus-visible,
+.text-link:focus-visible,
+.quiet-link:focus-visible {
+  outline: 2px solid var(--warm-brass);
+  outline-offset: 4px;
+}
+
 .primary-cta svg { width: 21px; }
 .text-link, .quiet-link {
   width: fit-content;
