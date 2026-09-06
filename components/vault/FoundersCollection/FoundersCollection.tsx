@@ -19,8 +19,7 @@ const translations = {
     returnVault: "Return to The Vault",
     draftLabel: "Development concept",
     draftPhoto: "Personal photograph to follow",
-    draftPhotoCopy:
-      "The reference image is not used as a photograph of the founder’s own copy.",
+    referenceLabel: "Reference image",
     archiveRecord: "Founder’s record",
     careTitle: "Care and preservation",
   },
@@ -36,8 +35,7 @@ const translations = {
     returnVault: "Terug naar De Kluis",
     draftLabel: "Development-concept",
     draftPhoto: "Eigen foto volgt",
-    draftPhotoCopy:
-      "De referentieafbeelding wordt niet gebruikt alsof die het eigen exemplaar van de oprichter toont.",
+    referenceLabel: "Referentiebeeld",
     archiveRecord: "Oprichtersrecord",
     careTitle: "Zorg en bescherming",
   },
@@ -62,6 +60,17 @@ function FounderRecord({
           <figure className="founders-record__photo">
             <img src={record.photo.src} alt={record.photo.alt[language]} />
           </figure>
+        ) : draftPreview && record.referenceImage ? (
+          <figure className="founders-record__photo founders-record__photo--reference">
+            <img
+              src={record.referenceImage.src}
+              alt={record.referenceImage.alt[language]}
+            />
+            <figcaption className="founders-record__reference-caption">
+              <strong>{copy.referenceLabel}</strong>
+              <span>{record.referenceImage.note[language]}</span>
+            </figcaption>
+          </figure>
         ) : (
           <div
             className="founders-record__photo founders-record__photo--placeholder"
@@ -70,7 +79,6 @@ function FounderRecord({
           >
             <span aria-hidden="true">◇</span>
             <strong>{copy.draftPhoto}</strong>
-            {draftPreview ? <p>{copy.draftPhotoCopy}</p> : null}
           </div>
         )}
       </div>

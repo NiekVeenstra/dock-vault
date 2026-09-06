@@ -16,6 +16,11 @@ export type FounderCollectionRecord = {
     src: string;
     alt: LocalizedCopy;
   } | null;
+  referenceImage?: {
+    src: string;
+    alt: LocalizedCopy;
+    note: LocalizedCopy;
+  };
   story: {
     en: string[];
     nl: string[];
@@ -46,6 +51,17 @@ export const foundersCollectionRecords: FounderCollectionRecord[] = [
       set: "First Anniversary Set",
     },
     photo: null,
+    referenceImage: {
+      src: "/vault/founders-collection/reference-image",
+      alt: {
+        en: "Reference image of the Monkey.D.Luffy ST10-006 First Anniversary Set card",
+        nl: "Referentiebeeld van de Monkey.D.Luffy ST10-006-kaart uit de First Anniversary Set",
+      },
+      note: {
+        en: "Reference image only. The founder’s own photographed copy will replace this image before publication.",
+        nl: "Alleen als referentiebeeld. De eigen gefotografeerde kaart van de oprichter vervangt dit beeld vóór publicatie.",
+      },
+    },
     story: {
       en: [
         "I had only just started playing One Piece TCG and was looking for cards to build a deck. A vendor had given me a stack of bulk cards. At that point, my attention was mostly on playing.",
