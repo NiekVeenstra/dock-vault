@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/sections";
 export const metadata: Metadata = {
   title: "Collecting | The Lighthouse",
   description:
-    "Een rustige introductie tot bewust One Piece TCG verzamelen: doelen, budget, master sets, playsets, sealed en voortgang.",
+    "Een rustige introductie tot One Piece TCG verzamelen met ruimte voor betekenis, veranderende interesses, budget, sets, playsets en sealed.",
   alternates: { canonical: "/lighthouse/collecting" },
 };
 

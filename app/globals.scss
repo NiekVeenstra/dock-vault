@@ -133,6 +133,13 @@ h2 {
   transition: background 0.3s ease, transform 0.3s ease;
 }
 .primary-cta:hover { background: rgba(193, 143, 74, 0.1); transform: translateY(-2px); }
+.primary-cta:focus-visible,
+.text-link:focus-visible,
+.quiet-link:focus-visible {
+  outline: 2px solid var(--warm-brass);
+  outline-offset: 4px;
+}
+
 .primary-cta svg { width: 21px; }
 .text-link, .quiet-link {
   width: fit-content;

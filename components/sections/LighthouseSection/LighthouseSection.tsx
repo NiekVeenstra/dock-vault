@@ -19,7 +19,7 @@ const translations = {
     guides: [
       ["Preservation", "Protect cards, decks and sealed products with simple habits."],
       ["Grading", "Understand condition, preparation and when grading adds value."],
-      ["Collecting", "Build with a purpose, a finish line and room to enjoy it."],
+      ["Collecting", "Collect with intention, curiosity and room for your interests to change."],
     ],
     cta: "Explore Dock Vault",
     quote: "“Knowledge is the light that lets a collection find its way home.”",
@@ -39,7 +39,7 @@ const translations = {
     guides: [
       ["Behoud", "Bescherm kaarten, decks en sealed producten met eenvoudige gewoontes."],
       ["Grading", "Begrijp conditie, voorbereiding en wanneer grading iets toevoegt."],
-      ["Verzamelen", "Bouw met een doel, een eindpunt en ruimte om ervan te genieten."],
+      ["Verzamelen", "Verzamel met aandacht, nieuwsgierigheid en ruimte voor veranderende interesses."],
     ],
     cta: "Ontdek Dock Vault",
     quote: "“Kennis is het licht dat een verzameling de weg naar huis laat vinden.”",

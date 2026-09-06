@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 
 const navigation = {
@@ -39,14 +39,37 @@ const navigation = {
 
 export function HarborHeader() {
   const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const wasOpenRef = useRef(false);
   const { language, setLanguage } = useLanguage();
   const copy = navigation[language];
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+
+    if (open) {
+      closeButtonRef.current?.focus();
+    } else if (wasOpenRef.current) {
+      menuButtonRef.current?.focus();
+    }
+
+    wasOpenRef.current = open;
+
     return () => {
       document.body.style.overflow = "";
     };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
   }, [open]);
 
   return (
@@ -67,7 +90,7 @@ export function HarborHeader() {
         </a>
 
         <div className="harbor-header__controls">
-          <div className="language-toggle" aria-label="Language / Taal">
+          <div className="language-toggle" role="group" aria-label="Language / Taal">
             <button
               type="button"
               className={language === "en" ? "is-active" : ""}
@@ -91,6 +114,7 @@ export function HarborHeader() {
           </div>
 
           <button
+            ref={menuButtonRef}
             className="menu-button"
             type="button"
             aria-expanded={open}
@@ -114,19 +138,22 @@ export function HarborHeader() {
         id="main-menu"
         className={`menu-drawer${open ? " is-open" : ""}`}
         aria-hidden={!open}
+        aria-label={copy.eyebrow}
       >
         <button
+          ref={closeButtonRef}
           className="menu-drawer__close"
           type="button"
           onClick={() => setOpen(false)}
           aria-label={copy.close}
+          tabIndex={open ? 0 : -1}
         >
           ×
         </button>
         <p className="menu-drawer__eyebrow">{copy.eyebrow}</p>
         <nav>
           {copy.links.map(([label, href]) => (
-            <a key={href} href={href} onClick={() => setOpen(false)}>
+            <a key={href} href={href} tabIndex={open ? 0 : -1} onClick={() => setOpen(false)}>
               {label}
               <span>→</span>
             </a>

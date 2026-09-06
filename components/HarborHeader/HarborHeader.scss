@@ -155,6 +155,15 @@
     .menu-button { width: 44px; }
   }
 
+
+.menu-button:focus-visible,
+.language-toggle button:focus-visible,
+.menu-drawer__close:focus-visible,
+.menu-drawer nav a:focus-visible {
+  outline: 2px solid var(--warm-brass);
+  outline-offset: 3px;
+}
+
 /* Language switch */
 .harbor-header__controls {
   display: flex;
