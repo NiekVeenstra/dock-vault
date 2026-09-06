@@ -34,13 +34,13 @@ export type FounderCollectionRecord = {
  * Draft records can be reviewed locally or on a dedicated development preview.
  * Public production only receives records marked as published.
  *
- * To publish a record, add the founder's real photograph, verify the copy,
- * and only then change `status` to `published`.
+ * A published record may temporarily use a clearly labelled reference image.
+ * Replace it with the founder's own photograph when that image becomes available.
  */
 export const foundersCollectionRecords: FounderCollectionRecord[] = [
   {
     id: "luffy-st10-006-first-anniversary",
-    status: "draft",
+    status: "published",
     title: {
       en: "The card that started my collection.",
       nl: "De kaart waarmee ik begon te verzamelen.",
@@ -58,8 +58,8 @@ export const foundersCollectionRecords: FounderCollectionRecord[] = [
         nl: "Referentiebeeld van de Monkey.D.Luffy ST10-006-kaart uit de First Anniversary Set",
       },
       note: {
-        en: "Reference image only. The founder’s own photographed copy will replace this image before publication.",
-        nl: "Alleen als referentiebeeld. De eigen gefotografeerde kaart van de oprichter vervangt dit beeld vóór publicatie.",
+        en: "Reference image. Personal photographs of this card will be added later.",
+        nl: "Referentiebeeld. Eigen foto’s van deze kaart worden later toegevoegd.",
       },
     },
     story: {
@@ -91,6 +91,6 @@ export function getFounderCollectionRecords(options: { includeDrafts: boolean })
   if (options.includeDrafts) return foundersCollectionRecords;
 
   return foundersCollectionRecords.filter(
-    (record) => record.status === "published" && record.photo !== null,
+    (record) => record.status === "published",
   );
 }

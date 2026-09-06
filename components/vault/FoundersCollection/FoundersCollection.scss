@@ -110,6 +110,21 @@
   border-block: 1px solid rgba(169,120,56,.16);
 }
 
+.founders-records__growing {
+  max-width: 760px;
+  margin: clamp(84px, 10vw, 136px) 0 0 auto;
+  padding-top: 28px;
+  border-top: 1px solid rgba(169,120,56,.2);
+}
+
+.founders-records__growing > p:last-child {
+  max-width: 680px;
+  margin: 12px 0 0;
+  color: rgba(242,234,223,.62);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
 .founders-record {
   display: grid;
   grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
@@ -331,6 +346,10 @@
 }
 
 @media (max-width: 900px) {
+  .founders-records__growing {
+    margin-left: 0;
+  }
+
   .founders-collection-hero {
     min-height: 940px;
   }
