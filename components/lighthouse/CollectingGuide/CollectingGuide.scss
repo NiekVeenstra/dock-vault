@@ -78,6 +78,7 @@
   margin: 0 auto;
   padding: clamp(92px, 9vw, 142px) 0;
   border-bottom: 1px solid rgba(169, 120, 56, 0.18);
+  scroll-margin-top: 24px;
 }
 .collecting-guide__lead {
   display: grid;
@@ -126,6 +127,35 @@
   font-size: 18px;
   line-height: 1.62;
 }
+
+
+.collecting-first-goal {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: clamp(76px, 7vw, 108px);
+}
+.collecting-first-goal > div {
+  min-height: 180px;
+  padding: 26px 24px;
+  border: 1px solid rgba(169, 120, 56, 0.24);
+  background: rgba(193, 143, 74, 0.025);
+}
+.collecting-first-goal span {
+  color: var(--warm-brass);
+  font-family: Inter, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.collecting-first-goal p {
+  margin: 22px 0 0;
+  color: rgba(242, 234, 223, 0.82);
+  font-size: 20px;
+  line-height: 1.48;
+  font-style: italic;
+}
+.collecting-guide__lead--paths { margin-top: 0; }
 
 .collecting-path-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .collecting-path-card {
@@ -247,6 +277,7 @@ a.collecting-guide__nav-card:focus-visible { border-left-color: var(--warm-brass
     background: linear-gradient(180deg, rgba(3, 8, 13, 0.38) 0%, rgba(4, 11, 17, 0.38) 40%, rgba(4, 11, 17, 0.94) 82%, #06101a 100%), linear-gradient(90deg, rgba(3, 8, 13, 0.76), rgba(3, 8, 13, 0.16));
   }
   .collecting-guide__lead { grid-template-columns: 1fr; row-gap: 22px; }
+  .collecting-first-goal,
   .collecting-path-grid { grid-template-columns: 1fr; }
   .collecting-path-card { min-height: 0; }
   .collecting-path-card > span { margin-bottom: 26px; }
@@ -270,6 +301,8 @@ a.collecting-guide__nav-card:focus-visible { border-left-color: var(--warm-brass
   .collecting-guide__lead h2 { font-size: clamp(40px, 12vw, 54px); }
   .collecting-principle { grid-template-columns: 38px minmax(0, 1fr); gap: 14px; padding: 27px 0; }
   .collecting-principle p { font-size: 16px; }
+  .collecting-first-goal { margin-bottom: 64px; }
+  .collecting-first-goal > div { min-height: 0; padding: 24px 20px; }
   .collecting-path-card { padding: 28px 22px; }
   .collecting-roadmap__item { grid-template-columns: 35px minmax(0, 1fr); gap: 12px; align-items: start; padding: 25px 0; }
   .collecting-roadmap__status { grid-column: 2; width: fit-content; margin-top: 4px; }

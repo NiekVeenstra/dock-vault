@@ -46,6 +46,11 @@ const translations = {
       "The right level of protection depends on the card and on how you use your collection. A practical beginner setup can stay simple.",
     setup: [
       {
+        label: "Playable deck",
+        title: "Matching sleeves + a deck box",
+        text: "Sleeve the full deck consistently and keep it together in a deck box. For official events, always check the current event rules because sleeve requirements can differ.",
+      },
+      {
         label: "Collection cards",
         title: "Sleeve + quality binder or card box",
         text: "A good everyday solution for cards you want to keep protected while still being able to browse your collection.",
@@ -124,6 +129,11 @@ const translations = {
     setupCopy:
       "De juiste bescherming hangt af van de kaart en van hoe je je verzameling gebruikt. Een praktische beginnersopstelling kan eenvoudig blijven.",
     setup: [
+      {
+        label: "Speelbaar deck",
+        title: "Dezelfde sleeves + een deckbox",
+        text: "Sleeve het volledige deck op dezelfde manier en bewaar het samen in een deckbox. Controleer voor officiële events altijd de actuele eventregels, omdat eisen voor sleeves kunnen verschillen.",
+      },
       {
         label: "Verzamelkaarten",
         title: "Sleeve + kwalitatieve binder of kaartdoos",
@@ -218,7 +228,7 @@ export function PreservationGuide() {
           </div>
         </section>
 
-        <section className="preservation-guide__section preservation-guide__section--setup">
+        <section className="preservation-guide__section preservation-guide__section--setup" id="first-protection">
           <div className="preservation-guide__lead">
             <p className="eyebrow">{copy.setupEyebrow}</p>
             <h2>{copy.setupTitle}</h2>
