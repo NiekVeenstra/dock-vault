@@ -8,6 +8,7 @@ const copy = {
     motto: "The Harbor is yours.",
     explore: "Explore",
     lighthouse: "The Lighthouse",
+    market: "The Market Hall",
     logbook: "The Logbook",
     vault: "The Vault",
     contact: "Contact",
@@ -24,6 +25,7 @@ const copy = {
     motto: "De Haven is van jou.",
     explore: "Ontdek",
     lighthouse: "De Vuurtoren",
+    market: "De Markthal",
     logbook: "Het Logboek",
     vault: "De Kluis",
     contact: "Contact",
@@ -57,6 +59,7 @@ export function SiteFooter() {
           <div className="site-footer__column">
             <p className="site-footer__heading">{t.explore}</p>
             <a href="/#lighthouse">{t.lighthouse}</a>
+            <a href="/market-hall">{t.market}</a>
             <a href="/logbook">{t.logbook}</a>
             <a href="/vault">{t.vault}</a>
           </div>

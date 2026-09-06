@@ -22,6 +22,8 @@ const translations = {
     referenceLabel: "Reference image",
     archiveRecord: "Founder’s record",
     careTitle: "Care and preservation",
+    archiveGrowingEyebrow: "The archive continues",
+    archiveGrowing: "More pieces and personal stories will be added to the Founder’s Collection over time.",
   },
   nl: {
     back: "← Terug naar De Kluis",
@@ -38,6 +40,8 @@ const translations = {
     referenceLabel: "Referentiebeeld",
     archiveRecord: "Oprichtersrecord",
     careTitle: "Zorg en bescherming",
+    archiveGrowingEyebrow: "Het archief groeit verder",
+    archiveGrowing: "Meer stukken en persoonlijke verhalen worden later aan de Oprichterscollectie toegevoegd.",
   },
 } as const;
 
@@ -60,7 +64,7 @@ function FounderRecord({
           <figure className="founders-record__photo">
             <img src={record.photo.src} alt={record.photo.alt[language]} />
           </figure>
-        ) : draftPreview && record.referenceImage ? (
+        ) : record.referenceImage ? (
           <figure className="founders-record__photo founders-record__photo--reference">
             <img
               src={record.referenceImage.src}
@@ -154,6 +158,11 @@ export function FoundersCollection({
                 draftPreview={draftPreview}
               />
             ))}
+
+            <aside className="founders-records__growing" aria-label={copy.archiveGrowingEyebrow}>
+              <p className="eyebrow">{copy.archiveGrowingEyebrow}</p>
+              <p>{copy.archiveGrowing}</p>
+            </aside>
           </div>
         </section>
       ) : (

@@ -19,6 +19,7 @@ const translations = {
       ["Protection", "Accessories chosen to preserve what matters."],
     ],
     status: "Opening in a later tide",
+    visit: "Visit the Market Hall",
     cta: "Follow the build in the Logbook",
     whisper: "The hall is still taking shape. The standards are already in place.",
   },
@@ -37,6 +38,7 @@ const translations = {
       ["Bescherming", "Accessoires gekozen om te bewaren wat ertoe doet."],
     ],
     status: "Opent op een later moment",
+    visit: "Bezoek de Markthal",
     cta: "Volg de bouw in het Logboek",
     whisper: "De hal krijgt nog vorm. De standaarden staan al vast.",
   },
@@ -85,7 +87,10 @@ export function MarketHallSection() {
 
             <div className="market-hall-section__actions">
               <span className="status-seal">{copy.status}</span>
-              <a className="primary-cta" href="/logbook">
+              <a className="primary-cta" href="/market-hall">
+                <span>{copy.visit}</span>
+              </a>
+              <a className="quiet-link" href="/logbook">
                 <span>{copy.cta}</span>
               </a>
             </div>

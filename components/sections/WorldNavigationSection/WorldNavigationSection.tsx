@@ -21,7 +21,7 @@ const locations = [
   {
     number: "03",
     image: "/images/world-icons/market-hall.webp",
-    href: "#market",
+    href: "/market-hall",
     en: { title: "Market Hall", description: "For collectors, by collectors.", linkLabel: "Visit the Hall" },
     nl: { title: "Markthal", description: "Voor verzamelaars, door verzamelaars.", linkLabel: "Bezoek de Markthal" },
   },
