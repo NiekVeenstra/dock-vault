@@ -4,10 +4,7 @@ import { HarborDivider } from "@/components/HarborDivider";
 import { HarborHeader } from "@/components/HarborHeader";
 import { SiteFooter } from "@/components/sections";
 import { useLanguage } from "@/components/LanguageProvider";
-import {
-  FounderCollectionRecord,
-  foundersCollectionRecords,
-} from "@/content/vault/foundersCollection";
+import type { FounderCollectionRecord } from "@/content/vault/foundersCollection";
 
 const translations = {
   en: {
@@ -16,25 +13,16 @@ const translations = {
     title: "Founder’s Collection",
     lead: "A personal archive of the pieces that come to matter along the way.",
     intro:
-      "This room will hold the founder’s own collection stories: not as a display of status, but as a record of meaning, memory and care. The first complete record is still being prepared.",
-    statusLabel: "Archive status",
-    status: "First record in preparation",
-    statusCopy:
-      "No personal story or collection claim is published here until the real piece, photograph and context have been added.",
+      "This room preserves the founder’s own collection stories. The pieces are kept here for the meaning, memories and care connected to them.",
+    emptyEyebrow: "The first record",
+    emptyTitle: "The first story will have a place here soon.",
     returnVault: "Return to The Vault",
-    devEyebrow: "Development blueprint",
-    devTitle: "Structure for the first record",
-    devIntro:
-      "This framework is visible in local development only. It shows what can be added later without inventing any personal history.",
-    fields: {
-      photo: ["Real photograph", "A photo of the actual card, object or collection."],
-      meaning: ["Why it matters", "The personal meaning this piece has for the founder."],
-      origin: ["How it arrived", "How the piece entered the collection or the founder’s life."],
-      lesson: ["Moment or lesson", "A genuine moment, memory or lesson connected to it."],
-      preservation: ["Care and preservation", "How the piece is stored, handled and protected."],
-    },
-    missing: "To be supplied by the founder",
-    publishedEyebrow: "Archive record",
+    draftLabel: "Development concept",
+    draftPhoto: "Personal photograph to follow",
+    draftPhotoCopy:
+      "The reference image is not used as a photograph of the founder’s own copy.",
+    archiveRecord: "Founder’s record",
+    careTitle: "Care and preservation",
   },
   nl: {
     back: "← Terug naar De Kluis",
@@ -42,83 +30,88 @@ const translations = {
     title: "Oprichterscollectie",
     lead: "Een persoonlijk archief van de stukken die onderweg betekenis krijgen.",
     intro:
-      "Deze ruimte wordt het persoonlijke verzamelarchief van de oprichter: niet als etalage van status, maar als verslag van betekenis, herinnering en zorg. Het eerste volledige record wordt nog voorbereid.",
-    statusLabel: "Status van het archief",
-    status: "Eerste record in voorbereiding",
-    statusCopy:
-      "Er wordt hier geen persoonlijk verhaal of bezit als feit gepubliceerd totdat het echte stuk, de foto en de context zijn toegevoegd.",
+      "Deze ruimte bewaart de persoonlijke verzamelverhalen van de oprichter. De stukken krijgen hier een plek vanwege de betekenis, herinneringen en zorg die ermee verbonden zijn.",
+    emptyEyebrow: "Het eerste record",
+    emptyTitle: "Het eerste verhaal krijgt hier binnenkort een plek.",
     returnVault: "Terug naar De Kluis",
-    devEyebrow: "Development-concept",
-    devTitle: "Structuur voor het eerste record",
-    devIntro:
-      "Dit raamwerk is alleen zichtbaar in lokale development. Het laat zien wat later kan worden toegevoegd zonder persoonlijke geschiedenis te verzinnen.",
-    fields: {
-      photo: ["Echte foto", "Een foto van de daadwerkelijke kaart, het object of de collectie."],
-      meaning: ["Waarom het betekenis heeft", "De persoonlijke betekenis die dit stuk voor de oprichter heeft."],
-      origin: ["Hoe het erbij kwam", "Hoe het stuk in de collectie of in het leven van de oprichter terechtkwam."],
-      lesson: ["Moment of les", "Een echt moment, herinnering of geleerde les die ermee verbonden is."],
-      preservation: ["Zorg en bescherming", "Hoe het stuk wordt bewaard, behandeld en beschermd."],
-    },
-    missing: "Nog aan te leveren door de oprichter",
-    publishedEyebrow: "Archiefrecord",
+    draftLabel: "Development-concept",
+    draftPhoto: "Eigen foto volgt",
+    draftPhotoCopy:
+      "De referentieafbeelding wordt niet gebruikt alsof die het eigen exemplaar van de oprichter toont.",
+    archiveRecord: "Oprichtersrecord",
+    careTitle: "Zorg en bescherming",
   },
 } as const;
 
-function PublishedRecord({
+function FounderRecord({
   record,
   language,
+  draftPreview,
 }: {
   record: FounderCollectionRecord;
   language: "en" | "nl";
+  draftPreview: boolean;
 }) {
   const copy = translations[language];
-  const title = record.title?.[language];
-
-  if (
-    record.status !== "published" ||
-    !title ||
-    !record.photo ||
-    !record.meaning ||
-    !record.origin ||
-    !record.momentOrLesson ||
-    !record.preservation
-  ) {
-    return null;
-  }
-
-  const details = [
-    [copy.fields.meaning[0], record.meaning[language]],
-    [copy.fields.origin[0], record.origin[language]],
-    [copy.fields.lesson[0], record.momentOrLesson[language]],
-    [copy.fields.preservation[0], record.preservation[language]],
-  ];
+  const isDraft = record.status === "draft";
 
   return (
-    <article className="founders-record">
-      <div className="founders-record__photo">
-        <img src={record.photo.src} alt={record.photo.alt[language]} />
+    <article className={`founders-record${isDraft ? " founders-record--draft" : ""}`}>
+      <div className="founders-record__photo-column">
+        {record.photo ? (
+          <figure className="founders-record__photo">
+            <img src={record.photo.src} alt={record.photo.alt[language]} />
+          </figure>
+        ) : (
+          <div
+            className="founders-record__photo founders-record__photo--placeholder"
+            role="img"
+            aria-label={copy.draftPhoto}
+          >
+            <span aria-hidden="true">◇</span>
+            <strong>{copy.draftPhoto}</strong>
+            {draftPreview ? <p>{copy.draftPhotoCopy}</p> : null}
+          </div>
+        )}
       </div>
+
       <div className="founders-record__story">
-        <p className="eyebrow">{copy.publishedEyebrow}</p>
-        <h2>{title}</h2>
-        {details.map(([label, value]) => (
-          <section key={label}>
-            <h3>{label}</h3>
-            <p>{value}</p>
-          </section>
-        ))}
+        <div className="founders-record__heading">
+          <p className="eyebrow">
+            {isDraft && draftPreview ? copy.draftLabel : copy.archiveRecord}
+          </p>
+          <h2>{record.title[language]}</h2>
+          <p className="founders-record__cardline">
+            {record.card.name} <span aria-hidden="true">·</span> {record.card.code}{" "}
+            <span aria-hidden="true">·</span> {record.card.set}
+          </p>
+        </div>
+
+        <div className="founders-record__prose">
+          {record.story[language].map((paragraph, index) => (
+            <p key={`${record.id}-paragraph-${index}`}>{paragraph}</p>
+          ))}
+        </div>
+
+        <section className="founders-record__care" aria-labelledby={`${record.id}-care-title`}>
+          <p className="eyebrow">{copy.careTitle}</p>
+          <h3 id={`${record.id}-care-title`}>{copy.careTitle}</h3>
+          <p>{record.preservation[language]}</p>
+        </section>
       </div>
     </article>
   );
 }
 
-export function FoundersCollection() {
+export function FoundersCollection({
+  records,
+  draftPreview,
+}: {
+  records: FounderCollectionRecord[];
+  draftPreview: boolean;
+}) {
   const { language } = useLanguage();
   const copy = translations[language];
-  const publishedRecords = foundersCollectionRecords.filter(
-    (record) => record.status === "published",
-  );
-  const showDevelopmentBlueprint = process.env.NODE_ENV === "development";
 
   return (
     <main className="founders-collection-page">
@@ -142,20 +135,24 @@ export function FoundersCollection() {
         </div>
       </section>
 
-      {publishedRecords.length > 0 ? (
-        <section className="founders-records">
+      {records.length > 0 ? (
+        <section className="founders-records" aria-label={copy.title}>
           <div className="founders-records__inner">
-            {publishedRecords.map((record) => (
-              <PublishedRecord key={record.id} record={record} language={language} />
+            {records.map((record) => (
+              <FounderRecord
+                key={record.id}
+                record={record}
+                language={language}
+                draftPreview={draftPreview}
+              />
             ))}
           </div>
         </section>
       ) : (
         <section className="founders-empty-state" aria-labelledby="founders-status-title">
           <div className="founders-empty-state__inner">
-            <p className="eyebrow">{copy.statusLabel}</p>
-            <h2 id="founders-status-title">{copy.status}</h2>
-            <p>{copy.statusCopy}</p>
+            <p className="eyebrow">{copy.emptyEyebrow}</p>
+            <h2 id="founders-status-title">{copy.emptyTitle}</h2>
             <a className="primary-cta" href="/vault">
               <span>{copy.returnVault}</span>
               <b aria-hidden="true">←</b>
@@ -163,25 +160,6 @@ export function FoundersCollection() {
           </div>
         </section>
       )}
-
-      {showDevelopmentBlueprint ? (
-        <section className="founders-blueprint" aria-labelledby="founders-blueprint-title">
-          <div className="founders-blueprint__inner">
-            <p className="eyebrow">{copy.devEyebrow}</p>
-            <h2 id="founders-blueprint-title">{copy.devTitle}</h2>
-            <p className="founders-blueprint__intro">{copy.devIntro}</p>
-            <div className="founders-blueprint__grid">
-              {Object.values(copy.fields).map(([title, description]) => (
-                <article key={title}>
-                  <span>{title}</span>
-                  <p>{description}</p>
-                  <small>{copy.missing}</small>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
 
       <SiteFooter />
     </main>

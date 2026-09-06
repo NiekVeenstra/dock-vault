@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { FoundersCollection } from "@/components/vault/FoundersCollection";
+import { getFounderCollectionRecords } from "@/content/vault/foundersCollection";
+import { shouldShowFounderCollectionDrafts } from "@/content/vault/foundersCollectionPreview";
 
 export const metadata: Metadata = {
   title: "Founder’s Collection",
@@ -9,5 +11,8 @@ export const metadata: Metadata = {
 };
 
 export default function FoundersCollectionPage() {
-  return <FoundersCollection />;
+  const showDrafts = shouldShowFounderCollectionDrafts();
+  const records = getFounderCollectionRecords({ includeDrafts: showDrafts });
+
+  return <FoundersCollection records={records} draftPreview={showDrafts} />;
 }
