@@ -14,7 +14,7 @@ const navigation = {
     links: [
       ["The Lighthouse", "/#lighthouse"],
       ["Harbor", "/#harbor"],
-      ["The Market Hall", "/#market"],
+      ["The Market Hall", "/market-hall"],
       ["The Logbook", "/logbook"],
       ["Our Philosophy", "/#philosophy"],
       ["The Vault", "/vault"],
@@ -29,7 +29,7 @@ const navigation = {
     links: [
       ["De Vuurtoren", "/#lighthouse"],
       ["De Haven", "/#harbor"],
-      ["De Markthal", "/#market"],
+      ["De Markthal", "/market-hall"],
       ["Het Logboek", "/logbook"],
       ["Onze Filosofie", "/#philosophy"],
       ["De Kluis", "/vault"],

@@ -14,26 +14,31 @@ const items = [
   {
     labels: { en: "Lighthouse", nl: "Vuurtoren" },
     href: "#lighthouse",
+    sectionId: "lighthouse",
     Icon: LighthouseIcon,
   },
   {
     labels: { en: "Harbor", nl: "Haven" },
     href: "#harbor",
+    sectionId: "harbor",
     Icon: AnchorIcon,
   },
   {
     labels: { en: "Market Hall", nl: "Markthal" },
-    href: "#market",
+    href: "/market-hall",
+    sectionId: "market",
     Icon: MarketIcon,
   },
   {
     labels: { en: "Logbook", nl: "Logboek" },
     href: "#logbook",
+    sectionId: "logbook",
     Icon: LogbookIcon,
   },
   {
     labels: { en: "Vault", nl: "Kluis" },
     href: "#vault",
+    sectionId: "vault",
     Icon: DiamondIcon,
   },
 ];
@@ -47,10 +52,10 @@ export function HarborNav() {
 
     const updateActiveSection = () => {
       const marker = window.innerHeight * 0.45;
-      let currentSection = items[0].href.slice(1);
+      let currentSection = items[0].sectionId;
 
       for (const item of items) {
-        const id = item.href.slice(1);
+        const id = item.sectionId;
         const section = document.getElementById(id);
 
         if (!section) continue;
@@ -86,9 +91,8 @@ export function HarborNav() {
       className="harbor-nav"
       aria-label={language === "en" ? "Dock Vault sections" : "Dock Vault secties"}
     >
-      {items.map(({ labels, href, Icon }) => {
-        const id = href.slice(1);
-        const isActive = activeSection === id;
+      {items.map(({ labels, href, sectionId, Icon }) => {
+        const isActive = activeSection === sectionId;
 
         return (
           <a
@@ -96,7 +100,7 @@ export function HarborNav() {
             key={href}
             className={isActive ? "is-active" : ""}
             aria-current={isActive ? "location" : undefined}
-            onClick={() => setActiveSection(id)}
+            onClick={() => setActiveSection(sectionId)}
           >
             <Icon className="harbor-nav__icon" />
             <span>{labels[language]}</span>

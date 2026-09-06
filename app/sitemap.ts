@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/lighthouse/grading",
     "/lighthouse/collecting",
     "/lighthouse/begin-the-journey",
+    "/market-hall",
     "/logbook",
     "/logbook/the-lighthouse-has-been-lit",
     "/logbook/dock-vault-alpha-begins",
