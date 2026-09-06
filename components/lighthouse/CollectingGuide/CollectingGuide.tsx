@@ -40,6 +40,14 @@ const translations = {
         text: "A checklist, spreadsheet or collection app prevents duplicate purchases and makes progress visible. It also gives you a better overview of condition, variants and the gaps that still matter.",
       },
     ],
+    firstGoalEyebrow: "Your first collecting goal",
+    firstGoalTitle: "Write one sentence before you buy.",
+    firstGoalCopy: "Use a simple boundary: I collect ___ until ___. A finish line can be small and still give the collection real direction.",
+    firstGoalExamples: [
+      ["Character", "I collect one favourite version of each Straw Hat."],
+      ["Set", "I collect the numbered main set and stop before alternate arts."],
+      ["Small display", "I fill one 9-pocket binder page with cards of one character."],
+    ],
     pathsEyebrow: "Choose your route",
     pathsTitle: "Different collections can have completely different goals.",
     pathsCopy:
@@ -127,6 +135,14 @@ const translations = {
         title: "Houd bij wat je al bezit",
         text: "Een checklist, spreadsheet of collectie-app voorkomt dubbele aankopen en maakt je voortgang zichtbaar. Je ziet bovendien beter welke condities, varianten en ontbrekende kaarten nog echt belangrijk zijn.",
       },
+    ],
+    firstGoalEyebrow: "Je eerste verzameldoel",
+    firstGoalTitle: "Schrijf één zin op voordat je koopt.",
+    firstGoalCopy: "Gebruik een eenvoudige grens: ik verzamel ___ totdat ___. Een eindpunt mag klein zijn en toch echte richting aan je collectie geven.",
+    firstGoalExamples: [
+      ["Personage", "Ik verzamel één favoriete versie van iedere Straw Hat."],
+      ["Set", "Ik verzamel de genummerde hoofdset en stop vóór alternate arts."],
+      ["Kleine display", "Ik vul één 9-pocket binderpagina met kaarten van één personage."],
     ],
     pathsEyebrow: "Kies je route",
     pathsTitle: "Verschillende collecties kunnen totaal verschillende doelen hebben.",
@@ -236,8 +252,23 @@ export function CollectingGuide() {
           </div>
         </section>
 
-        <section className="collecting-guide__section">
+        <section className="collecting-guide__section" id="first-goal">
           <div className="collecting-guide__lead">
+            <p className="eyebrow">{copy.firstGoalEyebrow}</p>
+            <h2>{copy.firstGoalTitle}</h2>
+            <p>{copy.firstGoalCopy}</p>
+          </div>
+
+          <div className="collecting-first-goal">
+            {copy.firstGoalExamples.map(([label, text]) => (
+              <div key={label}>
+                <span>{label}</span>
+                <p>{text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="collecting-guide__lead collecting-guide__lead--paths">
             <p className="eyebrow">{copy.pathsEyebrow}</p>
             <h2>{copy.pathsTitle}</h2>
             <p>{copy.pathsCopy}</p>

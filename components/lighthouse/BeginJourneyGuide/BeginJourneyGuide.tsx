@@ -4,184 +4,310 @@ import { HarborDivider } from "@/components/HarborDivider";
 import { HarborHeader } from "@/components/HarborHeader";
 import { useLanguage } from "@/components/LanguageProvider";
 
+const routeHrefs = ["#play", "#collect", "#both"] as const;
+
 const translations = {
   en: {
     back: "← Return to the Lighthouse",
-    eyebrow: "The Lighthouse · Guide 04",
+    eyebrow: "The Lighthouse · Start here",
     title: "Begin the Journey",
-    subtitle: "A clear first route into the world of One Piece TCG.",
+    subtitle: "Choose one direction. The rest can wait.",
     intro:
-      "One Piece TCG can feel much larger than it really is when you first arrive. Leaders, colours, starter decks, booster sets, rarities, alternate arts and collector products all appear at once.",
+      "One Piece TCG can feel crowded when everything arrives at once: leaders, decks, boosters, rarities, alternate arts and sealed products.",
     intro2:
-      "You do not need to understand everything before you begin. Start by deciding what you want from the hobby, learn the few product types that matter to that goal and let the rest reveal itself over time.",
-    startEyebrow: "Find your bearings",
-    startTitle: "Four things to decide before you spend much.",
-    startCopy:
-      "The easiest first step is not buying more. It is creating a little direction. These four choices remove most of the noise around a new TCG.",
-    principles: [
-      {
-        number: "01",
-        title: "Decide whether you want to play, collect or do both",
-        text: "A player needs a usable deck and rules knowledge. A collector may care more about characters, artwork, sets or condition. If you want both, keep the two goals separate enough that one does not accidentally consume the budget of the other.",
-      },
-      {
-        number: "02",
-        title: "Learn the basic product types",
-        text: "Starter Decks are built as an accessible entry into playing. Booster products contain random cards from a set. Singles let you buy the exact card you want. Special products can sit somewhere between play, collecting and presentation.",
-      },
-      {
-        number: "03",
-        title: "Choose one small first focus",
-        text: "Pick one leader, favourite character, crew, set or collecting theme. A small focus gives you something concrete to learn and prevents the entire card pool from feeling like one enormous shopping list.",
-      },
-      {
-        number: "04",
-        title: "Protect and track from the beginning",
-        text: "Use sleeves for cards you handle, give valuable cards stronger protection and keep a simple record of what you own. Good habits are much easier to start with ten cards than with a thousand.",
-      },
-    ],
-    routesEyebrow: "Choose your first route",
-    routesTitle: "There is more than one good way to enter the hobby.",
+      "You do not need to understand all of it. Start with the part of the hobby you actually want to experience and take one useful step from there.",
+    routesEyebrow: "Choose your direction",
+    routesTitle: "Play, collect, or do both.",
     routesCopy:
-      "Your first purchases should match what you actually want to experience. These routes can overlap later; they do not need to overlap on day one.",
+      "There is no test and no wrong answer. Choose the route that feels closest to what brought you here today. You can change direction later.",
     routes: [
       {
         label: "I want to play",
-        title: "Start with a deck, not a pile of random cards",
-        text: "Choose a Starter Deck or a simple beginner-friendly deck built around a leader you like. Learn the turn structure, DON!! system and what your leader is trying to do before worrying about upgrades or the current competitive meta.",
+        title: "Learn the game with one complete deck.",
+        text: "Start with a coherent deck around a Leader you like. Learn how it feels to play before you spend time chasing upgrades.",
+        action: "Show me my first deck",
       },
       {
         label: "I want to collect",
-        title: "Start with meaning instead of rarity",
-        text: "Choose a character, crew or set that genuinely appeals to you. Buy a few singles you would be happy to own even if their market value never changed, then let the collection develop around them.",
+        title: "Give the collection one small purpose.",
+        text: "Choose a character, crew, set or other clear theme. A simple goal makes every next card easier to judge.",
+        action: "Help me choose a goal",
       },
       {
         label: "I want both",
-        title: "Give playing and collecting separate jobs",
-        text: "Use a playable deck for learning the game and a separate collecting goal for display pieces or favourite cards. A card does not need to be expensive to play well, and a beautiful collection does not need to be your deck.",
+        title: "Let playing and collecting support each other.",
+        text: "Keep one playable deck and one collecting goal. They may overlap, but neither needs to control the other.",
+        action: "Build a balanced start",
+      },
+    ],
+    principleTitle: "A Dock Vault principle",
+    principleText:
+      "Your first step does not need to be perfect. It only needs to teach you enough to make the next decision with more confidence.",
+    details: [
+      {
+        id: "play",
+        number: "01",
+        eyebrow: "Route 01 · Play",
+        title: "Your first deck should teach you the game.",
+        intro:
+          "For a new player, a complete deck is more useful than a stack of random booster pulls. Official deck products are designed as ready-to-play starting points, so you can learn how cards work together before deciding what to change.",
+        steps: [
+          {
+            title: "Choose a Leader you actually like",
+            text: "Pick a Leader, colour or play style that makes you want to sit down and play. A beginner does not need the strongest tournament deck to learn well.",
+          },
+          {
+            title: "Start from a legal, complete deck",
+            text: "Standard play uses exactly 1 Leader, a 50-card deck and 10 DON!! cards. Your main deck normally follows the colours on your Leader and can contain up to 4 cards with the same card number unless a card changes deck construction rules.",
+          },
+          {
+            title: "Play three games before upgrading",
+            text: "After a few casual games, note which cards you were happy to draw, which cards stayed in your hand and what your deck struggled to do. That gives your first upgrades a reason.",
+          },
+        ],
+        nextTitle: "Your useful next step",
+        nextText:
+          "Sleeve the complete deck, keep it together in a deck box and learn the turn structure before buying upgrades. If you later play official events, check the current event and banned or restricted card rules first.",
+        primaryLabel: "Protect your first deck",
+        primaryHref: "/lighthouse/preservation#first-protection",
+        secondaryLabel: "View official game rules",
+        secondaryHref: "https://en.onepiece-cardgame.com/rules/",
       },
       {
-        label: "I want to open packs",
-        title: "Treat opening as the experience, not the guarantee",
-        text: "Opening boosters can be enjoyable, but random product is rarely the most controlled route to one exact card. Open because you enjoy the discovery; use singles when you need certainty.",
+        id: "collect",
+        number: "02",
+        eyebrow: "Route 02 · Collect",
+        title: "A first collection needs a finish line, even a small one.",
+        intro:
+          "Collecting becomes calmer when you know why a card belongs. Your first goal can be tiny. It only needs to be clear enough to help you say yes to some cards and no to others.",
+        steps: [
+          {
+            title: "Choose one subject",
+            text: "Start with a favourite character, crew, set, artist, rarity or another theme that means something to you. Avoid starting with several large goals at once.",
+          },
+          {
+            title: "Define what complete means",
+            text: "Write the boundary down. For example: one favourite version of each Straw Hat, the numbered main set without alternate arts, or one binder page built around a single character.",
+          },
+          {
+            title: "Make the first purchase deliberate",
+            text: "Begin with a few singles or one product that clearly belongs to the goal. You do not need to open sealed product just because it exists. Opening is an experience; singles give certainty.",
+          },
+        ],
+        nextTitle: "Your useful next step",
+        nextText:
+          "Write your collecting goal in one sentence, choose a simple budget and decide where those cards will live before the collection grows.",
+        primaryLabel: "Build your first collecting goal",
+        primaryHref: "/lighthouse/collecting#first-goal",
+        secondaryLabel: "Set up basic protection",
+        secondaryHref: "/lighthouse/preservation#first-protection",
+      },
+      {
+        id: "both",
+        number: "03",
+        eyebrow: "Route 03 · Both",
+        title: "One hobby can hold two different purposes.",
+        intro:
+          "Playing and collecting work well together when each has its own job. Your deck is there to be used. Your collection is there to preserve what you have chosen to keep.",
+        steps: [
+          {
+            title: "Choose one deck and one collecting goal",
+            text: "Keep the start small: one deck for learning the game and one clear theme for collecting. You can expand either route after you know what you enjoy most.",
+          },
+          {
+            title: "Give each route its own budget",
+            text: "Set aside an amount for play upgrades and a separate amount for collection pieces. This keeps one exciting purchase from quietly consuming the other goal.",
+          },
+          {
+            title: "Separate cards by purpose",
+            text: "Cards used for play should be easy to access and replace when needed. Display or archive pieces can receive stronger protection and less handling. A card can move between those roles later.",
+          },
+        ],
+        nextTitle: "Your useful next step",
+        nextText:
+          "Build the playable part first, write down one collecting goal and give both a simple storage place. Then let experience decide which side deserves more attention.",
+        primaryLabel: "Choose a collecting goal",
+        primaryHref: "/lighthouse/collecting#first-goal",
+        secondaryLabel: "Protect both routes",
+        secondaryHref: "/lighthouse/preservation#first-protection",
       },
     ],
-    noteTitle: "A Dock Vault principle",
-    noteText:
-      "You do not need the perfect first purchase. You need a first step that teaches you what you actually enjoy.",
-    roadmapEyebrow: "The route continues",
-    roadmapTitle: "What a new collector or player can learn next.",
-    roadmapCopy:
-      "This page is only the map at the harbour entrance. These chapters will gradually turn the first weeks of One Piece TCG into a practical, understandable route.",
-    roadmap: [
-      ["Understanding a card", "Leaders, Characters, Events, Stages, costs, power, counters, effects and the information printed on a card."],
-      ["Colours & leaders", "What the colours broadly represent and why the leader you choose shapes the deck you can build."],
-      ["Starter Decks & boosters", "What each product is designed for and when buying one makes sense for a beginner."],
-      ["Rarities & alternate arts", "How standard rarities, special artwork and collector versions fit into a set without turning every rarity into a must-have."],
-      ["Your first playable deck", "How to move from a Starter Deck toward a coherent deck without replacing everything at once."],
-      ["Buying singles", "Comparing listings, checking condition and understanding why the exact card is often the simplest purchase."],
-      ["Set codes, promos & reprints", "How card numbers and release codes help you recognise where a card came from and whether another version exists."],
-      ["Your first storage setup", "A simple sleeve, binder and stronger-holder system that can grow with the collection."],
-      ["Learning through play", "Using casual games, local events and deck testing to discover what you enjoy before making larger purchases."],
+    continueEyebrow: "Continue in the Lighthouse",
+    continueTitle: "Only read what helps your next decision.",
+    continueCopy:
+      "You do not need to move through every guide in order. Use the Lighthouse as a reference and return when a new question appears.",
+    guideLinks: [
+      {
+        label: "Preservation",
+        text: "Sleeves, storage and a practical first protection setup.",
+        href: "/lighthouse/preservation#first-protection",
+      },
+      {
+        label: "Collecting",
+        text: "Turn a broad interest into a collection with a clear purpose.",
+        href: "/lighthouse/collecting#first-goal",
+      },
+      {
+        label: "Grading",
+        text: "Understand condition and decide when grading is actually useful.",
+        href: "/lighthouse/grading",
+      },
     ],
-    coming: "Coming chapter",
     closing:
-      "The hobby becomes easier the moment you stop trying to understand all of it at once. Choose one light, follow it, and let the map grow around you.",
-    previousLabel: "Previous Lighthouse guide",
-    previousTitle: "Collecting",
-    previousStatus: "Open guide",
-    nextLabel: "Continue in the Lighthouse",
-    nextTitle: "Preservation",
-    nextStatus: "Open guide",
+      "Choose one light. Follow it until the next decision becomes easier.",
+    homeLabel: "Return to Dock Vault",
+    homeStatus: "Back to the Lighthouse",
   },
   nl: {
     back: "← Terug naar de Vuurtoren",
-    eyebrow: "De Vuurtoren · Gids 04",
+    eyebrow: "De Vuurtoren · Begin hier",
     title: "Begin de Reis",
-    subtitle: "Een duidelijke eerste route door de wereld van One Piece TCG.",
+    subtitle: "Kies één richting. De rest mag wachten.",
     intro:
-      "One Piece TCG kan in het begin veel groter lijken dan het werkelijk is. Leaders, kleuren, Starter Decks, booster sets, rarities, alternate arts en collectorproducten komen allemaal tegelijk op je af.",
+      "One Piece TCG kan druk aanvoelen wanneer alles tegelijk op je afkomt: leaders, decks, boosters, rarities, alternate arts en sealed producten.",
     intro2:
-      "Je hoeft niet alles te begrijpen voordat je begint. Bepaal eerst wat je uit de hobby wilt halen, leer alleen de producttypes die daarbij horen en laat de rest zich stap voor stap ontvouwen.",
-    startEyebrow: "Vind je richting",
-    startTitle: "Vier dingen om te bepalen voordat je veel uitgeeft.",
-    startCopy:
-      "De makkelijkste eerste stap is niet méér kopen, maar een beetje richting aanbrengen. Met deze vier keuzes verdwijnt het grootste deel van de ruis rond een nieuwe TCG.",
-    principles: [
-      {
-        number: "01",
-        title: "Bepaal of je wilt spelen, verzamelen of allebei",
-        text: "Een speler heeft een bruikbaar deck en kennis van de regels nodig. Een verzamelaar let misschien meer op personages, artwork, sets of conditie. Wil je beide, houd de doelen dan voldoende apart zodat het ene doel niet ongemerkt het budget van het andere opslokt.",
-      },
-      {
-        number: "02",
-        title: "Leer de belangrijkste producttypes kennen",
-        text: "Starter Decks zijn bedoeld als toegankelijke ingang tot het spel. Boosterproducten bevatten willekeurige kaarten uit een set. Met singles koop je precies de kaart die je zoekt. Speciale producten kunnen ergens tussen spelen, verzamelen en presentatie in zitten.",
-      },
-      {
-        number: "03",
-        title: "Kies één kleine eerste focus",
-        text: "Kies één leader, favoriet personage, crew, set of verzamelthema. Een kleine focus geeft je iets concreets om te leren en voorkomt dat de volledige kaartpool aanvoelt als één enorme boodschappenlijst.",
-      },
-      {
-        number: "04",
-        title: "Bescherm en registreer vanaf het begin",
-        text: "Gebruik sleeves voor kaarten die je hanteert, geef waardevolle kaarten stevigere bescherming en houd simpel bij wat je bezit. Goede gewoontes beginnen veel makkelijker bij tien kaarten dan bij duizend.",
-      },
-    ],
-    routesEyebrow: "Kies je eerste route",
-    routesTitle: "Er is meer dan één goede manier om de hobby binnen te stappen.",
+      "Je hoeft niet alles te begrijpen. Begin bij het deel van de hobby dat je echt wilt beleven en zet van daaruit één bruikbare stap.",
+    routesEyebrow: "Kies je richting",
+    routesTitle: "Spelen, verzamelen of allebei.",
     routesCopy:
-      "Je eerste aankopen moeten passen bij wat je daadwerkelijk wilt beleven. Deze routes mogen later door elkaar lopen; dat hoeft op dag één nog niet.",
+      "Er is geen test en geen fout antwoord. Kies de route die het beste past bij waarom je vandaag hier bent. Later mag je altijd van richting veranderen.",
     routes: [
       {
         label: "Ik wil spelen",
-        title: "Begin met een deck, niet met een stapel willekeurige kaarten",
-        text: "Kies een Starter Deck of een eenvoudig beginnersdeck rond een leader die je leuk vindt. Leer eerst de beurtstructuur, het DON!!-systeem en wat je leader probeert te doen voordat je je druk maakt om upgrades of de actuele competitieve meta.",
+        title: "Leer het spel met één compleet deck.",
+        text: "Begin met een samenhangend deck rond een Leader die je leuk vindt. Ontdek eerst hoe het speelt voordat je upgrades gaat najagen.",
+        action: "Laat mijn eerste deck zien",
       },
       {
         label: "Ik wil verzamelen",
-        title: "Begin met betekenis in plaats van rarity",
-        text: "Kies een personage, crew of set die je echt aanspreekt. Koop een paar singles die je ook graag zou bezitten als hun marktwaarde nooit veranderde en laat de collectie daar rustig omheen groeien.",
+        title: "Geef je collectie één klein doel.",
+        text: "Kies een personage, crew, set of ander helder thema. Met een eenvoudig doel wordt iedere volgende kaart makkelijker te beoordelen.",
+        action: "Help mij een doel kiezen",
       },
       {
         label: "Ik wil allebei",
-        title: "Geef spelen en verzamelen ieder een eigen functie",
-        text: "Gebruik een speelbaar deck om het spel te leren en daarnaast een apart verzameldoel voor displaystukken of favoriete kaarten. Een kaart hoeft niet duur te zijn om goed te spelen en een mooie collectie hoeft niet je deck te zijn.",
+        title: "Laat spelen en verzamelen elkaar aanvullen.",
+        text: "Houd één speelbaar deck en één verzameldoel aan. Ze mogen overlappen, maar het ene hoeft het andere niet te bepalen.",
+        action: "Bouw een gebalanceerde start",
+      },
+    ],
+    principleTitle: "Een Dock Vault-principe",
+    principleText:
+      "Je eerste stap hoeft niet perfect te zijn. Hij hoeft je alleen genoeg te leren om de volgende keuze met meer vertrouwen te maken.",
+    details: [
+      {
+        id: "play",
+        number: "01",
+        eyebrow: "Route 01 · Spelen",
+        title: "Je eerste deck moet je het spel leren.",
+        intro:
+          "Voor een nieuwe speler is een compleet deck nuttiger dan een stapel willekeurige kaarten uit boosters. Officiële deckproducten zijn bedoeld als direct speelbare start, zodat je eerst leert hoe kaarten samenwerken voordat je bepaalt wat je wilt veranderen.",
+        steps: [
+          {
+            title: "Kies een Leader die je echt leuk vindt",
+            text: "Kies een Leader, kleur of speelstijl waardoor je zin krijgt om te spelen. Als beginner heb je niet het sterkste toernooideck nodig om het spel goed te leren.",
+          },
+          {
+            title: "Begin met een legaal, compleet deck",
+            text: "Standaard speel je met precies 1 Leader, een deck van 50 kaarten en 10 DON!!-kaarten. Je hoofddeck volgt normaal de kleuren van je Leader en bevat maximaal 4 kaarten met hetzelfde kaartnummer, tenzij een kaart de deckbouwregels verandert.",
+          },
+          {
+            title: "Speel drie potjes voordat je gaat upgraden",
+            text: "Noteer na een paar casual potjes welke kaarten je graag trok, welke kaarten in je hand bleven en waar je deck moeite mee had. Dan heeft je eerste upgrade een duidelijke reden.",
+          },
+        ],
+        nextTitle: "Je bruikbare vervolgstap",
+        nextText:
+          "Sleeve het volledige deck, bewaar het samen in een deckbox en leer de beurtstructuur voordat je upgrades koopt. Wil je later officiële events spelen, controleer dan eerst de actuele eventregels en de ban- en restrictielijst.",
+        primaryLabel: "Bescherm je eerste deck",
+        primaryHref: "/lighthouse/preservation#first-protection",
+        secondaryLabel: "Bekijk de officiële spelregels",
+        secondaryHref: "https://en.onepiece-cardgame.com/rules/",
       },
       {
-        label: "Ik wil packs openen",
-        title: "Zie openen als ervaring, niet als garantie",
-        text: "Boosters openen kan erg leuk zijn, maar willekeurige producten zijn zelden de meest gecontroleerde route naar één specifieke kaart. Open omdat je de ontdekking leuk vindt; gebruik singles wanneer je zekerheid wilt.",
+        id: "collect",
+        number: "02",
+        eyebrow: "Route 02 · Verzamelen",
+        title: "Een eerste collectie heeft een eindpunt nodig, al is het klein.",
+        intro:
+          "Verzamelen wordt rustiger wanneer je weet waarom een kaart erbij hoort. Je eerste doel mag klein zijn. Het hoeft alleen duidelijk genoeg te zijn om tegen sommige kaarten ja en tegen andere nee te zeggen.",
+        steps: [
+          {
+            title: "Kies één onderwerp",
+            text: "Begin met een favoriet personage, crew, set, artiest, rarity of ander thema dat voor jou iets betekent. Start liever niet tegelijk met meerdere grote doelen.",
+          },
+          {
+            title: "Bepaal wat compleet betekent",
+            text: "Schrijf de grens op. Bijvoorbeeld: één favoriete versie van iedere Straw Hat, de genummerde hoofdset zonder alternate arts, of één binderpagina rond één personage.",
+          },
+          {
+            title: "Maak je eerste aankoop bewust",
+            text: "Begin met een paar singles of één product dat duidelijk bij je doel hoort. Je hoeft sealed producten niet te openen alleen omdat ze bestaan. Openen is een ervaring; singles geven zekerheid.",
+          },
+        ],
+        nextTitle: "Je bruikbare vervolgstap",
+        nextText:
+          "Schrijf je verzameldoel in één zin op, kies een eenvoudig budget en bepaal waar de kaarten worden bewaard voordat de collectie groeit.",
+        primaryLabel: "Bouw je eerste verzameldoel",
+        primaryHref: "/lighthouse/collecting#first-goal",
+        secondaryLabel: "Regel basisbescherming",
+        secondaryHref: "/lighthouse/preservation#first-protection",
+      },
+      {
+        id: "both",
+        number: "03",
+        eyebrow: "Route 03 · Allebei",
+        title: "Eén hobby kan twee verschillende doelen hebben.",
+        intro:
+          "Spelen en verzamelen werken goed samen wanneer ze ieder een eigen functie hebben. Je deck is er om te gebruiken. Je collectie is er om te bewaren wat je bewust hebt gekozen.",
+        steps: [
+          {
+            title: "Kies één deck en één verzameldoel",
+            text: "Houd de start klein: één deck om het spel te leren en één helder thema om te verzamelen. Je kunt beide routes uitbreiden zodra je weet wat je het leukst vindt.",
+          },
+          {
+            title: "Geef iedere route een eigen budget",
+            text: "Reserveer een bedrag voor upgrades aan je speelgedeelte en een apart bedrag voor verzamelstukken. Zo slokt één aantrekkelijke aankoop niet ongemerkt het andere doel op.",
+          },
+          {
+            title: "Scheid kaarten op functie",
+            text: "Speelkaarten moeten makkelijk bereikbaar en vervangbaar zijn. Display- of archiefstukken kunnen steviger worden beschermd en minder vaak worden aangeraakt. Een kaart kan later van functie veranderen.",
+          },
+        ],
+        nextTitle: "Je bruikbare vervolgstap",
+        nextText:
+          "Bouw eerst het speelbare deel, schrijf één verzameldoel op en geef beide een eenvoudige opslagplek. Laat daarna je ervaring bepalen welke kant meer aandacht verdient.",
+        primaryLabel: "Kies een verzameldoel",
+        primaryHref: "/lighthouse/collecting#first-goal",
+        secondaryLabel: "Bescherm beide routes",
+        secondaryHref: "/lighthouse/preservation#first-protection",
       },
     ],
-    noteTitle: "Een Dock Vault-principe",
-    noteText:
-      "Je hebt geen perfecte eerste aankoop nodig. Je hebt een eerste stap nodig die je leert wat je werkelijk leuk vindt.",
-    roadmapEyebrow: "De route gaat verder",
-    roadmapTitle: "Wat een nieuwe verzamelaar of speler hierna kan leren.",
-    roadmapCopy:
-      "Deze pagina is alleen de kaart bij de ingang van de haven. Deze hoofdstukken maken de eerste weken van One Piece TCG stap voor stap praktisch en begrijpelijk.",
-    roadmap: [
-      ["Een kaart begrijpen", "Leaders, Characters, Events, Stages, costs, power, counters, effecten en de informatie die op een kaart staat."],
-      ["Kleuren & leaders", "Wat de kleuren in grote lijnen betekenen en waarom jouw leader bepaalt welk deck je kunt bouwen."],
-      ["Starter Decks & boosters", "Waar ieder product voor bedoeld is en wanneer het voor een beginner logisch is om het te kopen."],
-      ["Rarities & alternate arts", "Hoe standaard rarities, speciaal artwork en collectorversies binnen een set passen zonder dat iedere rarity een must-have wordt."],
-      ["Je eerste speelbare deck", "Hoe je vanuit een Starter Deck naar een samenhangend deck groeit zonder meteen alles te vervangen."],
-      ["Singles kopen", "Listings vergelijken, conditie controleren en begrijpen waarom precies de juiste kaart vaak de eenvoudigste aankoop is."],
-      ["Setcodes, promo's & reprints", "Hoe kaartnummers en releasecodes je helpen herkennen waar een kaart vandaan komt en of er andere versies bestaan."],
-      ["Je eerste opslagopstelling", "Een eenvoudig systeem met sleeves, binder en stevigere houders dat met je verzameling kan meegroeien."],
-      ["Leren door te spelen", "Casual games, lokale events en decktesting gebruiken om te ontdekken wat je leuk vindt vóór grotere aankopen."],
+    continueEyebrow: "Ga verder in de Vuurtoren",
+    continueTitle: "Lees alleen wat je volgende keuze helpt.",
+    continueCopy:
+      "Je hoeft de gidsen niet op volgorde te lezen. Gebruik de Vuurtoren als naslagwerk en kom terug wanneer er een nieuwe vraag ontstaat.",
+    guideLinks: [
+      {
+        label: "Behoud",
+        text: "Sleeves, opslag en een praktische eerste beschermingsopstelling.",
+        href: "/lighthouse/preservation#first-protection",
+      },
+      {
+        label: "Verzamelen",
+        text: "Maak van een brede interesse een collectie met een helder doel.",
+        href: "/lighthouse/collecting#first-goal",
+      },
+      {
+        label: "Grading",
+        text: "Begrijp conditie en bepaal wanneer grading werkelijk iets toevoegt.",
+        href: "/lighthouse/grading",
+      },
     ],
-    coming: "Volgt later",
     closing:
-      "De hobby wordt makkelijker zodra je stopt alles tegelijk te willen begrijpen. Kies één licht, volg het en laat de kaart onderweg groter worden.",
-    previousLabel: "Vorige Lighthouse-gids",
-    previousTitle: "Verzamelen",
-    previousStatus: "Bekijk gids",
-    nextLabel: "Ga verder in de Vuurtoren",
-    nextTitle: "Behoud",
-    nextStatus: "Bekijk gids",
+      "Kies één licht. Volg het totdat de volgende beslissing makkelijker wordt.",
+    homeLabel: "Terug naar Dock Vault",
+    homeStatus: "Terug naar de Vuurtoren",
   },
 } as const;
 
@@ -196,7 +322,7 @@ export function BeginJourneyGuide() {
         <HarborDivider />
 
         <div className="journey-hero__image" aria-hidden="true">
-          <img src="/images/lighthouse-interior.webp" alt="" loading="lazy" decoding="async" />
+          <img src="/images/lighthouse-interior.webp" alt="" loading="eager" decoding="async" />
         </div>
         <div className="journey-hero__veil" aria-hidden="true" />
 
@@ -218,27 +344,7 @@ export function BeginJourneyGuide() {
       </section>
 
       <article className="journey-guide">
-        <section className="journey-guide__section">
-          <div className="journey-guide__lead">
-            <p className="eyebrow">{copy.startEyebrow}</p>
-            <h2>{copy.startTitle}</h2>
-            <p>{copy.startCopy}</p>
-          </div>
-
-          <div className="journey-principles">
-            {copy.principles.map((principle) => (
-              <div className="journey-principle" key={principle.number}>
-                <span>{principle.number}</span>
-                <div>
-                  <h3>{principle.title}</h3>
-                  <p>{principle.text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="journey-guide__section">
+        <section className="journey-guide__section journey-guide__section--routes" id="choose-route">
           <div className="journey-guide__lead">
             <p className="eyebrow">{copy.routesEyebrow}</p>
             <h2>{copy.routesTitle}</h2>
@@ -246,40 +352,82 @@ export function BeginJourneyGuide() {
           </div>
 
           <div className="journey-route-grid">
-            {copy.routes.map((item) => (
-              <div className="journey-route-card" key={item.label}>
+            {copy.routes.map((item, index) => (
+              <a className="journey-route-card" href={routeHrefs[index]} key={item.label}>
                 <span>{item.label}</span>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
-              </div>
+                <small>{item.action} →</small>
+              </a>
             ))}
           </div>
 
           <aside className="journey-note">
-            <p>{copy.noteTitle}</p>
-            <blockquote>{copy.noteText}</blockquote>
+            <p>{copy.principleTitle}</p>
+            <blockquote>{copy.principleText}</blockquote>
           </aside>
         </section>
 
-        <section className="journey-guide__section">
+        {copy.details.map((detail) => (
+          <section className="journey-guide__section journey-detail" id={detail.id} key={detail.id}>
+            <div className="journey-detail__heading">
+              <span>{detail.number}</span>
+              <div>
+                <p className="eyebrow">{detail.eyebrow}</p>
+                <h2>{detail.title}</h2>
+                <p>{detail.intro}</p>
+              </div>
+            </div>
+
+            <div className="journey-detail__steps">
+              {detail.steps.map((step, index) => (
+                <div className="journey-detail__step" key={step.title}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3>{step.title}</h3>
+                    <p>{step.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="journey-detail__next">
+              <div>
+                <p>{detail.nextTitle}</p>
+                <h3>{detail.nextText}</h3>
+              </div>
+              <div className="journey-detail__actions">
+                <a className="primary-cta" href={detail.primaryHref}>
+                  <span>{detail.primaryLabel}</span>
+                </a>
+                <a
+                  className="text-link"
+                  href={detail.secondaryHref}
+                  {...(detail.secondaryHref.startsWith("http")
+                    ? { target: "_blank", rel: "noreferrer" }
+                    : {})}
+                >
+                  {detail.secondaryLabel} <span>→</span>
+                </a>
+              </div>
+            </div>
+          </section>
+        ))}
+
+        <section className="journey-guide__section journey-guide__section--continue">
           <div className="journey-guide__lead">
-            <p className="eyebrow">{copy.roadmapEyebrow}</p>
-            <h2>{copy.roadmapTitle}</h2>
-            <p>{copy.roadmapCopy}</p>
+            <p className="eyebrow">{copy.continueEyebrow}</p>
+            <h2>{copy.continueTitle}</h2>
+            <p>{copy.continueCopy}</p>
           </div>
 
-          <div className="journey-roadmap">
-            {copy.roadmap.map(([title, text], index) => (
-              <div className="journey-roadmap__item" key={title}>
-                <span className="journey-roadmap__number">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </div>
-                <span className="journey-roadmap__status">{copy.coming}</span>
-              </div>
+          <div className="journey-guide-links">
+            {copy.guideLinks.map((guide) => (
+              <a href={guide.href} key={guide.href}>
+                <strong>{guide.label}</strong>
+                <p>{guide.text}</p>
+                <span>→</span>
+              </a>
             ))}
           </div>
         </section>
@@ -287,15 +435,10 @@ export function BeginJourneyGuide() {
         <section className="journey-guide__closing">
           <blockquote>{copy.closing}</blockquote>
           <div className="journey-guide__navigation">
-            <a className="journey-guide__nav-card" href="/lighthouse/collecting">
-              <span>{copy.previousLabel}</span>
-              <strong>{copy.previousTitle}</strong>
-              <small>{copy.previousStatus} →</small>
-            </a>
-            <a className="journey-guide__nav-card" href="/lighthouse/preservation">
-              <span>{copy.nextLabel}</span>
-              <strong>{copy.nextTitle}</strong>
-              <small>{copy.nextStatus} →</small>
+            <a className="journey-guide__nav-card" href="/#lighthouse">
+              <span>{copy.homeLabel}</span>
+              <strong>{language === "nl" ? "De Vuurtoren" : "The Lighthouse"}</strong>
+              <small>{copy.homeStatus} →</small>
             </a>
           </div>
         </section>

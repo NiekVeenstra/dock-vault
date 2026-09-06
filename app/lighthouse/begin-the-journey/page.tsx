@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/sections";
 export const metadata: Metadata = {
   title: "Begin the Journey | The Lighthouse",
   description:
-    "Een eerste route door One Piece TCG: spelen, verzamelen of beide, producten begrijpen en bewust je eerste aankopen doen.",
+    "Begin rustig met One Piece TCG. Kies spelen, verzamelen of beide en krijg een concrete eerste stap voor je deck, verzameldoel en kaartbescherming.",
   alternates: { canonical: "/lighthouse/begin-the-journey" },
 };
 

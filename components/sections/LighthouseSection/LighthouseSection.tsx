@@ -10,14 +10,16 @@ const translations = {
     kicker: "Before the next decision",
     headingFirst: "Guidance before",
     headingSecond: "commerce.",
-    copy1: "A collection should never be built in the dark. The Lighthouse exists to make knowledge visible before a purchase is made.",
-    copy2: "Preservation notes, grading guidance and collecting stories are gathered here so every decision can be made with patience and confidence.",
+    copy1: "The Lighthouse gathers practical guidance for the moments when you want to play, collect, protect or understand a card before making the next decision.",
+    startEyebrow: "New here?",
+    startTitle: "Start with one simple choice.",
+    startCopy: "Choose whether you want to play, collect or do both. From there, the Lighthouse gives you a calm first step and a clear place to continue.",
+    startCta: "Begin the journey",
     aria: "Lighthouse knowledge areas",
     guides: [
-      ["Preservation", "Protect cards, sealed products and the stories they carry."],
-      ["Grading", "Understand condition, preparation and expectations."],
-      ["Collecting", "Build with intention rather than noise or haste."],
-      ["Begin the journey", "A calm first route through the world of One Piece TCG."],
+      ["Preservation", "Protect cards, decks and sealed products with simple habits."],
+      ["Grading", "Understand condition, preparation and when grading adds value."],
+      ["Collecting", "Build with a purpose, a finish line and room to enjoy it."],
     ],
     cta: "Explore Dock Vault",
     quote: "“Knowledge is the light that lets a collection find its way home.”",
@@ -28,21 +30,23 @@ const translations = {
     kicker: "Voor de volgende beslissing",
     headingFirst: "Begeleiding vóór",
     headingSecond: "handel.",
-    copy1: "Een verzameling hoort nooit in het donker te worden opgebouwd. De Vuurtoren maakt kennis zichtbaar voordat er een aankoop wordt gedaan.",
-    copy2: "Advies over behoud, grading en verhalen over verzamelen komen hier samen, zodat iedere keuze met geduld en vertrouwen kan worden gemaakt.",
+    copy1: "De Vuurtoren verzamelt praktische begeleiding voor de momenten waarop je wilt spelen, verzamelen, beschermen of een kaart beter wilt begrijpen voordat je de volgende keuze maakt.",
+    startEyebrow: "Nieuw hier?",
+    startTitle: "Begin met één eenvoudige keuze.",
+    startCopy: "Kies of je wilt spelen, verzamelen of allebei. Vanaf daar geeft de Vuurtoren je een rustige eerste stap en een duidelijke plek om verder te gaan.",
+    startCta: "Begin de reis",
     aria: "Kennisgebieden van de Vuurtoren",
     guides: [
-      ["Behoud", "Bescherm kaarten, sealed producten en de verhalen die ze dragen."],
-      ["Grading", "Begrijp conditie, voorbereiding en verwachtingen."],
-      ["Verzamelen", "Bouw doelbewust, zonder ruis of haast."],
-      ["Begin de reis", "Een rustige eerste route door de wereld van One Piece TCG."],
+      ["Behoud", "Bescherm kaarten, decks en sealed producten met eenvoudige gewoontes."],
+      ["Grading", "Begrijp conditie, voorbereiding en wanneer grading iets toevoegt."],
+      ["Verzamelen", "Bouw met een doel, een eindpunt en ruimte om ervan te genieten."],
     ],
     cta: "Ontdek Dock Vault",
     quote: "“Kennis is het licht dat een verzameling de weg naar huis laat vinden.”",
   },
 };
 
-const guideHrefs = ["/lighthouse/preservation", "/lighthouse/grading", "/lighthouse/collecting", "/lighthouse/begin-the-journey"];
+const guideHrefs = ["/lighthouse/preservation", "/lighthouse/grading", "/lighthouse/collecting"];
 
 export function LighthouseSection() {
   const { language } = useLanguage();
@@ -71,7 +75,17 @@ export function LighthouseSection() {
 
             <div className="lighthouse-section__copy">
               <p>{copy.copy1}</p>
-              <p>{copy.copy2}</p>
+            </div>
+
+            <div className="lighthouse-start">
+              <div>
+                <p>{copy.startEyebrow}</p>
+                <h3>{copy.startTitle}</h3>
+                <span>{copy.startCopy}</span>
+              </div>
+              <a href="/lighthouse/begin-the-journey">
+                {copy.startCta} <i aria-hidden="true">→</i>
+              </a>
             </div>
 
             <div className="lighthouse-guides" aria-label={copy.aria}>
