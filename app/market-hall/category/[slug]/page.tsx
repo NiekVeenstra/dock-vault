@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MarketHallCatalog, MarketHallPreparation } from "@/components/market-hall";
-import { getMarketCategory, getProductsByCategory, marketCategories } from "@/content/market-hall/catalog";
+import { getMarketCategory, marketCategories } from "@/content/market-hall/catalog";
 import { isMarketHallEnabled } from "@/lib/market-hall/config";
+import { getMarketProducts } from "@/lib/market-hall/data";
 
 export const dynamic = "force-dynamic";
 
@@ -20,11 +21,9 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 
   const { slug } = await params;
   const category = getMarketCategory(slug);
-  if (!category) return {};
-
   return {
-    title: `${category.name.nl} · Markthal testomgeving`,
-    description: category.description.nl,
+    title: `${category?.name.nl ?? "Categorie"} · Markthal testomgeving`,
+    description: category?.description.nl ?? "Testweergave van de Markthal van Dock Vault.",
     robots: { index: false, follow: false, nocache: true },
   };
 }
@@ -35,13 +34,15 @@ export default async function MarketHallCategoryPage({ params }: CategoryPagePro
   const { slug } = await params;
   const category = getMarketCategory(slug);
   if (!category) notFound();
+  const result = await getMarketProducts();
+  if (result.status === "closed") return <MarketHallPreparation />;
 
   return (
     <MarketHallCatalog
       categories={marketCategories}
-      products={getProductsByCategory(category.slug)}
+      products={result.status === "ready" ? result.products.filter((product) => product.category === category.slug) : []}
       activeCategory={category}
+      unavailable={result.status === "unavailable"}
     />
   );
 }
-

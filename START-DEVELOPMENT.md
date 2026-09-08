@@ -1,43 +1,54 @@
-# Dock Vault — Markthal developmentversie
+# Dock Vault — Shopify developmentversie
 
-Deze ZIP bevat de volledige broncode op basis van develop (ec2c440), met de
-wijzigingen uit de lokale featurebranch feature/market-hall-foundation.
-Er is niets gepusht, gemerged of gedeployd. Gitgeschiedenis, dependencies,
-buildbestanden en lokale instellingen zijn niet opgenomen.
+Deze broncode is gebaseerd op de nieuwste opgehaalde develop-commit **3e3491d**
+(`add market hall beginning`, gecontroleerd op 8 september 2026). Het werk staat
+op de aparte featurebranch **feature/shopify-product-catalog**. Er is niets
+gepusht, gemerged of gedeployd.
 
-## Lokaal starten
+## Eerstvolgende stap
 
-1. Pak de ZIP uit en open een terminal in de map dock-vault.
-2. Installeer dependencies met `npm ci`.
-3. Kopieer `.env.example` naar `.env.local`.
-4. Zet alleen in je development-/testomgeving `MARKET_HALL_ENABLED=true`.
-5. Start met `npm run dev` en bezoek http://localhost:3000/market-hall.
+1. Pak de ZIP uit en open de map `dock-vault` in je editor.
+2. Voer `npm ci` uit.
+3. Kopieer `.env.example` naar `.env.local`, naast `package.json`.
+4. Zet daar `MARKET_HALL_ENABLED=true` en vul zelf
+   `SHOPIFY_STOREFRONT_PRIVATE_TOKEN` in met het privé-token van het Headless-kanaal.
+   De winkelnaam `dock-vault-test.myshopify.com` is al ingevuld.
+5. Start `npm run dev` en bezoek `http://localhost:3000/market-hall`.
 
-De bestaande taalschakelaar biedt Nederlands en Engels. Producten zijn
-gemarkeerde testgegevens; betalingen, bestellingen en reserveringen ontbreken.
+De sleutel hoort niet in Git, de chat of screenshots. De voorbeeldinstelling blijft
+standaard gesloten. Lokale instellingen, dependencies en buildbestanden ontbreken
+bewust in deze broncode-ZIP.
 
-## Productiebuild en gesloten toestand
+## Wat is gebouwd
 
-Gebruik `npm run build` gevolgd door `npm start` om de productiebuild lokaal
-te bekijken. Zonder instelling, of met `MARKET_HALL_ENABLED=false`, toont de
-Markthal de voorbereidingspagina. Ook directe categorie- en productlinks
-blijven dan gesloten. Herstart de server na wijziging van de instelling.
-De instelling is server-side en onafhankelijk van NODE_ENV.
+- Shopify-producten op het bestaande overzicht en de categorie- en productpagina's.
+- Echte product-/variant-ID's, foto's, prijzen, valuta en beschikbaarheid in een
+  afzonderlijke gegevenslaag. Keuze tussen varianten en foto's waar aanwezig.
+- Nederlandse en Engelse interface; productvertalingen worden uit Shopify gebruikt.
+  Ontbrekende vertalingen vallen terug op de oorspronkelijke producttekst.
+- Optionele kaartkenmerken via metavelden; geen verzonnen conditie of taal.
+- Rustige weergaven voor ontbrekende producten, lege categorieën en verbindingsfouten.
+- Een gesloten Markthal die Shopify niet benadert en geen productdata uitlevert.
 
-Openen in een testomgeving vereist de expliciete serverinstelling
-`MARKET_HALL_ENABLED=true`. Voeg daarnaast toegangsbeveiliging toe: noindex
-is geen wachtwoordbeveiliging. De repository bevat geen aantoonbare
-afgeschermde develop-deployment; de bestaande workflow deployt main.
-Activeer deze testcatalogus niet op de publieke productieserver.
+Deze versie bevat geen winkelmand, betalingen, bestellingen of reserveringen.
 
-## Overdracht
+## Controle en overdracht
 
-Builds en HTTP-controles van beide toestanden zijn uitgevoerd. Desktop,
-taalschakeling en toetsenbordbediening zijn gecontroleerd. Een volledige
-visuele controle op een echt mobiel viewport en controle van de externe
-testomgeving staan nog open.
+Zie `docs/VALIDATION-SHOPIFY.md` voor de daadwerkelijk uitgevoerde controles.
+De echte Shopify-verbinding en ververssnelheid kunnen pas worden bevestigd nadat
+je het privé-token zelf hebt ingesteld. Een paginaherlading doet telkens een nieuwe
+API-aanvraag; er is geen tijdcache of automatische verversing van open pagina's.
 
-Gedeelde wijzigingen raken navigatie, homepage-links, footer, globale styles,
-sitemap, README en het development-startscript. Vergelijk deze bij integratie
-met eventuele andere lopende wijzigingen; overschrijf geen serverinstellingen.
-Zie README.md voor aanvullende projectinstructies.
+De repository bevat alleen de automatische deployment van main, geen aantoonbare
+beveiligde develop-deployment. Bescherm de hele externe testomgeving vóór het openen.
+`noindex` voorkomt geen bezoek. Laat de publieke service op
+`MARKET_HALL_ENABLED=false` en herstart na wijziging van de serverinstelling.
+
+Gedeelde wijzigingen in deze feature raken `package.json` (testcommando's),
+`.gitignore`, `.env.example` en de documentatie. De bestaande header, footer,
+homepage, LanguageProvider, globale imports, sitemap en deploymentworkflow zijn
+niet gewijzigd. Vergelijk de Markthal-bestanden en documentatie bij integratie
+met eventuele andere lopende wijzigingen.
+
+De volledige aansluitinstructies, metafieldnamen, serverinstellingen en live
+acceptatiestappen staan in `docs/SHOPIFY.md`.

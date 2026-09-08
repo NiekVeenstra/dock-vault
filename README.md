@@ -49,6 +49,12 @@ The production deployment workflow in `.github/workflows/deploy.yml` deploys `ma
 
 ## Market Hall availability
 
+The first Shopify product connection is implemented through a separate server-only
+data layer. See [Shopify setup and validation](docs/SHOPIFY.md) for the private
+Storefront token, local/test-server setup, optional card metafields, refresh behavior,
+and the remaining live-store acceptance check. Hardcoded product records have been
+removed; connection failures show an unavailable state instead of sample stock.
+
 The Market Hall catalogue is protected by a server-side runtime setting and is
 closed by default. It is intentionally independent from `NODE_ENV`, because a
 test environment may also run a production build.

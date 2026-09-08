@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { MarketHallCatalog, MarketHallPreparation } from "@/components/market-hall";
-import { marketCategories, marketProducts } from "@/content/market-hall/catalog";
+import { marketCategories } from "@/content/market-hall/catalog";
 import { isMarketHallEnabled } from "@/lib/market-hall/config";
+import { getMarketProducts } from "@/lib/market-hall/data";
 
 export const dynamic = "force-dynamic";
 
@@ -16,14 +17,15 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: "Markthal testomgeving",
-    description: "Afgeschermde testweergave van de Markthal van Dock Vault.",
+    description: "Testweergave van de Markthal van Dock Vault.",
     robots: { index: false, follow: false, nocache: true },
   };
 }
 
-export default function MarketHallPage() {
+export default async function MarketHallPage() {
   if (!isMarketHallEnabled()) return <MarketHallPreparation />;
 
-  return <MarketHallCatalog categories={marketCategories} products={marketProducts} />;
+  const result = await getMarketProducts();
+  if (result.status === "closed") return <MarketHallPreparation />;
+  return <MarketHallCatalog categories={marketCategories} products={result.status === "ready" ? result.products : []} unavailable={result.status === "unavailable"} />;
 }
-

@@ -3,6 +3,8 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
+    "test:shopify": "node --require ./tests/register.cjs --test tests/shopify.test.cjs",
+    "test:market-http": "node tests/market-http.mjs",
     "dev": "node scripts/dev.mjs",
     "build": "next build",
     "start": "next start",
