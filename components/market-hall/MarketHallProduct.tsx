@@ -37,7 +37,8 @@ const copy = {
     price: "Testprijs",
     availability: "Beschikbaarheid",
     shipping: "Verzending",
-    unavailable: "Betalen, bestellen en voorraad reserveren zijn in deze fase bewust niet mogelijk.",
+    unavailable:
+      "Betalen, bestellen en voorraad reserveren zijn in deze fase bewust niet mogelijk.",
   },
   en: {
     environment: "Test environment · this is not a real offer",
@@ -62,18 +63,46 @@ const copy = {
     price: "Test price",
     availability: "Availability",
     shipping: "Shipping",
-    unavailable: "Payment, ordering and stock reservation are deliberately unavailable at this stage.",
+    unavailable:
+      "Payment, ordering and stock reservation are deliberately unavailable at this stage.",
   },
 } as const;
 
-export function MarketHallProduct({ product, category }: MarketHallProductProps) {
+export function MarketHallProduct({
+  product,
+  category,
+}: MarketHallProductProps) {
   const { language } = useLanguage();
   const t = copy[language];
-  const [variantId, setVariantId] = useState(product.variants.find((variant) => variant.available)?.id ?? product.variants[0].id);
+  const [variantId, setVariantId] = useState(
+    product.variants.find((variant) => variant.available)?.id ??
+      product.variants[0].id,
+  );
   const [photoId, setPhotoId] = useState<string | null>(null);
-  const variant = product.variants.find((entry) => entry.id === variantId) ?? product.variants[0];
-  const photos = [...new Map([...product.images, ...(variant.image ? [variant.image] : []), ...(product.image ? [product.image] : [])].map((entry) => [entry.id, entry])).values()];
-  const photo = photos.find((entry) => entry.id === photoId) ?? variant.image ?? photos[0];
+  const variant =
+    product.variants.find((entry) => entry.id === variantId) ??
+    product.variants[0];
+  const photos = [
+    ...new Map(
+      [
+        ...product.images,
+        ...(variant.image ? [variant.image] : []),
+        ...(product.image ? [product.image] : []),
+      ].map((entry) => [entry.id, entry]),
+    ).values(),
+  ];
+  const photo =
+    photos.find((entry) => entry.id === photoId) ?? variant.image ?? photos[0];
+
+  function selectPhoto(id: string) {
+    setPhotoId(id);
+    // Keep the current variant when several variants share this photo.
+    const matchingVariant =
+      variant.image?.id === id
+        ? variant
+        : product.variants.find((entry) => entry.image?.id === id);
+    if (matchingVariant) setVariantId(matchingVariant.id);
+  }
 
   const details = [
     [t.set, variant.details.set?.[language] ?? t.unknown],
@@ -84,7 +113,12 @@ export function MarketHallProduct({ product, category }: MarketHallProductProps)
     [t.contents, variant.details.contents?.[language] ?? t.unknown],
     [t.price, formatMoney(variant.price, language)],
     [t.availability, formatAvailability(variant, language)],
-    [t.quantity, variant.quantityAvailable === null ? t.stockUnknown : `${variant.quantityAvailable} ${t.units}`],
+    [
+      t.quantity,
+      variant.quantityAvailable === null
+        ? t.stockUnknown
+        : `${variant.quantityAvailable} ${t.units}`,
+    ],
     [t.shipping, t.shippingNote],
   ];
 
@@ -94,10 +128,19 @@ export function MarketHallProduct({ product, category }: MarketHallProductProps)
         <HarborHeader />
         <HarborDivider />
         <div className="market-shell">
-          <p className="market-test-banner" role="status">{t.environment}</p>
-          <nav className="market-breadcrumbs" aria-label={language === "nl" ? "Kruimelpad" : "Breadcrumb"}>
-            <a href="/market-hall">{t.market}</a><span aria-hidden="true">/</span>
-            <a href={`/market-hall/category/${category.slug}`}>{category.name[language]}</a><span aria-hidden="true">/</span>
+          <p className="market-test-banner" role="status">
+            {t.environment}
+          </p>
+          <nav
+            className="market-breadcrumbs"
+            aria-label={language === "nl" ? "Kruimelpad" : "Breadcrumb"}
+          >
+            <a href="/market-hall">{t.market}</a>
+            <span aria-hidden="true">/</span>
+            <a href={`/market-hall/category/${category.slug}`}>
+              {category.name[language]}
+            </a>
+            <span aria-hidden="true">/</span>
             <span aria-current="page">{product.name[language]}</span>
           </nav>
         </div>
@@ -107,36 +150,86 @@ export function MarketHallProduct({ product, category }: MarketHallProductProps)
         <div className="market-shell market-product-detail__grid">
           <section className="market-product-gallery" aria-label={t.photo}>
             <div className="market-product-gallery__primary">
-              {photo ? <img src={photo.url} alt={photo.alt[language]} width={photo.width} height={photo.height} fetchPriority="high" /> : <>
-                <b aria-hidden="true">{category.marker}</b>
-                <p>{t.photoNote}</p>
-              </>}
+              {photo ? (
+                <img
+                  src={photo.url}
+                  alt={photo.alt[language]}
+                  width={photo.width}
+                  height={photo.height}
+                  fetchPriority="high"
+                />
+              ) : (
+                <>
+                  <b aria-hidden="true">{category.marker}</b>
+                  <p>{t.photoNote}</p>
+                </>
+              )}
             </div>
-            {photos.length > 1 && <div className="market-product-gallery__thumbs">
-              {photos.map((entry, index) => <button type="button" key={entry.id} onClick={() => setPhotoId(entry.id)} aria-label={`${t.showPhoto} ${index + 1}`} aria-pressed={entry.id === photo?.id}>
-                <img src={entry.url} alt="" width={entry.width} height={entry.height} loading="lazy" />
-              </button>)}
-            </div>}
+            {photos.length > 1 && (
+              <div className="market-product-gallery__thumbs">
+                {photos.map((entry, index) => (
+                  <button
+                    type="button"
+                    key={entry.id}
+                    onClick={() => selectPhoto(entry.id)}
+                    aria-label={`${t.showPhoto} ${index + 1}`}
+                    aria-pressed={entry.id === photo?.id}
+                  >
+                    <img
+                      src={entry.url}
+                      alt=""
+                      width={entry.width}
+                      height={entry.height}
+                      loading="lazy"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </section>
 
           <article className="market-product-information">
             <p className="eyebrow">{category.name[language]}</p>
             <h1>{product.name[language]}</h1>
-            <p className="market-product-information__summary">{product.summary[language]}</p>
-            {product.variants.length > 1 && <div className="market-variant">
-              <label htmlFor="market-variant">{t.variant}</label>
-              <select id="market-variant" value={variant.id} onChange={(event) => { setVariantId(event.target.value); setPhotoId(null); }}>
-                {product.variants.map((entry) => <option key={entry.id} value={entry.id}>{entry.name[language]} · {formatMoney(entry.price, language)} · {formatAvailability(entry, language)}</option>)}
-              </select>
-            </div>}
+            <p className="market-product-information__summary">
+              {product.summary[language]}
+            </p>
+            {product.variants.length > 1 && (
+              <div className="market-variant">
+                <label htmlFor="market-variant">{t.variant}</label>
+                <select
+                  id="market-variant"
+                  value={variant.id}
+                  onChange={(event) => {
+                    setVariantId(event.target.value);
+                    setPhotoId(null);
+                  }}
+                >
+                  {product.variants.map((entry) => (
+                    <option key={entry.id} value={entry.id}>
+                      {entry.name[language]} ·{" "}
+                      {formatMoney(entry.price, language)} ·{" "}
+                      {formatAvailability(entry, language)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
             <h2>{t.specifications}</h2>
             <dl aria-live="polite" aria-atomic="true">
               {details.map(([label, value]) => (
-                <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
+                <div key={label}>
+                  <dt>{label}</dt>
+                  <dd>{value}</dd>
+                </div>
               ))}
             </dl>
-            <p className="market-product-information__notice">{t.unavailable}</p>
-            <a className="quiet-link" href="/market-hall">← {t.overview}</a>
+            <p className="market-product-information__notice">
+              {t.unavailable}
+            </p>
+            <a className="quiet-link" href="/market-hall">
+              ← {t.overview}
+            </a>
           </article>
         </div>
       </section>
