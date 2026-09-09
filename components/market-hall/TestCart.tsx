@@ -14,6 +14,7 @@ import "./TestCart.scss";
 const storageKey = "dock-vault-test-cart-v1";
 const copy = {
   nl: {
+    checkoutChanged: "Prijs, voorraad of beschikbaarheid is gewijzigd. Controleer de winkelmand opnieuw voordat je doorgaat.", checkoutError: "De testcheckout kon niet worden geopend. Probeer het opnieuw.", checkout: "Naar Shopify-testcheckout", checkoutNote: "Testcheckout. Gebruik uitsluitend testbetaalgegevens. Verzendkosten en het definitieve totaal zie je bij Shopify.",
     title: "Testwinkelmand", add: "Toevoegen aan testwinkelmand", busy: "Voorraad controleren…", empty: "Je testwinkelmand is nog leeg.",
     added: "Je testwinkelmand is bijgewerkt.", adjusted: "De voorraad is gewijzigd of een product is niet beschikbaar. Je winkelmand is aangepast aan de actuele voorraad.",
     error: "De winkelmand kon niet worden gecontroleerd. Probeer het opnieuw.", storage: "Je browser kon de winkelmand niet bewaren. Deze blijft alleen tijdens dit bezoek beschikbaar.",
@@ -23,6 +24,7 @@ const copy = {
     note: "Testomgeving. Deze winkelmand reserveert geen voorraad. Bestellen en betalen zijn nog niet actief.", stock: "beschikbaar", unit: "per stuk",
   },
   en: {
+    checkoutChanged: "Price, stock or availability has changed. Check the cart again before continuing.", checkoutError: "We could not open the test checkout. Please try again.", checkout: "Continue to Shopify test checkout", checkoutNote: "Test checkout. Use test payment details only. Shipping and the final total are shown at Shopify.",
     title: "Test cart", add: "Add to test cart", busy: "Checking stock…", empty: "Your test cart is empty.",
     added: "Your test cart has been updated.", adjusted: "Stock has changed or a product is unavailable. Your cart has been adjusted to the current stock.",
     error: "We could not check your cart. Please try again.", storage: "Your browser could not save the cart. It will only be available during this visit.",
@@ -32,8 +34,9 @@ const copy = {
     note: "Test environment. This cart does not reserve stock. Ordering and payment are not active yet.", stock: "available", unit: "each",
   },
 } as const;
-type Notice = "added" | "adjusted" | "error" | "limit" | "invalid" | null;
+type Notice = "checkoutChanged" | "checkoutError" | "added" | "adjusted" | "error" | "limit" | "invalid" | null;
 type CartContextValue = {
+  checkoutEnabled: boolean; checkout: (language: "nl" | "en") => void;
   lines: CartLine[]; busy: boolean; notice: Notice; storageFailed: boolean;
   add: (slug: string, id: string, quantity: number) => void; update: (id: string, quantity: number) => void; refresh: () => void; clear: () => void;
 };
@@ -43,7 +46,7 @@ function useCart() {
   if (!context) throw new Error("Test cart provider missing");
   return context;
 }
-export function TestCartProvider({ children }: { children: React.ReactNode }) {
+export function TestCartProvider({ children, checkoutEnabled = false }: { children: React.ReactNode; checkoutEnabled?: boolean }) {
   const [lines, setLines] = useState<CartLine[]>([]);
   const [busy, setBusy] = useState(true);
   const [notice, setNotice] = useState<Notice>(null);
@@ -107,11 +110,35 @@ export function TestCartProvider({ children }: { children: React.ReactNode }) {
     }
     void validate(items.current.map((item) => item.variantId === id ? { ...item, quantity } : item));
   }
+  async function checkout(language: "nl" | "en") {
+    if (!checkoutEnabled || locked.current || busy || !lines.length) return;
+    locked.current = true; setBusy(true); setNotice(null);
+    try {
+      const response = await fetch("/api/market-hall/checkout", {
+        method: "POST", headers: { "Content-Type": "application/json" }, cache: "no-store",
+        signal: AbortSignal.timeout(60000),
+        body: JSON.stringify({ lines: items.current, language, prices: lines.map((line) => ({ variantId: line.variantId, ...line.price })) }),
+      });
+      const result = await response.json();
+      if (response.status === 409) {
+        if (Array.isArray(result.lines)) {
+          setLines(result.lines);
+          items.current = result.lines.map(({ slug, variantId, quantity }: CartInput) => ({ slug, variantId, quantity }));
+          persist(items.current);
+        }
+        setNotice("checkoutChanged"); return;
+      }
+      if (!response.ok || typeof result.checkoutUrl !== "string") throw new Error("checkout");
+      // Keep the local cart for a cancelled checkout; do not imply an order succeeded.
+      window.location.assign(result.checkoutUrl);
+    } catch { setNotice("checkoutError"); }
+    finally { locked.current = false; setBusy(false); }
+  }
   function clear() {
     if (locked.current || busy) return;
     items.current = []; setLines([]); setNotice(null); persist([]);
   }
-  return <CartContext.Provider value={{ lines, busy, notice, storageFailed, add, update, clear, refresh: () => { void validate(items.current); } }}>{children}</CartContext.Provider>;
+  return <CartContext.Provider value={{ checkoutEnabled, checkout, lines, busy, notice, storageFailed, add, update, clear, refresh: () => { void validate(items.current); } }}>{children}</CartContext.Provider>;
 }
 export function TestCartLink() {
   const { lines } = useCart();
@@ -149,7 +176,7 @@ export function AddToTestCart({ slug, variant, compact = false }: { slug: string
   </div>;
 }
 export function TestCartPage() {
-  const { lines, busy, update, refresh, clear } = useCart();
+  const { lines, busy, update, refresh, clear, checkoutEnabled, checkout } = useCart();
   const { language } = useLanguage();
   const t = copy[language];
   const totals = new Map<string, number>();
@@ -158,7 +185,7 @@ export function TestCartPage() {
     <HarborHeader actions={<TestCartLink />} /><HarborDivider />
     <section className="market-shell test-cart-content">
       <p className="eyebrow">{language === "nl" ? "De Markthal" : "The Market Hall"}</p>
-      <h1>{t.title}</h1><p className="market-catalog__notice">{t.note}</p>
+      <h1>{t.title}</h1><p className="market-catalog__notice">{checkoutEnabled ? t.checkoutNote : t.note}</p>
       <CartNotice />
       {busy && <p role="status">{t.busy}</p>}
       {!busy && !lines.length && <p>{t.empty}</p>}
@@ -179,6 +206,7 @@ export function TestCartPage() {
       </div>
       {!!lines.length && <div className="test-cart-total"><span>{t.subtotal}</span>{[...totals].map(([currencyCode, amount]) => <strong key={currencyCode}>{formatMoney({ amount: String(amount), currencyCode }, language)}</strong>)}</div>}
       <div className="test-cart-actions">
+        {checkoutEnabled && <button type="button" disabled={busy || !lines.length} onClick={() => checkout(language)}>{t.checkout}</button>}
         <button type="button" disabled={busy} onClick={refresh}>{t.refresh}</button>
         <button type="button" disabled={busy} onClick={clear}>{t.clear}</button>
         <Link className="quiet-link" href="/market-hall">← {t.back}</Link>

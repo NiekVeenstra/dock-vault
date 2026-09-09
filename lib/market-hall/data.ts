@@ -11,7 +11,7 @@ type Unavailable = { status: "closed" | "unavailable" };
 type CatalogResult = Unavailable | { status: "ready"; products: MarketProductSummary[] };
 type ProductResult = Unavailable | { status: "not-found" } | { status: "ready"; product: MarketProduct };
 
-async function buyerIp() {
+export async function buyerIp() {
   // Opt in only behind a proxy that overwrites X-Real-IP; never trust arbitrary XFF.
   if (process.env.SHOPIFY_TRUST_PROXY_IP !== "true") return undefined;
   const value = (await headers()).get("x-real-ip");

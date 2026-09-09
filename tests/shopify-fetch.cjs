@@ -5,9 +5,10 @@ const { responseFor } = require("./shopify-fixtures.cjs");
 const originalFetch = global.fetch;
 global.fetch = async (input, init) => {
   const url = typeof input === "string" ? input : input.url || String(input);
-  if (!url.startsWith("https://dock-vault-fixture.myshopify.com/api/")) return originalFetch(input, init);
+  if (!url.startsWith("https://dock-vault-fixture.myshopify.com/api/") && !(process.env.SHOPIFY_FIXTURE_CHECKOUT === "true" && url.startsWith("https://dock-vault-test.myshopify.com/api/"))) return originalFetch(input, init);
   if (process.env.SHOPIFY_FIXTURE_LOG) appendFileSync(process.env.SHOPIFY_FIXTURE_LOG, "request\n");
   const state = process.env.SHOPIFY_FIXTURE_FILE ? JSON.parse(readFileSync(process.env.SHOPIFY_FIXTURE_FILE, "utf8")) : {};
   const { query, variables } = JSON.parse(init.body);
+  if (process.env.SHOPIFY_FIXTURE_LOG && query.includes("mutation MarketTestCheckout")) appendFileSync(process.env.SHOPIFY_FIXTURE_LOG, "checkout\n");
   return new Response(JSON.stringify(responseFor(query, variables, state)), { headers: { "Content-Type": "application/json" } });
 };

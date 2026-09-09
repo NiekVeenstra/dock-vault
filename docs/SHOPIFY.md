@@ -179,7 +179,7 @@ Er zijn tijdens deze oplevering geen echte Shopify-mutaties of live API-controle
 
 De testwinkelmand is beschikbaar op `/market-hall/cart` wanneer
 `MARKET_HALL_ENABLED=true`. De bestaande Shopify-instellingen blijven voldoende;
-er zijn geen extra scopes of tokens nodig. Checkout is nog niet aangesloten.
+er zijn geen extra tokens nodig. Voor de optionele testcheckout: zie hieronder.
 
 - De productpagina voegt de geselecteerde variant toe. Dezelfde variant wordt
   samengevoegd; verschillende varianten blijven aparte regels.
@@ -197,7 +197,7 @@ er zijn geen extra scopes of tokens nodig. Checkout is nog niet aangesloten.
 - Bij een verbindingsfout blijft de bestaande mand bewaard en verschijnt een
   foutmelding. Verwijderen/leegmaken kan na het verzoek ook offline.
 - Het subtotaal betreft uitsluitend producten, met aparte subtotalen per valuta.
-  Er worden geen betalingen of bestellingen aangemaakt.
+  De lokale winkelmand zelf maakt geen betalingen of bestellingen aan.
 
 Controle: `npm run test:cart`, `npm run test:shopify`, daarna `npm run build`
 en `npm run test:market-http`. De HTTP-test gebruikt expliciete synthetische
@@ -225,3 +225,58 @@ Bij updates via een ZIP: voeg de bestanden samen met de bestaande projectmap,
 bijvoorbeeld met PowerShell `Expand-Archive -LiteralPath <zip> -DestinationPath . -Force`.
 Verwijder of vervang nooit de volledige mappen app, components of lib: de update
 bevat uitsluitend toegevoegde en gewijzigde bestanden.
+
+## Shopify-testcheckout
+
+De knop “Naar Shopify-testcheckout” maakt via Storefront `cartCreate` een Shopify
+cart en opent de door Shopify teruggegeven checkout. De bestelling ontstaat pas
+na afronden bij Shopify. Deze implementatie is geen productiecheckout.
+
+### Lokaal inschakelen
+
+1. Controleer in **Dock Vault Test → Instellingen → Betalingen** dat Shopify's
+   **Test payment gateway** actief is, of dat de bestaande betaalprovider
+   expliciet in testmodus staat. Alleen de websitevlag maakt betalingen niet tot
+   testbetalingen: Storefront kan de betaalmodus niet verifiëren.
+2. Voeg in `.env.local` toe: `SHOPIFY_TEST_CHECKOUT_ENABLED=true`.
+3. Behoud `MARKET_HALL_ENABLED=true` en
+   `SHOPIFY_STORE_DOMAIN=dock-vault-test.myshopify.com` en herstart de server.
+   Beide vlaggen en precies deze winkel zijn nodig. De openbare productieomgeving
+   houdt de vlaggen uit; met een andere winkeldomeinnaam blijft checkout gesloten.
+4. Voeg testproducten toe en klik in de mand op de checkoutknop. Controleer de
+   varianten, aantallen, taal, verzending en het totaal op Shopify.
+5. Gebruik uitsluitend de gegevens van je testbetaalmethode. Voor Shopify's
+   Test payment gateway: naam `Test payment gateway`, kaartnummer `1` voor
+   succes, CVV `111`, een toekomstige vervaldatum. Deze gegevens gelden niet
+   voor Shopify Payments-testmodus.
+6. Controleer de testbestelling in Shopify. De lokale mand wordt bewust niet
+   automatisch geleegd: er is nog geen bevestigde terugkoppeling/webhook van
+   een afgeronde bestelling. Gebruik na een geslaagde test “Winkelmand leegmaken”.
+   Bij afbreken blijft de mand dus ook behouden.
+
+### Gedrag en beperkingen
+
+- `POST /api/market-hall/checkout` is standaard gesloten. De route valideert
+  invoer, producttoegang, variant-ID, aantal en de actuele prijs/voorraad.
+- Bij een afwijking van de getoonde prijs of voorraad volgt 409 met de bijgewerkte
+  mand, zonder cartCreate. De gebruiker bekijkt de wijziging en klikt opnieuw.
+- Shopify krijgt uitsluitend de gevalideerde variant-ID's/aantallen, NL als
+  kopersland, de geselecteerde taal en een testnotitie. De notitie schakelt geen
+  betaalprovider in testmodus.
+- Shopify-warnings, userErrors, ontbrekende regels of afwijkende aantallen/prijzen
+  stoppen de doorverwijzing. Verbindingsfouten behouden de lokale mand.
+- De checkout-URL moet HTTPS gebruiken en een checkoutpad zijn op exact de
+  geconfigureerde testwinkel. Tokens en upstream-foutdetails worden niet getoond.
+- Verzendkosten en het definitieve totaal komen van Shopify. Voorraad kan nog
+  veranderen na controle; toevoegen aan de lokale mand reserveert niets.
+- Er worden geen betaalgegevens, klantadressen of e-mails door Dock Vault verwerkt
+  in deze stap. Die worden door de gebruiker rechtstreeks bij Shopify ingevuld.
+- Controle: `npm run test:checkout`, bestaande cart/catalogustests,
+  `npm run build` en `npm run test:market-http`. HTTP-tests vervangen Shopify
+  expliciet door synthetische antwoorden; de echte testbestelling blijft een
+  handmatige controle in de dev store.
+
+Bronnen:
+- https://shopify.dev/docs/api/storefront/latest/mutations/cartCreate
+- https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api/cart/manage
+- https://help.shopify.com/en/partners/manage-clients-stores/test-orders

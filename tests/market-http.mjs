@@ -24,13 +24,13 @@ async function stop() {
   }
   child = undefined;
 }
-async function start(gate, token = "qa-private-token") {
+async function start(gate, token = "qa-private-token", checkout = "false") {
   await stop();
   await writeFile(callLog, "");
   output = "";
   child = spawn(process.execPath, ["--require", path.join(root, "tests/shopify-fetch.cjs"), path.join(root, "node_modules/next/dist/bin/next"), "start", "--hostname", "127.0.0.1", "--port", "3199"], {
     cwd: root,
-    env: { ...process.env, NODE_ENV: "production", NODE_OPTIONS: "", MARKET_HALL_ENABLED: gate, SHOPIFY_STORE_DOMAIN: "dock-vault-fixture.myshopify.com", SHOPIFY_STOREFRONT_PRIVATE_TOKEN: token, SHOPIFY_TRUST_PROXY_IP: "false", SHOPIFY_FIXTURE_FILE: stateFile, SHOPIFY_FIXTURE_LOG: callLog },
+    env: { ...process.env, NODE_ENV: "production", NODE_OPTIONS: "", MARKET_HALL_ENABLED: gate, SHOPIFY_STORE_DOMAIN: checkout === "true" ? "dock-vault-test.myshopify.com" : "dock-vault-fixture.myshopify.com", SHOPIFY_TEST_CHECKOUT_ENABLED: checkout, SHOPIFY_FIXTURE_CHECKOUT: checkout, SHOPIFY_STOREFRONT_PRIVATE_TOKEN: token, SHOPIFY_TRUST_PROXY_IP: "false", SHOPIFY_FIXTURE_FILE: stateFile, SHOPIFY_FIXTURE_LOG: callLog },
     stdio: ["ignore", "pipe", "pipe"],
   });
   child.stdout.on("data", (data) => { output += data; });
@@ -48,6 +48,9 @@ async function get(route, options) {
 }
 async function cart(lines) {
   return get("/api/market-hall/cart", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(lines) });
+}
+async function checkoutRequest(body) {
+  return get("/api/market-hall/checkout", {method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify(body)});
 }
 function noSecrets(text) {
   for (const marker of ["qa-private-token", "SHOPIFY_STOREFRONT_PRIVATE_TOKEN", "Synthetic upstream error"]) assert.ok(!text.includes(marker), `Leaked ${marker}`);
@@ -73,6 +76,7 @@ async function checkClosed() {
     assert.ok(!response.text.includes("gid://shopify/"));
   }
   assert.equal((await cart([])).status, 404);
+  assert.equal((await checkoutRequest({})).status, 404);
   assert.equal(await readFile(callLog, "utf8"), "", "closed state contacted Shopify");
 }
 async function checkPublicFiles() {
@@ -151,6 +155,31 @@ try {
   assert.match((await get(productPath)).text, /De producten zijn even niet beschikbaar/);
   assert.equal(await readFile(callLog, "utf8"), "");
   console.log("PASS missing token: unavailable state, zero Shopify requests");
+  await state({});
+  await start("true");
+  assert.equal((await checkoutRequest({})).status, 404, "checkout is off by default");
+  await start("true", "qa-private-token", "true");
+  const checkoutBody = {lines: [{...cartLine, quantity: 2}], language: "en", prices: [{variantId: cartLine.variantId, amount: "1.00", currencyCode: "EUR"}]};
+  assert.equal((await checkoutRequest({})).status, 400);
+  const checkoutResponse = await checkoutRequest(checkoutBody);
+  assert.equal(checkoutResponse.status, 200);
+  assert.match(JSON.parse(checkoutResponse.text).checkoutUrl, /^https:\/\/dock-vault-test.myshopify.com\/cart\/c\//);
+  assert.match(checkoutResponse.headers.get("cache-control"), /no-store/);
+  await state({price: "2.00"});
+  await writeFile(callLog, "");
+  const changed = await checkoutRequest(checkoutBody);
+  assert.equal(changed.status, 409);
+  assert.equal(JSON.parse(changed.text).lines[0].price.amount, "2.00");
+  assert.ok(!(await readFile(callLog, "utf8")).includes("checkout"), "price change must stop before cart creation");
+  await state({available: false});
+  assert.equal((await checkoutRequest(checkoutBody)).status, 409);
+  await state({checkoutWarning: true});
+  assert.equal((await checkoutRequest(checkoutBody)).status, 409);
+  await state({failure: true});
+  const failedCheckout = await checkoutRequest(checkoutBody);
+  assert.equal(failedCheckout.status, 503);
+  noSecrets(failedCheckout.text);
+  console.log("PASS test checkout: opt-in, exact lines, prices, stock, warnings, failure and safe redirect");
   await start("false");
   await checkClosed();
   console.log("PASS closed after open: same build, no catalog or cached data remains reachable");

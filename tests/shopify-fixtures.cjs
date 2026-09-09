@@ -31,6 +31,12 @@ function product(language = "NL", overrides = {}) {
 
 function responseFor(query, variables, state = {}) {
   if (state.failure) return { errors: [{ message: "Synthetic upstream error: never show this text." }] };
+  if (query.includes("mutation MarketTestCheckout")) return {data: {cartCreate: {
+    cart: {checkoutUrl: "https://dock-vault-test.myshopify.com/cart/c/fixture?key=fixture", lines: {
+      nodes: variables.input.lines.map(line => ({quantity: line.quantity, merchandise: {id: line.merchandiseId, price: amount(state.price || "1.00")}})),
+      pageInfo: {hasNextPage: false}
+    }}, userErrors: [], warnings: state.checkoutWarning ? [{code: "stock"}] : []
+  }}};
   const item = product(variables.language);
   if (state.title) item.title = state.title;
   if (state.price) item.priceRange.minVariantPrice = item.priceRange.maxVariantPrice = item.variants.nodes[0].price = amount(state.price);

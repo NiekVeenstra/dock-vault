@@ -29,7 +29,7 @@ const copy = {
     quantity: "Testvoorraad",
     stockUnknown: "Niet opgegeven",
     units: "stuks beschikbaar",
-    shippingNote: "Verzending is nog niet actief.",
+    shippingNote: "Verzendmogelijkheden worden bij de testcheckout getoond.",
     specifications: "Productgegevens",
     language: "Taal",
     edition: "Uitvoering",
@@ -39,7 +39,7 @@ const copy = {
     availability: "Beschikbaarheid",
     shipping: "Verzending",
     unavailable:
-      "Betalen, bestellen en voorraad reserveren zijn in deze fase bewust niet mogelijk.",
+      "Testproduct. Toevoegen aan de winkelmand reserveert geen voorraad.",
   },
   en: {
     environment: "Test environment · this is not a real offer",
@@ -55,7 +55,7 @@ const copy = {
     quantity: "Test stock",
     stockUnknown: "Not specified",
     units: "units available",
-    shippingNote: "Shipping is not active yet.",
+    shippingNote: "Shipping options are shown at test checkout.",
     specifications: "Product information",
     language: "Language",
     edition: "Edition",
@@ -65,7 +65,7 @@ const copy = {
     availability: "Availability",
     shipping: "Shipping",
     unavailable:
-      "Payment, ordering and stock reservation are deliberately unavailable at this stage.",
+      "Test product. Adding to the cart does not reserve stock.",
   },
 } as const;
 

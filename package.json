@@ -9,7 +9,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test:cart": "node --require ./tests/register.cjs --test tests/cart.test.cjs"
+    "test:cart": "node --require ./tests/register.cjs --test tests/cart.test.cjs",
+    "test:checkout": "node --require ./tests/register.cjs --test tests/checkout.test.cjs"
   },
   "dependencies": {
     "next": "15.2.8",

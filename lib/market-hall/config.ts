@@ -13,3 +13,9 @@ export function isMarketHallEnabled() {
   return process.env.MARKET_HALL_ENABLED?.trim().toLowerCase() === ENABLED_VALUE;
 }
 
+
+/** This integration is deliberately restricted to the known development store. */
+export function isTestCheckoutEnabled() {
+  return isMarketHallEnabled() && process.env.SHOPIFY_TEST_CHECKOUT_ENABLED === "true" &&
+    process.env.SHOPIFY_STORE_DOMAIN?.trim().toLowerCase() === "dock-vault-test.myshopify.com";
+}
