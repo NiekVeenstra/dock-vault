@@ -1,3 +1,4 @@
+import { receiptEnabled, signReceipt } from "@/lib/commerce/shopify/receipt";
 import { NextRequest, NextResponse } from "next/server";
 import { isTestCheckoutEnabled } from "@/lib/market-hall/config";
 import { getMarketProduct, buyerIp } from "@/lib/market-hall/data";
@@ -48,8 +49,10 @@ export async function POST(request: NextRequest) {
       return !displayed || Number(displayed.amount) !== Number(line.price.amount) || displayed.currencyCode !== line.price.currencyCode;
     });
     if (result.adjusted || priceChanged || !result.lines.length) return reply({ error: "changed", ...result }, 409);
-    const checkoutUrl = await createTestCheckout(result.lines, language, await buyerIp());
-    return reply({ checkoutUrl });
+    const tracking: { cartToken?: string } | undefined = receiptEnabled() ? {} : undefined;
+    const checkoutUrl = await createTestCheckout(result.lines, language, await buyerIp(), tracking);
+    const receipt = tracking?.cartToken ? signReceipt(tracking.cartToken, result.lines) : null;
+    return reply({ checkoutUrl, receipt });
   } catch (error) {
     return reply({ error: error instanceof CheckoutChanged ? "changed" : "unavailable" }, error instanceof CheckoutChanged ? 409 : 503);
   }

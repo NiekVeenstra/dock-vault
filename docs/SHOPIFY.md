@@ -249,10 +249,18 @@ na afronden bij Shopify. Deze implementatie is geen productiecheckout.
    Test payment gateway: naam `Test payment gateway`, kaartnummer `1` voor
    succes, CVV `111`, een toekomstige vervaldatum. Deze gegevens gelden niet
    voor Shopify Payments-testmodus.
-6. Controleer de testbestelling in Shopify. De lokale mand wordt bewust niet
-   automatisch geleegd: er is nog geen bevestigde terugkoppeling/webhook van
-   een afgeronde bestelling. Gebruik na een geslaagde test “Winkelmand leegmaken”.
-   Bij afbreken blijft de mand dus ook behouden.
+6. Voor automatisch opruimen na een geslaagde betaling: maak in Shopify een
+   custom app met alleen de Admin API-scope `read_orders` en voeg het token lokaal
+   toe als `SHOPIFY_ADMIN_ACCESS_TOKEN`. Genereer daarnaast een willekeurige geheime
+   waarde van minimaal 32 tekens als `SHOPIFY_CHECKOUT_RECEIPT_SECRET`. Deze waarden
+   horen alleen in `.env.local` en mogen nooit in Git of in de browser terechtkomen.
+   Herstart daarna de server. Zonder deze twee instellingen blijft de lokale mand
+   bewust behouden en kun je hem handmatig leegmaken.
+7. Na een geslaagde testbetaling controleert Dock Vault de bijbehorende Shopify-order.
+   Alleen een betaalde testorder met dezelfde checkout en aantallen wordt verwerkt.
+   De gekochte regels verdwijnen daarna uit de lokale mand. Bij een afgebroken of
+   mislukte betaling blijven ze staan. Als je tijdens checkout een regel wijzigt,
+   blijft die regel staan zodat je hem zelf kunt controleren.
 
 ### Gedrag en beperkingen
 
@@ -271,6 +279,9 @@ na afronden bij Shopify. Deze implementatie is geen productiecheckout.
   veranderen na controle; toevoegen aan de lokale mand reserveert niets.
 - Er worden geen betaalgegevens, klantadressen of e-mails door Dock Vault verwerkt
   in deze stap. Die worden door de gebruiker rechtstreeks bij Shopify ingevuld.
+- De automatische controle gebruikt Shopify Admin API alleen wanneer de testcheckout
+  actief is en beide lokale instellingen aanwezig zijn. Er worden geen klantgegevens
+  of betaalgegevens opgehaald.
 - Controle: `npm run test:checkout`, bestaande cart/catalogustests,
   `npm run build` en `npm run test:market-http`. HTTP-tests vervangen Shopify
   expliciet door synthetische antwoorden; de echte testbestelling blijft een

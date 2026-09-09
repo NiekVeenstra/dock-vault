@@ -5,6 +5,7 @@ import { storefrontRequest } from "./client";
 const query = `mutation MarketTestCheckout($input: CartInput!, $language: LanguageCode!) @inContext(language: $language) {
   cartCreate(input: $input) {
     cart {
+      id
       checkoutUrl
       lines(first: 100) {
         nodes { quantity merchandise { ... on ProductVariant { id price { amount currencyCode } } } }
@@ -17,7 +18,7 @@ const query = `mutation MarketTestCheckout($input: CartInput!, $language: Langua
 }`;
 type CheckoutPayload = {
   cartCreate: {
-    cart: null | { checkoutUrl: string; lines: { nodes: { quantity: number; merchandise: { id: string; price: { amount: string; currencyCode: string } } }[]; pageInfo: { hasNextPage: boolean } } };
+    cart: null | { id?: string; checkoutUrl: string; lines: { nodes: { quantity: number; merchandise: { id: string; price: { amount: string; currencyCode: string } } }[]; pageInfo: { hasNextPage: boolean } } };
     userErrors: { code: string }[];
     warnings: { code: string }[];
   };
@@ -29,7 +30,7 @@ export function validateCheckoutUrl(value: string, domain: string) {
   if (url.protocol !== "https:" || url.hostname !== domain || url.port || url.username || url.password || !/^\/(checkouts\/|cart\/c\/)/.test(url.pathname)) throw new Error("checkout-url");
   return url.toString();
 }
-export async function createTestCheckout(lines: CartLine[], language: "nl" | "en", buyerIp?: string) {
+export async function createTestCheckout(lines: CartLine[], language: "nl" | "en", buyerIp?: string, tracking?: { cartToken?: string }) {
   const result = await storefrontRequest<CheckoutPayload>(query, {
     language: language.toUpperCase(),
     input: {
@@ -48,6 +49,11 @@ export async function createTestCheckout(lines: CartLine[], language: "nl" | "en
     const actual = returned.nodes.find((line) => line.merchandise.id === expected.variantId);
     if (!actual || actual.quantity !== expected.quantity || actual.merchandise.price.currencyCode !== expected.price.currencyCode ||
       Number(actual.merchandise.price.amount) !== Number(expected.price.amount)) throw new CheckoutChanged();
+  }
+  if (tracking) {
+    const match = payload.cart.id?.match(/^gid:\/\/shopify\/Cart\/([a-zA-Z0-9_-]{1,200})(?:\?|$)/);
+    if (!match) throw new Error("cart-id");
+    tracking.cartToken = match[1];
   }
   return validateCheckoutUrl(payload.cart.checkoutUrl, process.env.SHOPIFY_STORE_DOMAIN!.trim().toLowerCase());
 }
