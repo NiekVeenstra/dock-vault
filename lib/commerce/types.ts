@@ -33,6 +33,7 @@ export type MarketProductSummary = {
   priceRange: { min: Money; max: Money };
   available: boolean;
   details: CardDetails;
+  quickVariant?: Pick<ProductVariant, "id" | "available" | "backorder" | "quantityAvailable"> | null;
   testData: true;
 };
 

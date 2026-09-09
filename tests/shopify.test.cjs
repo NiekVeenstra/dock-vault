@@ -158,3 +158,16 @@ test("currency formatting, sold-out and backorder labels use real variant state"
   assert.equal(formatAvailability({ available: false, backorder: false }, "en"), "Unavailable");
   assert.equal(formatAvailability({ available: true, backorder: true }, "nl"), "Nabestelbaar · niet op voorraad");
 });
+
+test("overview quick add is offered only for a confirmed single variant", () => {
+  const { mapSummary } = require('../lib/commerce/shopify/map.ts');
+  const one = product();
+  assert.deepEqual(mapSummary(one).quickVariant, { id: one.variants.nodes[0].id, available: true, backorder: false, quantityAvailable: 3 });
+  const multiple = product();
+  multiple.variants.nodes.push({ ...multiple.variants.nodes[0], id: 'gid://shopify/ProductVariant/2002' });
+  assert.equal(mapSummary(multiple).quickVariant, null);
+  one.variants.pageInfo.hasNextPage = true;
+  assert.equal(mapSummary(one).quickVariant, null);
+  delete one.variants;
+  assert.equal(mapSummary(one).quickVariant, null);
+});

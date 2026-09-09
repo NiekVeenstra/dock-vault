@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AddToTestCart, TestCartLink } from "./TestCart";
 import { HarborDivider } from "@/components/HarborDivider";
 import { HarborHeader } from "@/components/HarborHeader";
 import { useLanguage } from "@/components/LanguageProvider";
@@ -125,7 +126,7 @@ export function MarketHallProduct({
   return (
     <main className="market-page market-product-page">
       <section className="market-product-hero" id="home">
-        <HarborHeader />
+        <HarborHeader actions={<TestCartLink />} />
         <HarborDivider />
         <div className="market-shell">
           <p className="market-test-banner" role="status">
@@ -215,6 +216,7 @@ export function MarketHallProduct({
                 </select>
               </div>
             )}
+            <AddToTestCart key={variant.id} slug={product.slug} variant={variant} />
             <h2>{t.specifications}</h2>
             <dl aria-live="polite" aria-atomic="true">
               {details.map(([label, value]) => (

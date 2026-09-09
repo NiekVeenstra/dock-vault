@@ -8,7 +8,8 @@
     "dev": "node scripts/dev.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:cart": "node --require ./tests/register.cjs --test tests/cart.test.cjs"
   },
   "dependencies": {
     "next": "15.2.8",

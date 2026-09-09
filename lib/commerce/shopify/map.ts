@@ -54,6 +54,7 @@ export function mapSummary(nl: ShopifyProductSummary, en?: ShopifyProductSummary
   if (!category) return null;
   if (!nl.id.startsWith("gid://shopify/Product/") || !nl.handle) throw new ShopifyError("response");
   const name = localized(nl.title, en?.title);
+  const single = nl.variants?.nodes.length === 1 && !nl.variants.pageInfo.hasNextPage ? nl.variants.nodes[0] : null;
   return {
     id: nl.id,
     slug: nl.handle,
@@ -64,6 +65,7 @@ export function mapSummary(nl: ShopifyProductSummary, en?: ShopifyProductSummary
     priceRange: { min: money(nl.priceRange.minVariantPrice), max: money(nl.priceRange.maxVariantPrice) },
     available: nl.availableForSale,
     details: cardDetails(nl.metafields, en?.metafields),
+    quickVariant: single ? { id: single.id, available: single.availableForSale, backorder: single.currentlyNotInStock, quantityAvailable: single.quantityAvailable } : null,
     testData: true,
   };
 }

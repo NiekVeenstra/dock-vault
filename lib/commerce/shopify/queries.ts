@@ -26,7 +26,9 @@ const pageInfo = "pageInfo { hasNextPage endCursor }";
 
 export const productsQuery = `query MarketProducts($language: LanguageCode!, $after: String) @inContext(country: NL, language: $language) {
   products(first: 50, after: $after, query: "tag:dock-vault-test", sortKey: TITLE) {
-    nodes { ${productFields} }
+    nodes { ${productFields}
+      variants(first: 2) { nodes { id availableForSale currentlyNotInStock quantityAvailable } ${pageInfo} }
+    }
     ${pageInfo}
   }
 }`;

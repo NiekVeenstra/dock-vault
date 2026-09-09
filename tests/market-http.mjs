@@ -46,11 +46,14 @@ async function get(route, options) {
   const response = await fetch(base + route, { ...options, signal: AbortSignal.timeout(15_000) });
   return { status: response.status, headers: response.headers, text: await response.text() };
 }
+async function cart(lines) {
+  return get("/api/market-hall/cart", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(lines) });
+}
 function noSecrets(text) {
   for (const marker of ["qa-private-token", "SHOPIFY_STOREFRONT_PRIVATE_TOKEN", "Synthetic upstream error"]) assert.ok(!text.includes(marker), `Leaked ${marker}`);
 }
 async function checkClosed() {
-  for (const route of ["/market-hall", "/market-hall/category/singles", productPath, "/market-hall/product/missing"]) {
+  for (const route of ["/market-hall", "/market-hall/cart", "/market-hall/category/singles", productPath, "/market-hall/product/missing"]) {
     const response = await get(route);
     assert.equal(response.status, 200, route);
     assert.match(response.text, /De Markthal wordt voorbereid/);
@@ -69,6 +72,7 @@ async function checkClosed() {
     assert.equal(response.status, 404);
     assert.ok(!response.text.includes("gid://shopify/"));
   }
+  assert.equal((await cart([])).status, 404);
   assert.equal(await readFile(callLog, "utf8"), "", "closed state contacted Shopify");
 }
 async function checkPublicFiles() {
@@ -109,6 +113,17 @@ try {
   assert.match(detail.text, /3 stuks beschikbaar/);
   assert.equal((await get("/market-hall/product/missing")).status, 404);
   assert.match((await get("/market-hall/category/sealed")).text, /Hier staat nog geen testproduct klaar/);
+  const cartLine = { slug: "test-dock-vault-voorbeeldkaart", variantId: "gid://shopify/ProductVariant/2001", quantity: 5, price: "0.01" };
+  const checked = await cart([cartLine]);
+  assert.equal(checked.status, 200);
+  assert.match(checked.headers.get("cache-control"), /no-store/);
+  const checkedBody = JSON.parse(checked.text);
+  assert.equal(checkedBody.lines[0].quantity, 3);
+  assert.equal(checkedBody.lines[0].price.amount, "1.00");
+  assert.equal(checkedBody.adjusted, true);
+  assert.equal((await cart([cartLine, cartLine])).status, 400);
+  assert.equal((await cart([{ ...cartLine, quantity: -1 }])).status, 400);
+  assert.equal((await get("/market-hall/cart")).status, 200);
   await checkPublicFiles();
   console.log("PASS open: overview, category, detail, both language payloads, images, price, stock, 404, empty category, sitemap and browser bundles");
   await state({ title: "[TEST] Changed title", image: 2, price: "2.50", available: false });
@@ -119,6 +134,8 @@ try {
     assert.match(response.text, /2,50/);
     assert.match(response.text, /Niet beschikbaar/);
   }
+  assert.deepEqual(JSON.parse((await cart([cartLine])).text), { lines: [], adjusted: true });
+  console.log("PASS cart: authoritative price, stock clamp, malformed input, sold-out removal and closed endpoint");
   console.log("PASS refresh: changed title, image URL, price and availability on next request");
   await state({ failure: true });
   for (const route of ["/market-hall", productPath]) {
@@ -128,6 +145,8 @@ try {
     noSecrets(response.text);
   }
   console.log("PASS connection failure: calm message without stale products or upstream details");
+  assert.equal((await cart([cartLine])).status, 503);
+  noSecrets((await cart([cartLine])).text);
   await start("true", "");
   assert.match((await get(productPath)).text, /De producten zijn even niet beschikbaar/);
   assert.equal(await readFile(callLog, "utf8"), "");

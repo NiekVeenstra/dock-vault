@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 
 const navigation = {
@@ -37,7 +37,7 @@ const navigation = {
   },
 } as const;
 
-export function HarborHeader() {
+export function HarborHeader({ actions }: { actions?: ReactNode }) {
   const [open, setOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -90,6 +90,7 @@ export function HarborHeader() {
         </a>
 
         <div className="harbor-header__controls">
+          {actions}
           <div className="language-toggle" role="group" aria-label="Language / Taal">
             <button
               type="button"

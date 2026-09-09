@@ -22,6 +22,7 @@ export type ShopifyProductSummary = {
   featuredImage: ShopifyImage | null;
   priceRange: { minVariantPrice: Money; maxVariantPrice: Money };
   metafields: ShopifyMetafield[];
+  variants?: Connection<Pick<ShopifyVariant, "id" | "availableForSale" | "currentlyNotInStock" | "quantityAvailable">>;
 };
 export type ShopifyVariant = {
   id: string;
@@ -35,7 +36,7 @@ export type ShopifyVariant = {
   selectedOptions: { name: string; value: string }[];
   metafields: ShopifyMetafield[];
 };
-export type ShopifyProduct = ShopifyProductSummary & {
+export type ShopifyProduct = Omit<ShopifyProductSummary, "variants"> & {
   images: Connection<ShopifyImage>;
   variants: Connection<ShopifyVariant>;
 };

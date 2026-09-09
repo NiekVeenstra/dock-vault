@@ -6,6 +6,7 @@ import { useLanguage } from "@/components/LanguageProvider";
 import { SiteFooter } from "@/components/sections";
 import type { MarketCategory, MarketProductSummary } from "@/lib/commerce/types";
 import { formatMoney } from "./format";
+import { TestCartLink, AddToTestCart, CartNotice } from "./TestCart";
 
 type MarketHallCatalogProps = {
   categories: readonly MarketCategory[];
@@ -74,7 +75,7 @@ export function MarketHallCatalog({ categories, products, activeCategory, unavai
   return (
     <main className="market-page market-catalog-page">
       <section className="market-catalog-hero" id="home">
-        <HarborHeader />
+        <HarborHeader actions={<TestCartLink />} />
         <HarborDivider />
         <div className="market-shell market-catalog-hero__content">
           <p className="market-test-banner" role="status">{copy.environment}</p>
@@ -114,6 +115,7 @@ export function MarketHallCatalog({ categories, products, activeCategory, unavai
               {!unavailable && <span>{products.length} {products.length === 1 ? copy.oneProduct : copy.multipleProducts}</span>}
             </header>
 
+            <CartNotice />
             {unavailable || !products.length ? (
               <div className="market-empty" role="status">
                 <h3>{unavailable ? copy.error : copy.empty}</h3>
@@ -142,6 +144,10 @@ export function MarketHallCatalog({ categories, products, activeCategory, unavai
                       <span className="market-product-card__action">{copy.details}<b aria-hidden="true">→</b></span>
                     </div>
                   </a>
+                  <div className="market-product-card__purchase">
+                    {product.quickVariant ? <AddToTestCart compact slug={product.slug} variant={product.quickVariant} /> :
+                      <a className="quiet-link" href={`/market-hall/product/${encodeURIComponent(product.slug)}`}>{language === "nl" ? "Kies uitvoering" : "Choose variant"} →</a>}
+                  </div>
                 </article>
               ))}
             </div>}

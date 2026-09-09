@@ -174,3 +174,54 @@ Er zijn tijdens deze oplevering geen echte Shopify-mutaties of live API-controle
 - [Producten en varianten opvragen](https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api/products-collections/getting-started)
 - [Variantvelden en beschikbaarheid](https://shopify.dev/docs/api/storefront/latest/objects/ProductVariant)
 - [Metavelden beschikbaar maken](https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api/products-collections/metafields)
+
+## Testwinkelmand
+
+De testwinkelmand is beschikbaar op `/market-hall/cart` wanneer
+`MARKET_HALL_ENABLED=true`. De bestaande Shopify-instellingen blijven voldoende;
+er zijn geen extra scopes of tokens nodig. Checkout is nog niet aangesloten.
+
+- De productpagina voegt de geselecteerde variant toe. Dezelfde variant wordt
+  samengevoegd; verschillende varianten blijven aparte regels.
+- Alleen producthandle, variant-ID en aantal worden lokaal bewaard onder
+  `dock-vault-test-cart-v1`. Prijs, omschrijving en voorraad komen bij herstel,
+  toevoegen, wijzigen en opnieuw controleren van de server.
+- `POST /api/market-hall/cart` gebruikt de bestaande afgeschermde catalogus.
+  De route is gesloten (404, zonder Shopify-verzoek) als de Markthal uit staat.
+  Antwoorden zijn `no-store`. Ongeldige invoer geeft 400; een verbindingsfout 503.
+- Voorraadverlagingen beperken het aantal. Verwijderde, uitgesloten,
+  uitverkochte en nabestelbare varianten, of varianten zonder bekend aantal,
+  worden niet opgenomen. De gebruiker krijgt een melding bij aanpassingen.
+- Maximaal 20 verschillende varianten en 99 eenheden per variant. Een playset
+  telt als één verkoopeenheid. De winkelmand reserveert geen voorraad.
+- Bij een verbindingsfout blijft de bestaande mand bewaard en verschijnt een
+  foutmelding. Verwijderen/leegmaken kan na het verzoek ook offline.
+- Het subtotaal betreft uitsluitend producten, met aparte subtotalen per valuta.
+  Er worden geen betalingen of bestellingen aangemaakt.
+
+Controle: `npm run test:cart`, `npm run test:shopify`, daarna `npm run build`
+en `npm run test:market-http`. De HTTP-test gebruikt expliciete synthetische
+Shopify-responses, geen echte winkelgegevens.
+
+Handmatige controle met echte testproducten: voeg A en B toe, voeg A nogmaals
+ toe, wijzig aantallen, verwijder een regel en ververs de pagina. Verlaag daarna
+ de Shopify-voorraad en kies opnieuw controleren. Controleer ook de Engelse
+ weergave. De winkelmand en API moeten gesloten blijven met de vlag uit.
+
+### Bediening van de testwinkelmand
+
+De winkelmand staat rechtsboven in de Markthal-header. Op smallere schermen
+blijven het icoon en aantal zichtbaar; de toegankelijke naam blijft volledig.
+De productpagina biedt een aantalkeuze, beperkt tot de bevestigde voorraad
+minus wat al in de mand zit (en het maximum van 99 per variant).
+
+Het overzicht vraagt de eerste twee varianten op. Alleen bij precies één
+variant zonder vervolgpagina verschijnt direct toevoegen met aantalkeuze.
+Bij meerdere of onbekende varianten leidt “Kies uitvoering” naar de detailpagina.
+De toevoegknoppen staan buiten de productlink. Iedere toevoeging blijft via de
+server gecontroleerd, ook wanneer de weergegeven voorraad inmiddels verouderd is.
+
+Bij updates via een ZIP: voeg de bestanden samen met de bestaande projectmap,
+bijvoorbeeld met PowerShell `Expand-Archive -LiteralPath <zip> -DestinationPath . -Force`.
+Verwijder of vervang nooit de volledige mappen app, components of lib: de update
+bevat uitsluitend toegevoegde en gewijzigde bestanden.
