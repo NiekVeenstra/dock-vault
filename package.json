@@ -13,7 +13,7 @@
     "test:checkout": "node --require ./tests/register.cjs --test tests/checkout.test.cjs tests/receipt.test.cjs"
   },
   "dependencies": {
-    "next": "15.2.8",
+    "next": "15.5.25",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "sass": "^1.86.0"
@@ -23,5 +23,8 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "typescript": "^5.8.2"
+  },
+  "overrides": {
+    "postcss": "8.5.23"
   }
 }
