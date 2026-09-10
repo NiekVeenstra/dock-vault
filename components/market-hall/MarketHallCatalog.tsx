@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { HarborDivider } from "@/components/HarborDivider";
 import { HarborHeader } from "@/components/HarborHeader";
 import { useLanguage } from "@/components/LanguageProvider";
@@ -83,7 +84,7 @@ export function MarketHallCatalog({ categories, products, activeCategory, unavai
           <div className="small-rule" aria-hidden="true"><span /></div>
           <h1>{activeCategory ? activeCategory.name[language] : copy.title}</h1>
           <p>{activeCategory ? activeCategory.description[language] : copy.lead}</p>
-          {activeCategory ? <a className="quiet-link" href="/market-hall">← {copy.back}</a> : null}
+          {activeCategory ? <Link className="quiet-link" href="/market-hall">← {copy.back}</Link> : null}
         </div>
       </section>
 
@@ -92,16 +93,17 @@ export function MarketHallCatalog({ categories, products, activeCategory, unavai
           <aside className="market-category-nav">
             <p className="eyebrow">{copy.categories}</p>
             <nav aria-label={copy.categories}>
-              <a className={!activeCategory ? "is-active" : ""} href="/market-hall" aria-current={!activeCategory ? "page" : undefined}>{copy.all}</a>
+              <Link className={!activeCategory ? "is-active" : ""} href="/market-hall" scroll={false} aria-current={!activeCategory ? "page" : undefined}>{copy.all}</Link>
               {categories.map((category) => (
-                <a
+                <Link
                   className={activeCategory?.slug === category.slug ? "is-active" : ""}
                   href={`/market-hall/category/${category.slug}`}
+                  scroll={false}
                   key={category.slug}
                   aria-current={activeCategory?.slug === category.slug ? "page" : undefined}
                 >
                   <span>{category.marker}</span>{category.name[language]}
-                </a>
+                </Link>
               ))}
             </nav>
           </aside>
