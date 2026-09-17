@@ -139,9 +139,9 @@ export function MarketHallCatalog({ categories, products, activeCategory, unavai
                       <h3>{product.name[language]}</h3>
                       <p>{product.summary[language]}</p>
                       <dl>
-                        {product.details.condition && <div><dt>{language === "nl" ? "Conditie" : "Condition"}</dt><dd>{product.details.condition[language]}</dd></div>}
-                        <div><dt>{Number(product.priceRange.min.amount) !== Number(product.priceRange.max.amount) ? copy.priceFrom : copy.from}</dt><dd>{formatMoney(product.priceRange.min, language)}</dd></div>
-                        <div><dt>{copy.availability}</dt><dd>{product.available ? copy.available : copy.soldOut}</dd></div>
+                        {product.details.condition && <div className="market-product-card__condition"><dt>{language === "nl" ? "Conditie" : "Condition"}</dt><dd>{product.details.condition[language]}</dd></div>}
+                        <div className="market-product-card__price"><dt>{Number(product.priceRange.min.amount) !== Number(product.priceRange.max.amount) ? copy.priceFrom : copy.from}</dt><dd>{Number(product.priceRange.min.amount) !== Number(product.priceRange.max.amount) && <span className="market-product-card__price-prefix" aria-hidden="true">{language === "nl" ? "Vanaf " : "From "}</span>}{formatMoney(product.priceRange.min, language)}</dd></div>
+                        <div className="market-product-card__availability"><dt>{copy.availability}</dt><dd>{product.available ? copy.available : copy.soldOut}</dd></div>
                       </dl>
                       <span className="market-product-card__action">{copy.details}<b aria-hidden="true">→</b></span>
                     </div>

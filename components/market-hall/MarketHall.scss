@@ -91,6 +91,7 @@
 .market-product-card dl div { padding: 9px 0; display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(169, 120, 56, .16); }
 .market-product-card dt { color: rgba(242, 234, 223, .55); }
 .market-product-card dd { margin: 0; color: var(--parchment); text-align: right; }
+.market-product-card__price-prefix { display: none; }
 .market-product-card__action { margin-top: auto; padding-top: 24px; display: flex; justify-content: space-between; color: var(--warm-brass); font-family: Cinzel, serif; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
 .market-catalog__notice { margin: 34px 0 0; padding: 18px 20px; border-left: 1px solid var(--warm-brass); color: var(--muted); font-size: 17px; }
 
@@ -175,4 +176,62 @@
   .market-product-information h1 { font-size: 45px; }
   .market-product-card__body { padding: 23px; }
   .market-product-information dl div { grid-template-columns: 1fr; gap: 5px; }
+}
+
+/* A compact browsing grid on phones; product details and desktop cards stay spacious. */
+@media (max-width: 700px) {
+  .market-catalog-page {
+    .market-catalog-hero { padding: 122px 0 24px; }
+    .market-test-banner { margin-bottom: 14px; font-size: 10px !important; letter-spacing: .06em; }
+    .market-catalog-hero__content > .eyebrow,
+    .market-catalog-hero__content > .small-rule,
+    .market-catalog-hero__content > p:last-of-type:not(.market-test-banner) { display: none; }
+    .market-catalog-hero h1 { margin: 0; font-size: clamp(30px, 8vw, 42px); line-height: 1.12; }
+    .market-catalog-hero__content > .quiet-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 8px; font-size: 14px; }
+    .market-catalog { padding: 20px 0 56px; }
+    .market-catalog__layout { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    .market-category-nav { min-width: 0; }
+    .market-category-nav > .eyebrow { display: none; }
+    .market-category-nav nav {
+      display: flex;
+      gap: 8px;
+      margin: 0;
+      padding: 2px 0 6px;
+      border: 0;
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }
+    .market-category-nav nav a { flex: 0 0 auto; min-height: 44px; padding: 10px 12px; border: 1px solid rgba(169, 120, 56, .3); font-size: 15px; white-space: nowrap; }
+    .market-category-nav nav a span { display: none; }
+    .market-category-nav nav a.is-active { border-color: var(--warm-brass); }
+    .market-category-nav nav a:focus-visible { outline-offset: -3px; }
+    .market-catalog__products > header { flex-direction: row; align-items: baseline; gap: 12px; margin-bottom: 16px; }
+    .market-catalog__products > header .eyebrow { display: none; }
+    .market-catalog__products > header h2 { margin: 0; font-size: 24px; }
+    .market-catalog__products > header > span { flex-shrink: 0; font-size: 11px; }
+    .market-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .market-product-card > a { grid-template-rows: auto 1fr; }
+    .market-product-card:hover { transform: none; }
+    .market-product-card__image { aspect-ratio: 4 / 5; padding: 12px; min-width: 0; gap: 10px; }
+    .market-product-card__image img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
+    .market-product-card__image b { width: 56px; height: 78px; font-size: 20px; }
+    .market-product-card__image small { font-size: 11px; line-height: 1.4; }
+    .market-product-card__body { padding: 12px; }
+    .market-product-card .market-test-label,
+    .market-product-card__body > p,
+    .market-product-card dl .market-product-card__condition,
+    .market-product-card__action,
+    .market-product-card__purchase { display: none; }
+    .market-product-card h3 { margin: 0 0 10px; font-size: clamp(16px, 4.3vw, 20px); line-height: 1.25; min-height: 2.5em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .market-product-card dl { margin: auto 0 0; }
+    .market-product-card dl div { display: block; padding: 0; border: 0; }
+    /* Keep the price and availability labels available to screen readers. */
+    .market-product-card dt { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .market-product-card dd { text-align: left; }
+    .market-product-card__price dd { font-size: 18px; line-height: 1.3; }
+    .market-product-card__price-prefix { display: inline; font-size: 14px; }
+    .market-product-card .market-product-card__availability { margin-top: 5px; }
+    .market-product-card__availability dd { color: var(--muted); font-family: Inter, sans-serif; font-size: 11px; line-height: 1.4; overflow-wrap: anywhere; }
+    .market-catalog__notice { margin-top: 24px; padding: 12px; font-size: 14px; line-height: 1.5; }
+  }
 }
