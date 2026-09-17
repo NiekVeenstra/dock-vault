@@ -62,6 +62,11 @@ function useCart() {
 }
 export function TestCartProvider({ children, checkoutEnabled = false, receiptTrackingEnabled = false }: { children: React.ReactNode; checkoutEnabled?: boolean; receiptTrackingEnabled?: boolean }) {
   const [lines, setLines] = useState<CartLine[]>([]);
+  const displayedLines = useRef<CartLine[]>([]);
+  function showLines(next: CartLine[]) {
+    displayedLines.current = next;
+    setLines(next);
+  }
   const [busy, setBusy] = useState(true);
   const [notice, setNotice] = useState<Notice>(null);
   const [storageFailed, setStorageFailed] = useState(false);
@@ -77,7 +82,9 @@ export function TestCartProvider({ children, checkoutEnabled = false, receiptTra
     setPendingPayment(stored.current.pending.length > 0);
   }
   const locked = useRef(false);
+  const paymentLocked = useRef(false);
   const initialized = useRef(false);
+  const restoring = useRef(true);
   function saveStored(next: StoredCart) {
     // Do not overwrite changes made in another browser tab during a request.
     if (localStorage.getItem(storageKey) !== expectedStorage.current) throw new Error("cart-changed-in-another-tab");
@@ -92,9 +99,9 @@ export function TestCartProvider({ children, checkoutEnabled = false, receiptTra
     try { saveStored({ ...stored.current, items: input }); }
     catch { setStorageFailed(true); }
   }
-  async function checkPayment() {
-    if (locked.current || !checkoutEnabled) return;
-    locked.current = true; setBusy(true); setCheckingPayment(true);
+  async function checkPayment(manual = false) {
+    if (locked.current || paymentLocked.current || !checkoutEnabled) return;
+    paymentLocked.current = true; setCheckingPayment(true);
     let completed = false; let review = false; let failed = false;
     try {
       loadStored();
@@ -106,34 +113,46 @@ export function TestCartProvider({ children, checkoutEnabled = false, receiptTra
         if (!response.ok) { failed = true; continue; }
         const result = await response.json();
         if (result.paid !== true) continue;
+        // A cart mutation may have started while the payment request was in flight.
+        // Leave the receipt pending for the next check rather than overwrite it.
+        if (locked.current) continue;
         // Reload before applying: the user may have edited the cart in another tab.
         loadStored();
+        if (!stored.current.pending.some((entry) => entry.receipt === pending.receipt)) continue;
         const next = applyPaidReceipt(stored.current, pending.receipt, parseCart(result.lines));
         saveStored(next.cart); completed = true; review ||= next.review;
+        const hasNewLines = next.cart.items.some((item) => !displayedLines.current.some((line) => line.variantId === item.variantId));
+        // Reconcile purchased quantities locally. A payment retry is not a stock refresh.
+        showLines(displayedLines.current.flatMap((line) => {
+          const remaining = next.cart.items.find((item) => item.variantId === line.variantId);
+          return remaining ? [{ ...line, quantity: remaining.quantity }] : [];
+        }));
+        // A different tab may have added a new variant while this request was in flight.
+        if (!restoring.current && hasNewLines) await validate(next.cart.items, true);
       }
     } catch { failed = true; }
-    finally { locked.current = false; setCheckingPayment(false); }
-    // Check orders BEFORE refreshing stock: sold-out lines must not consume a receipt twice.
-    await validate(items.current);
-    setNotice(failed ? "paymentError" : completed ? (review ? "paidReview" : "paid") : "paymentPending");
-    setBusy(false);
+    finally { paymentLocked.current = false; setCheckingPayment(false); }
+    if (completed) setNotice(review ? "paidReview" : "paid");
+    else if (manual) setNotice(failed ? "paymentError" : "paymentPending");
   }
-  async function validate(input: CartInput[]) {
+  async function validate(input: CartInput[], passive = false) {
     if (locked.current) return;
     locked.current = true;
     setBusy(true);
-    setNotice(null);
+    if (!passive) setNotice(null);
     try {
+      if (!input.length) { showLines([]); persist([]); return; }
       const response = await fetch("/api/market-hall/cart", {
         method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(input),
         cache: "no-store", signal: AbortSignal.timeout(60000),
       });
       if (!response.ok) throw new Error("unavailable");
       const result: CartResult = await response.json();
-      setLines(result.lines);
+      showLines(result.lines);
       items.current = result.lines.map(({ slug, variantId, quantity }) => ({ slug, variantId, quantity }));
       persist(items.current);
-      setNotice(result.adjusted ? "adjusted" : "added");
+      if (result.adjusted) setNotice("adjusted");
+      else if (!passive) setNotice("added");
     } catch { setNotice("error"); }
     finally { locked.current = false; setBusy(false); }
   }
@@ -141,23 +160,34 @@ export function TestCartProvider({ children, checkoutEnabled = false, receiptTra
     if (initialized.current) return;
     initialized.current = true;
     try { loadStored(); } catch { setNotice("invalid"); }
-    if (stored.current.pending.length && checkoutEnabled) void checkPayment();
-    else if (items.current.length) void validate(items.current);
-    else setBusy(false);
+    void (async () => {
+      // Restore once, checking payment before stock so purchased lines are reconciled first.
+      if (stored.current.pending.length && checkoutEnabled) await checkPayment();
+      await validate(items.current, true);
+      restoring.current = false;
+    })();
     // Restore once, including signed pending checkout receipts.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     const resume = () => {
-      if (document.visibilityState === "hidden" || locked.current) return;
+      if (restoring.current || document.visibilityState === "hidden" || locked.current) return;
+      const previousItems = JSON.stringify(items.current);
       try { loadStored(); } catch { setNotice("invalid"); return; }
+      // Only an actual cart edit in another tab needs hydration. Focus alone does not.
+      if (JSON.stringify(items.current) !== previousItems) {
+        void validate(items.current, true);
+        return;
+      }
       if (stored.current.pending.length && checkoutEnabled) void checkPayment();
-      else void validate(items.current);
     };
     const visible = () => { if (document.visibilityState === "visible") resume(); };
+    const storageChanged = (event: StorageEvent) => {
+      if (event.storageArea === localStorage && (event.key === storageKey || event.key === null)) resume();
+    };
     window.addEventListener("pageshow", resume);
     window.addEventListener("focus", resume);
-    window.addEventListener("storage", resume);
+    window.addEventListener("storage", storageChanged);
     document.addEventListener("visibilitychange", visible);
     // Bounded retries for a delayed Shopify order after returning to the site.
     const timers = [3000, 10000, 30000].map((delay) => window.setTimeout(() => {
@@ -167,7 +197,7 @@ export function TestCartProvider({ children, checkoutEnabled = false, receiptTra
       timers.forEach(clearTimeout);
       window.removeEventListener("pageshow", resume);
       window.removeEventListener("focus", resume);
-      window.removeEventListener("storage", resume);
+      window.removeEventListener("storage", storageChanged);
       document.removeEventListener("visibilitychange", visible);
     };
     // Event handlers use refs for the current cart and request lock.
@@ -193,7 +223,7 @@ export function TestCartProvider({ children, checkoutEnabled = false, receiptTra
     if (quantity === 0) {
       // Removing a line must also work when Shopify is temporarily unavailable.
       items.current = items.current.filter((item) => item.variantId !== id);
-      setLines((current) => current.filter((item) => item.variantId !== id));
+      showLines(displayedLines.current.filter((item) => item.variantId !== id));
       persist(items.current);
       return;
     }
@@ -211,7 +241,7 @@ export function TestCartProvider({ children, checkoutEnabled = false, receiptTra
       const result = await response.json();
       if (response.status === 409) {
         if (Array.isArray(result.lines)) {
-          setLines(result.lines);
+          showLines(result.lines);
           items.current = result.lines.map(({ slug, variantId, quantity }: CartInput) => ({ slug, variantId, quantity }));
           persist(items.current);
         }
@@ -233,9 +263,9 @@ export function TestCartProvider({ children, checkoutEnabled = false, receiptTra
     if (locked.current || busy) return;
     for (const item of items.current) markEdited(item.variantId);
     stored.current = { ...stored.current, pending: [] };
-    items.current = []; setLines([]); setNotice(null); persist([]);
+    items.current = []; showLines([]); setNotice(null); persist([]);
   }
-  return <CartContext.Provider value={{ receiptTrackingEnabled, pendingPayment, checkingPayment, checkPayment: () => { void checkPayment(); }, checkoutEnabled, checkout, lines, busy, notice, storageFailed, add, update, clear, refresh: () => { void validate(items.current); } }}>{children}</CartContext.Provider>;
+  return <CartContext.Provider value={{ receiptTrackingEnabled, pendingPayment, checkingPayment, checkPayment: () => { void checkPayment(true); }, checkoutEnabled, checkout, lines, busy, notice, storageFailed, add, update, clear, refresh: () => { void validate(items.current); } }}>{children}</CartContext.Provider>;
 }
 export function TestCartLink() {
   const { lines } = useCart();
@@ -304,7 +334,7 @@ export function TestCartPage() {
       </div>
       {!!lines.length && <div className="test-cart-total"><span>{t.subtotal}</span>{[...totals].map(([currencyCode, amount]) => <strong key={currencyCode}>{formatMoney({ amount: String(amount), currencyCode }, language)}</strong>)}</div>}
       <div className="test-cart-actions">
-        {pendingPayment && <button type="button" disabled={busy} onClick={checkPayment}>{t.paymentCheck}</button>}
+        {pendingPayment && <button type="button" disabled={busy || checkingPayment} onClick={checkPayment}>{checkingPayment ? t.paymentChecking : t.paymentCheck}</button>}
         {checkoutEnabled && <button type="button" disabled={busy || !lines.length} onClick={() => checkout(language)}>{t.checkout}</button>}
         <button type="button" disabled={busy} onClick={refresh}>{t.refresh}</button>
         <button type="button" disabled={busy} onClick={clear}>{t.clear}</button>
